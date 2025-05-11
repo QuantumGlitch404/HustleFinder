@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useParams, notFound } from 'next/navigation'; // Import useParams and notFound
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import Image from 'next/image';
@@ -19,19 +20,10 @@ import {
   Lightbulb,
   GraduationCap
 } from 'lucide-react';
-import {notFound} from 'next/navigation';
 
-interface HustleDetailsPageProps {
-  params: {
-    id: string;
-  };
-}
-
-// Metadata generation remains a server capability, so we can't directly use hooks from client component
-// This part would ideally be refactored if full client-side rendering for this page,
-// or keep metadata generation as is if using App Router with client components for interactivity.
-// For now, assuming the metadata function is called separately by Next.js build process.
-// export async function generateMetadata({ params }: HustleDetailsPageProps) {
+// Metadata generation remains a server capability.
+// If you uncomment this, ensure params are typed correctly for server context.
+// export async function generateMetadata({ params }: { params: { id: string } }) {
 //   const hustle = getHustleById(params.id);
 //   if (!hustle) {
 //     return {
@@ -45,13 +37,25 @@ interface HustleDetailsPageProps {
 // }
 
 
-export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
-  const hustle: Hustle | undefined = getHustleById(params.id);
+export default function HustleDetailsPage() {
+  const routeParams = useParams<{ id: string }>(); // Use the hook
+  const hustleId = routeParams.id; // Access id
+
+  const hustle: Hustle | undefined = getHustleById(hustleId);
   const [showStartingGuide, setShowStartingGuide] = useState(false);
 
   if (!hustle) {
     notFound();
+    // notFound() throws, so a return null isn't strictly necessary for flow but can be for type completeness
+    // if notFound() didn't throw.
   }
+
+  // Ensure hustle is defined before rendering, TypeScript should catch this with strict null checks.
+  // The `if (!hustle)` block above handles this.
+  // For TS, after the notFound() call, hustle is narrowed to type Hustle.
+  // However, to be absolutely explicit for linters or less strict TS settings:
+  if (!hustle) return null;
+
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -61,8 +65,8 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
             <Image
               src={hustle.imageUrl}
               alt={hustle.title}
-              fill // Changed from layout="fill" to fill for Next 13+
-              objectFit="cover"
+              fill 
+              style={{objectFit:"cover"}} // Replaced objectFit with style prop
               className="rounded-t-lg"
               data-ai-hint={hustle.imageHint}
             />

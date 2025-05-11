@@ -18,8 +18,8 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
           <Image
             src={hustle.imageUrl}
             alt={hustle.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{objectFit:"cover"}} // Replaced objectFit with style prop
             data-ai-hint={hustle.imageHint}
           />
         </div>
