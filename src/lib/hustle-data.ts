@@ -48,14 +48,19 @@ export const allHustles: Hustle[] = Array.from({ length: 120 }, (_, i) => {
   const category = categories[i % categories.length];
   const title = sampleTitles[i % sampleTitles.length] + (i >= sampleTitles.length ? ` #${Math.floor(i / sampleTitles.length) +1}` : '');
   const description = sampleDescriptions[i % sampleDescriptions.length];
+  const id = `hustle-${i + 1}`;
   
   return {
-    id: `hustle-${i + 1}`,
+    id: id,
     title: title,
     description: description,
     imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
     imageHint: category.imageHint,
     category: category.name,
-    detailsLink: `/hustles/details-soon`, // Placeholder link
+    detailsLink: `/hustles/${id}`, // Updated link to point to dynamic route
   };
 });
+
+export function getHustleById(id: string): Hustle | undefined {
+  return allHustles.find(hustle => hustle.id === id);
+}
