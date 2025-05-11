@@ -45,7 +45,7 @@ const sampleDescriptions = [
 export const HUSTLES_PER_PAGE = 10;
 
 export const allHustles: Hustle[] = Array.from({ length: 120 }, (_, i) => {
-  const category = categories[i % categories.length];
+  const categoryObj = categories[i % categories.length];
   const title = sampleTitles[i % sampleTitles.length] + (i >= sampleTitles.length ? ` #${Math.floor(i / sampleTitles.length) +1}` : '');
   const description = sampleDescriptions[i % sampleDescriptions.length];
   const id = `hustle-${i + 1}`;
@@ -55,17 +55,18 @@ export const allHustles: Hustle[] = Array.from({ length: 120 }, (_, i) => {
     title: title,
     description: description,
     imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
-    imageHint: category.imageHint,
-    category: category.name,
+    imageHint: categoryObj.imageHint,
+    category: categoryObj.name,
     detailsLink: `/hustles/${id}`,
     // Generic placeholder data for new fields
-    stepsToStart: `Generic steps for ${title}:\n1. Research the market and your target audience for ${title}.\n2. Create a solid business plan and set realistic goals.\n3. Develop your ${category.toLowerCase()} product/service offering.\n4. Market yourself effectively and build a strong brand presence.\n5. Continuously learn, adapt to feedback, and iterate on your offerings.`,
+    stepsToStart: `Generic steps for ${title}:\n1. Research the market and your target audience for ${title}.\n2. Create a solid business plan and set realistic goals.\n3. Develop your ${categoryObj.name.toLowerCase()} product/service offering.\n4. Market yourself effectively and build a strong brand presence.\n5. Continuously learn, adapt to feedback, and iterate on your offerings.`,
     successProofLink: `https://www.google.com/search?q=success+stories+${encodeURIComponent(title)}`, // Generic search link
-    successTip: `Key to success in ${title}: Be persistent, adaptable, and always prioritize quality. Network within the ${category} community.`,
-    skillsToLearn: `To succeed in ${title}, focus on learning: Core skills related to ${category.toLowerCase()} (e.g., ${category.imageHint.replace(' ', ', ')}), digital marketing, customer relationship management, and basic financial literacy.`,
+    successTip: `Key to success in ${title}: Be persistent, adaptable, and always prioritize quality. Network within the ${categoryObj.name} community.`,
+    skillsToLearn: `To succeed in ${title}, focus on learning: Core skills related to ${categoryObj.name.toLowerCase()} (e.g., ${categoryObj.imageHint.replace(' ', ', ')}), digital marketing, customer relationship management, and basic financial literacy.`,
   };
 });
 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
 }
+
