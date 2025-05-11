@@ -5,5 +5,10 @@ export interface Hustle {
   imageUrl: string;
   imageHint: string; // For data-ai-hint
   category: string;
-  detailsLink: string; // Placeholder or actual link
+  detailsLink: string;
+  // New fields for the starting guide
+  stepsToStart: string;
+  successProofLink: string;
+  successTip: string;
+  skillsToLearn: string;
 }

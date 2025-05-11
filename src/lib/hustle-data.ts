@@ -57,7 +57,12 @@ export const allHustles: Hustle[] = Array.from({ length: 120 }, (_, i) => {
     imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
     imageHint: category.imageHint,
     category: category.name,
-    detailsLink: `/hustles/${id}`, // Updated link to point to dynamic route
+    detailsLink: `/hustles/${id}`,
+    // Generic placeholder data for new fields
+    stepsToStart: `Generic steps for ${title}:\n1. Research the market and your target audience for ${title}.\n2. Create a solid business plan and set realistic goals.\n3. Develop your ${category.toLowerCase()} product/service offering.\n4. Market yourself effectively and build a strong brand presence.\n5. Continuously learn, adapt to feedback, and iterate on your offerings.`,
+    successProofLink: `https://www.google.com/search?q=success+stories+${encodeURIComponent(title)}`, // Generic search link
+    successTip: `Key to success in ${title}: Be persistent, adaptable, and always prioritize quality. Network within the ${category} community.`,
+    skillsToLearn: `To succeed in ${title}, focus on learning: Core skills related to ${category.toLowerCase()} (e.g., ${category.imageHint.replace(' ', ', ')}), digital marketing, customer relationship management, and basic financial literacy.`,
   };
 });
 
