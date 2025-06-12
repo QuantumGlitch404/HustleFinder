@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -27,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, baseP
   return (
     <div className="flex items-center justify-center space-x-4 mt-8 py-4">
       <Button asChild variant="outline" disabled={currentPage <= 1} className="disabled:opacity-50 disabled:cursor-not-allowed">
-        <Link href={createPageURL(currentPage - 1)} scroll={false}>
+        <Link href={createPageURL(currentPage - 1)}>
           <ChevronLeft className="h-4 w-4 mr-1" />
           Previous
         </Link>
@@ -36,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, baseP
         Page {currentPage} of {totalPages}
       </span>
       <Button asChild variant="outline" disabled={currentPage >= totalPages} className="disabled:opacity-50 disabled:cursor-not-allowed">
-        <Link href={createPageURL(currentPage + 1)} scroll={false}>
+        <Link href={createPageURL(currentPage + 1)}>
           Next
           <ChevronRight className="h-4 w-4 ml-1" />
         </Link>
