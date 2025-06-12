@@ -4,7 +4,8 @@ import HustleCard from '@/components/hustles/HustleCard';
 import Pagination from '@/components/hustles/Pagination';
 import { allHustles, HUSTLES_PER_PAGE } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
-import { Search as SearchIcon } from 'lucide-react'; // Renamed to avoid conflict
+import { Search as SearchIcon } from 'lucide-react';
+import SearchForm from '@/components/SearchForm'; // Added import
 
 interface SearchPageProps {
   searchParams?: {
@@ -35,7 +36,8 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
     ? allHustles.filter(
         (hustle) =>
           hustle.title.toLowerCase().includes(query) ||
-          hustle.description.toLowerCase().includes(query)
+          hustle.description.toLowerCase().includes(query) ||
+          hustle.category.toLowerCase().includes(query) // Also search in category
       )
     : [];
 
@@ -45,6 +47,10 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
 
   return (
     <div className="container mx-auto py-8 px-4">
+      <div className="mb-10 max-w-2xl mx-auto">
+        <SearchForm initialQuery={searchParams?.q || ''} />
+      </div>
+
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
           {query ? `Search Results for "${searchParams?.q}"` : 'Search Hustles'}
@@ -56,7 +62,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
         )}
          {!query && (
           <p className="mt-4 text-lg text-muted-foreground">
-            Please enter a search term in the bar above to find hustles.
+            Please enter a search term above to find hustles.
           </p>
         )}
       </div>
@@ -71,7 +77,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
           <Pagination
             totalItems={filteredHustles.length}
             itemsPerPage={HUSTLES_PER_PAGE}
-            basePath={`/search?q=${encodeURIComponent(query)}`} // Pass query to pagination
+            basePath={`/search?q=${encodeURIComponent(query)}`}
           />
         </>
       ) : query ? (

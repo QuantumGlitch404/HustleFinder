@@ -1,8 +1,10 @@
+
 import HustleCard from '@/components/hustles/HustleCard';
 import Pagination from '@/components/hustles/Pagination';
 import { allHustles, HUSTLES_PER_PAGE } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import { Search } from 'lucide-react';
+import SearchForm from '@/components/SearchForm'; // Added import
 
 export const metadata = {
   title: 'Explore Side Hustles | Hustle Finder',
@@ -23,11 +25,15 @@ export default function HustlesPage({ searchParams }: HustlesPageProps) {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="text-center mb-12">
+      <div className="text-center mb-8">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">Explore Side Hustles</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Find your perfect side gig from our curated list of opportunities.
         </p>
+      </div>
+
+      <div className="mb-10 max-w-2xl mx-auto">
+        <SearchForm />
       </div>
       
       {currentHustles.length > 0 ? (
