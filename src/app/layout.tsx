@@ -1,9 +1,11 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import ScrollToTopButton from '@/components/layout/ScrollToTopButton'; // Added import
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,6 +36,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Toaster />
+        <ScrollToTopButton /> {/* Added component here */}
       </body>
     </html>
   );
