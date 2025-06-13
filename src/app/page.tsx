@@ -31,8 +31,8 @@ export default function HomePage() {
     },
      {
       id: "faq-4",
-      question: "Can I contribute a hustle idea to the platform?",
-      answer: "We're always looking to expand our database! While direct contribution isn't automated yet, you can reach out to us via the 'Contribute Hustle' link in the footer (coming soon) or our social channels."
+      question: "How does the AI Description Enhancer work?",
+      answer: "Our AI Description Enhancer uses advanced language models to rephrase your hustle descriptions. It aims to simplify complex language, clarify benefits, and make your opportunity more accessible, especially to non-native English speakers. Just paste your text, and the AI will suggest an improved version!"
     }
   ];
 
@@ -236,3 +236,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
