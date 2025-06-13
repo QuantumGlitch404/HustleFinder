@@ -22,6 +22,5 @@ const googleAIPlugin = apiKey ? googleAI({ apiKey }) : googleAI();
 
 export const ai = genkit({
   plugins: [googleAIPlugin],
-  model: 'gemini-pro', // Changed model
+  // model: 'gemini-pro', // Removed explicit model definition to rely on plugin default
 });
-
