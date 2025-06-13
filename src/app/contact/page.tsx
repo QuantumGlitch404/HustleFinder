@@ -1,11 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send } from "lucide-react";
+import { Mail } from "lucide-react";
 import type { Metadata } from 'next';
+import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: 'Contact Us | Hustle Finder',
@@ -31,30 +28,7 @@ export default function ContactPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-4 sm:px-6">
-          <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div className="space-y-1 sm:space-y-2">
-                <Label htmlFor="name" className="text-sm">Your Name</Label>
-                <Input id="name" type="text" placeholder="e.g., John Doe" className="text-sm" />
-              </div>
-              <div className="space-y-1 sm:space-y-2">
-                <Label htmlFor="email" className="text-sm">Your Email</Label>
-                <Input id="email" type="email" placeholder="e.g., john@example.com" className="text-sm" />
-              </div>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="subject" className="text-sm">Subject</Label>
-              <Input id="subject" type="text" placeholder="e.g., Feedback about Hustle Listings" className="text-sm" />
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="message" className="text-sm">Message</Label>
-              <Textarea id="message" placeholder="Write your message here..." rows={5} className="resize-none text-sm" />
-            </div>
-            <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-base py-2 sm:py-2.5">
-              <Send className="mr-2 h-4 w-4" />
-              Send Message
-            </Button>
-          </form>
+          <ContactForm />
         </CardContent>
         <CardContent className="px-4 sm:px-6 pt-4 text-center">
            <p className="text-xs text-muted-foreground">
