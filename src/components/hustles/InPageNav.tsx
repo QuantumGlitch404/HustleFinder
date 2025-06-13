@@ -63,6 +63,16 @@ export default function InPageNav() {
       }
     });
 
+    // Set initial activeId based on hash or first item
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash && navItems.find(item => item.id === initialHash)) {
+      setActiveId(initialHash);
+    } else if (navItems.length > 0) {
+      // Optionally, set the first item as active if no hash or if hash is invalid
+      // setActiveId(navItems[0].id); 
+    }
+
+
     return () => {
       navItems.forEach((item) => {
         const element = document.getElementById(item.id);
@@ -75,7 +85,7 @@ export default function InPageNav() {
 
 
   return (
-    <aside className="sticky top-28 self-start h-auto max-h-[calc(100vh-theme(spacing.32))] overflow-y-auto p-1 w-60 hidden lg:block rounded-lg border bg-card shadow-sm">
+    <aside className="w-full mb-8 lg:mb-0 lg:w-60 rounded-lg border bg-card shadow-sm lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100vh-theme(spacing.32))] lg:overflow-y-auto">
       <div className="p-3">
         <h3 className="text-base font-semibold mb-3 text-primary">On this page</h3>
         <ul className="space-y-1.5">
@@ -91,14 +101,17 @@ export default function InPageNav() {
               >
                 <Link href={`${pathname}#${item.id}`} onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Update URL hash without page reload for better UX
-                    if (history.pushState) {
-                        history.pushState(null, "", `#${item.id}`);
-                    } else {
-                        window.location.hash = `#${item.id}`;
+                    const element = document.getElementById(item.id);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Update URL hash without page reload for better UX
+                        if (history.pushState) {
+                            history.pushState(null, null, `#${item.id}`);
+                        } else {
+                            window.location.hash = `#${item.id}`;
+                        }
+                        setActiveId(item.id); // Immediately set active state on click
                     }
-                    setActiveId(item.id);
                 }}>
                   <item.icon className="mr-2 h-4 w-4 flex-shrink-0" />
                   {item.title}
