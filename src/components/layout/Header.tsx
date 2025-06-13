@@ -1,7 +1,15 @@
 
 import Link from 'next/link';
-import { Briefcase, BrainCircuit, Info } from 'lucide-react';
+import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, Linkedin, Github, FileText, Users, HelpCircle, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   return (
@@ -32,6 +40,67 @@ const Header = () => {
                 <span>About</span>
               </Link>
             </Button>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground h-8 w-8 sm:h-9 sm:w-9">
+                  <MenuIcon className="h-5 w-5" />
+                  <span className="sr-only">More options</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel>Quick Links</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/about" className="flex items-center">
+                    <Info className="mr-2 h-4 w-4" />
+                    <span>About Us</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/hustles" className="flex items-center">
+                    <Briefcase className="mr-2 h-4 w-4" />
+                    <span>All Hustles</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem disabled>
+                  <div className="flex items-center text-muted-foreground/80">
+                    <HelpCircle className="mr-2 h-4 w-4" />
+                    <span>Contact (Coming Soon)</span>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem disabled>
+                  <div className="flex items-center text-muted-foreground/80">
+                    <Users className="mr-2 h-4 w-4" />
+                    <span>Contribute Hustle (CS)</span>
+                  </div>
+                </DropdownMenuItem>
+                
+                <DropdownMenuSeparator />
+                <DropdownMenuLabel>Legal & Social</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem disabled>
+                  <div className="flex items-center text-muted-foreground/80">
+                     <FileText className="mr-2 h-4 w-4" />
+                    <span>Privacy Policy (CS)</span>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <Linkedin className="mr-2 h-4 w-4" />
+                    <span>LinkedIn</span>
+                    <ExternalLink className="ml-auto h-3 w-3 opacity-70" />
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="https://www.github.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <Github className="mr-2 h-4 w-4" />
+                    <span>GitHub</span>
+                    <ExternalLink className="ml-auto h-3 w-3 opacity-70" />
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
         </div>
       </div>
