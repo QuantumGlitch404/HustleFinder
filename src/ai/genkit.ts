@@ -22,5 +22,6 @@ const googleAIPlugin = apiKey ? googleAI({ apiKey }) : googleAI();
 
 export const ai = genkit({
   plugins: [googleAIPlugin],
-  model: 'googleai/gemini-2.0-flash', // Ensure this model is appropriate for your key and enabled API
+  model: 'gemini-1.5-flash', // Changed model
 });
+
