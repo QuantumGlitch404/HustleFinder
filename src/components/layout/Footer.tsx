@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Github, Linkedin, FileText, Info, MessageSquare, Users } from 'lucide-react';
+import { Github, Linkedin, FileText, Info, MessageSquare, Users, ShieldCheck } from 'lucide-react';
 
 const Footer = () => {
   const year = new Date().getFullYear();
