@@ -1,11 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { PlusCircle, Send } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import type { Metadata } from 'next';
+import ContributeHustleForm from "@/components/hustles/ContributeHustleForm";
 
 export const metadata: Metadata = {
   title: 'Contribute a Hustle | Hustle Finder',
@@ -31,35 +28,7 @@ export default function ContributeHustlePage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-4 sm:px-6">
-          <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="hustle-title" className="text-sm">Hustle Title</Label>
-              <Input id="hustle-title" type="text" placeholder="e.g., Freelance Pet Sitting" className="text-sm" />
-            </div>
-             <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="hustle-category" className="text-sm">Category</Label>
-              <Input id="hustle-category" type="text" placeholder="e.g., Services, Online, Creative" className="text-sm" />
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="hustle-description" className="text-sm">Brief Description</Label>
-              <Textarea id="hustle-description" placeholder="Briefly describe the hustle and its potential." rows={3} className="resize-none text-sm" />
-            </div>
-             <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="hustle-steps" className="text-sm">Steps to Start (Optional)</Label>
-              <Textarea id="hustle-steps" placeholder="Outline a few key steps to get started." rows={4} className="resize-none text-sm" />
-            </div>
-             <div className="space-y-1 sm:space-y-2">
-              <Label htmlFor="your-name" className="text-sm">Your Name (Optional)</Label>
-              <Input id="your-name" type="text" placeholder="So we can credit you!" className="text-sm" />
-            </div>
-            <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-base py-2 sm:py-2.5">
-              <Send className="mr-2 h-4 w-4" />
-              Submit Hustle Idea
-            </Button>
-             <p className="text-xs text-center text-muted-foreground pt-2">
-              Note: Submissions are for demonstration purposes. This form is not yet connected to a backend.
-            </p>
-          </form>
+          <ContributeHustleForm />
         </CardContent>
       </Card>
     </div>
