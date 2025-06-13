@@ -36,7 +36,7 @@ import {
   AlertTriangle,
   MessageSquarePlus
 } from 'lucide-react';
-import SubmitReviewForm from '@/components/hustles/SubmitReviewForm'; // New Import
+import SubmitReviewForm from '@/components/hustles/SubmitReviewForm'; 
 
 interface HustleDetailsPageProps {
   params: { id: string };
@@ -60,10 +60,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   }, [hustleData]);
 
   if (!hustle) {
-    // This can be a loading state or handle initial undefined state if preferred
-    // For now, if hustleData itself was undefined, notFound would be triggered by getHustleById logic
-    // but if hustle state is not yet set, this will show.
-    // To avoid flash of "not found" if hustleData is valid but state update is pending:
     if(!hustleData) notFound();
     return <div className="container mx-auto py-12 px-4 text-center">Loading hustle details...</div>;
   }
@@ -261,7 +257,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 </CardContent>
               </Card>
 
-              {/* New Review Submission Form Section */}
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-primary">
