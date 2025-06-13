@@ -1,8 +1,9 @@
 
 'use client';
 
-import { useState } from 'react';
-import { useParams, notFound } from 'next/navigation';
+import { useState, use } from 'react'; // Added use
+import type { useParams } from 'next/navigation'; // Changed to import type
+import { notFound, useRouter } from 'next/navigation'; // Added useRouter
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import Image from 'next/image';
@@ -23,9 +24,18 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-export default function HustleDetailsPage() {
-  const routeParams = useParams<{ id: string }>();
+// Define props type for the page component
+interface HustleDetailsPageProps {
+  params: { id: string };
+}
+
+export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
+  // Use React.use to unwrap the promise from params
+  // This is a pattern for Next.js App Router when params might be dynamic
+  // For this specific case, `params` is directly available but good practice for future.
+  const routeParams = use(Promise.resolve(params));
   const hustleId = routeParams.id;
+  const router = useRouter(); // For programmatic navigation if needed
 
   const hustle: Hustle | undefined = getHustleById(hustleId);
   const [showStartingGuide, setShowStartingGuide] = useState(false);
@@ -35,8 +45,7 @@ export default function HustleDetailsPage() {
   }
 
   // TypeScript knows hustle is defined here due to the notFound() call
-  if (!hustle) return null;
-
+  // if (!hustle) return null; // This line is redundant due to notFound()
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -64,7 +73,7 @@ export default function HustleDetailsPage() {
         </CardHeader>
         
         <CardContent className="p-6 pt-8">
-          <div className="flex items-center text-muted-foreground mb-3"> 
+          <div className="flex items-center text-muted-foreground mb-4"> 
             <Briefcase className="h-6 w-6 mr-3 text-primary" /> 
             <h2 className="text-2xl font-semibold text-primary">About this Hustle</h2> 
           </div>
@@ -96,16 +105,16 @@ export default function HustleDetailsPage() {
               <div className="space-y-8"> 
                 
                 <div className="p-4 rounded-lg border bg-card shadow-sm">
-                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
-                    <ListChecks className="h-5 w-5 mr-2" />
+                  <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
+                    <ListChecks className="h-6 w-6 mr-3" />
                     Steps to Start
                   </h3>
                   <p className="text-foreground leading-relaxed whitespace-pre-line">{hustle.stepsToStart}</p>
                 </div>
 
                 <div className="p-4 rounded-lg border bg-card shadow-sm">
-                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
-                    <LinkIcon className="h-5 w-5 mr-2" />
+                  <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
+                    <LinkIcon className="h-6 w-6 mr-3" />
                     Proof of Success
                   </h3>
                   <Button asChild variant="link" className="text-accent p-0 h-auto hover:text-accent/80 inline-flex items-center group text-base">
@@ -121,16 +130,16 @@ export default function HustleDetailsPage() {
                 </div>
 
                 <div className="p-4 rounded-lg border bg-card shadow-sm">
-                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
-                    <Lightbulb className="h-5 w-5 mr-2" />
+                  <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
+                    <Lightbulb className="h-6 w-6 mr-3" />
                     Tip for Success
                   </h3>
                   <p className="text-foreground leading-relaxed">{hustle.successTip}</p>
                 </div>
 
                 <div className="p-4 rounded-lg border bg-card shadow-sm">
-                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
-                    <GraduationCap className="h-5 w-5 mr-2" />
+                  <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
+                    <GraduationCap className="h-6 w-6 mr-3" />
                     What to Learn
                   </h3>
                   <p className="text-foreground leading-relaxed">{hustle.skillsToLearn}</p>
