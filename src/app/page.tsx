@@ -8,9 +8,10 @@ import Image from "next/image";
 import { ArrowRight, Search, Lightbulb, CheckCircle, Rocket, Brain, MessagesSquare, ListChecks, ShieldCheck, TrendingUp, FileText, Users, HelpCircle, Github, Linkedin, ExternalLink } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
+import AnimatedDiv from "@/components/animations/AnimatedDiv";
 
 export default function HomePage() {
-  const featuredHustles = allHustles.slice(0, 3); // Get first 3 hustles
+  const featuredHustles = allHustles.slice(0, 3); 
 
   const faqItems = [
     {
@@ -59,189 +60,179 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center space-y-12 sm:space-y-16 md:space-y-20 py-6 sm:py-8">
       {/* Hero Section */}
-      <section className="w-full text-center py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary/80 via-primary to-teal-700 rounded-xl shadow-2xl">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-primary-foreground mb-6">
-            Find Your Perfect Side Hustle.
-          </h1>
-          <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Fast, Free, and Real. Unlock opportunities with curated listings and AI-powered guidance.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md">
-              <Link href="/hustles">
-                <Search className="mr-2 h-5 w-5" />
-                Explore Hustles
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
-              <Link href="/rewrite-description">
-                <Lightbulb className="mr-2 h-5 w-5" />
-                Try AI Guide
-              </Link>
-            </Button>
+      <AnimatedDiv animationClasses="fade-in zoom-in-95" durationClass="duration-700" className="w-full">
+        <section className="text-center py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary/80 via-primary to-teal-700 rounded-xl shadow-2xl">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-primary-foreground mb-6">
+              Find Your Perfect Side Hustle.
+            </h1>
+            <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+              Fast, Free, and Real. Unlock opportunities with curated listings and AI-powered guidance.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md">
+                <Link href="/hustles">
+                  <Search className="mr-2 h-5 w-5" />
+                  Explore Hustles
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
+                <Link href="/rewrite-description">
+                  <Lightbulb className="mr-2 h-5 w-5" />
+                  Try AI Guide
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedDiv>
 
       {/* Why Hustle Finder? Section */}
-      <section className="container mx-auto px-4 w-full">
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Why Hustle Finder?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
-            <CardHeader className="items-center text-center p-4 sm:p-6">
-              <div className="p-3 bg-accent/20 rounded-full mb-3">
-                <ListChecks className="h-8 w-8 text-accent" />
-              </div>
-              <CardTitle className="text-lg sm:text-xl">Curated Hustles with Proof</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
-              Access detailed guides and links to real-world success stories for each hustle.
-            </CardContent>
-          </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
-            <CardHeader className="items-center text-center p-4 sm:p-6">
-              <div className="p-3 bg-accent/20 rounded-full mb-3">
-                <Rocket className="h-8 w-8 text-accent" />
-              </div>
-              <CardTitle className="text-lg sm:text-xl">Fast Start Steps</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
-              Clear, actionable steps to help you begin your chosen side hustle quickly and efficiently.
-            </CardContent>
-          </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
-            <CardHeader className="items-center text-center p-4 sm:p-6">
-              <div className="p-3 bg-accent/20 rounded-full mb-3">
-                <Brain className="h-8 w-8 text-accent" />
-              </div>
-              <CardTitle className="text-lg sm:text-xl">AI-Powered Suggestions</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
-              Use our AI tool to rewrite hustle descriptions for better understanding, especially for non-native speakers.
-            </CardContent>
-          </Card>
-          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
-            <CardHeader className="items-center text-center p-4 sm:p-6">
-              <div className="p-3 bg-accent/20 rounded-full mb-3">
-                <ShieldCheck className="h-8 w-8 text-accent" />
-              </div>
-              <CardTitle className="text-lg sm:text-xl">100% Free, No Sign-Up</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
-              Explore all features and listings without any cost or registration barriers.
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="container mx-auto px-4 w-full bg-secondary/30 py-10 sm:py-12 rounded-xl">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">How It Works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
-          <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Ask AI" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
-            <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
-            <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use our AI-powered tools to find what suits you best.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://picsum.photos/seed/learningreading/150/150" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
-            <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
-            <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
-          </div>
-          <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://picsum.photos/seed/successlaunch/150/150" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
-            <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
-            <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Hustles Section */}
-      <section className="container mx-auto px-4 w-full">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {featuredHustles.map((hustle: Hustle) => (
-            <Card key={hustle.id} className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
-              <div className="relative w-full h-40">
-                <Image
-                  src={hustle.imageUrl}
-                  alt={hustle.title}
-                  fill
-                  style={{objectFit:"cover"}}
-                  className="rounded-t-lg"
-                  data-ai-hint={hustle.imageHint}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-              <CardHeader className="p-4">
-                <CardTitle className="text-lg font-semibold mb-1 line-clamp-2">{hustle.title}</CardTitle>
-                <CardDescription className="text-xs text-muted-foreground">{hustle.category}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow p-4 pt-0">
-                <p className="text-sm text-primary font-medium flex items-center">
-                  <TrendingUp className="h-4 w-4 mr-1 text-accent" />
-                  Potential: {hustle.earningPotentials[0]?.range.split('(')[0].trim() || "Varies"}
-                </p>
-              </CardContent>
-              <div className="p-4 pt-2">
-                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
-                  <Link href={hustle.detailsLink}>
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </Card>
+          {[
+            { icon: ListChecks, title: "Curated Hustles with Proof", desc: "Access detailed guides and links to real-world success stories for each hustle.", delay: "delay-100" },
+            { icon: Rocket, title: "Fast Start Steps", desc: "Clear, actionable steps to help you begin your chosen side hustle quickly and efficiently.", delay: "delay-200" },
+            { icon: Brain, title: "AI-Powered Suggestions", desc: "Use our AI tool to rewrite hustle descriptions for better understanding, especially for non-native speakers.", delay: "delay-300" },
+            { icon: ShieldCheck, title: "100% Free, No Sign-Up", desc: "Explore all features and listings without any cost or registration barriers.", delay: "delay-400" }
+          ].map((item, index) => (
+            <AnimatedDiv key={index} animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass={item.delay}>
+              <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card h-full flex flex-col">
+                <CardHeader className="items-center text-center p-4 sm:p-6">
+                  <div className="p-3 bg-accent/20 rounded-full mb-3">
+                    <item.icon className="h-8 w-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-lg sm:text-xl">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0 flex-grow">
+                  {item.desc}
+                </CardContent>
+              </Card>
+            </AnimatedDiv>
           ))}
         </div>
-        <div className="text-center mt-8">
+      </AnimatedDiv>
+
+      {/* How It Works Section */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-secondary/30 py-10 sm:py-12 rounded-xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">How It Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+          <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100">
+            <div className="flex flex-col items-center text-center p-4">
+              <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Ask AI" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+              <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
+              <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use our AI-powered tools to find what suits you best.</p>
+            </div>
+          </AnimatedDiv>
+          <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200">
+            <div className="flex flex-col items-center text-center p-4">
+              <Image src="https://picsum.photos/seed/learningreading/150/150" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
+              <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
+              <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
+            </div>
+          </AnimatedDiv>
+          <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300">
+            <div className="flex flex-col items-center text-center p-4">
+              <Image src="https://picsum.photos/seed/successlaunch/150/150" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
+              <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
+              <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
+            </div>
+          </AnimatedDiv>
+        </div>
+      </AnimatedDiv>
+
+      {/* Featured Hustles Section */}
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {featuredHustles.map((hustle: Hustle, index: number) => (
+            <AnimatedDiv key={hustle.id} animationClasses="fade-in zoom-in-95" durationClass="duration-500" delayClass={`delay-${index * 100}`}>
+              <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
+                <div className="relative w-full h-40">
+                  <Image
+                    src={hustle.imageUrl}
+                    alt={hustle.title}
+                    fill
+                    style={{objectFit:"cover"}}
+                    className="rounded-t-lg"
+                    data-ai-hint={hustle.imageHint}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-lg font-semibold mb-1 line-clamp-2">{hustle.title}</CardTitle>
+                  <CardDescription className="text-xs text-muted-foreground">{hustle.category}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow p-4 pt-0">
+                  <p className="text-sm text-primary font-medium flex items-center">
+                    <TrendingUp className="h-4 w-4 mr-1 text-accent" />
+                    Potential: {hustle.earningPotentials[0]?.range.split('(')[0].trim() || "Varies"}
+                  </p>
+                </CardContent>
+                <div className="p-4 pt-2">
+                  <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
+                    <Link href={hustle.detailsLink}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </Card>
+            </AnimatedDiv>
+          ))}
+        </div>
+        <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="text-center mt-8">
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
             <Link href="/hustles">
               View All Hustles
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </div>
-      </section>
+        </AnimatedDiv>
+      </AnimatedDiv>
 
       {/* Testimonials Section */}
-      <section className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg">
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary-foreground">What Our Users Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform">
-              <CardContent className="p-4 sm:p-6 text-center">
-                <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
-                  <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
-                  <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
-                </Avatar>
-                <MessagesSquare className="h-6 w-6 text-accent mx-auto mb-2" />
-                <p className="text-sm italic text-muted-foreground mb-3">"{testimonial.quote}"</p>
-                <p className="font-semibold text-sm text-primary">{testimonial.name}</p>
-              </CardContent>
-            </Card>
+            <AnimatedDiv key={index} animationClasses="fade-in zoom-in-90" durationClass="duration-500" delayClass={`delay-${index * 150}`}>
+              <Card className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform h-full">
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
+                    <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
+                    <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
+                  </Avatar>
+                  <MessagesSquare className="h-6 w-6 text-accent mx-auto mb-2" />
+                  <p className="text-sm italic text-muted-foreground mb-3">"{testimonial.quote}"</p>
+                  <p className="font-semibold text-sm text-primary">{testimonial.name}</p>
+                </CardContent>
+              </Card>
+            </AnimatedDiv>
           ))}
         </div>
-      </section>
+      </AnimatedDiv>
 
       {/* FAQ Section */}
-      <section className="container mx-auto px-4 w-full max-w-3xl">
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-3xl">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
-          {faqItems.map((item) => (
-            <AccordionItem value={item.id} key={item.id} className="border-b border-border/50">
-              <AccordionTrigger className="text-left hover:no-underline py-4 text-base sm:text-lg font-medium text-foreground">
-                <HelpCircle className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground leading-relaxed pt-1 pb-4 pl-8">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
+          {faqItems.map((item, index) => (
+            <AnimatedDiv key={item.id} animationClasses="fade-in slide-in-from-bottom-4" durationClass="duration-500" delayClass={`delay-${index * 100}`}>
+              <AccordionItem value={item.id} className="border-b border-border/50">
+                <AccordionTrigger className="text-left hover:no-underline py-4 text-base sm:text-lg font-medium text-foreground">
+                  <HelpCircle className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pt-1 pb-4 pl-8">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </AnimatedDiv>
           ))}
         </Accordion>
-      </section>
+      </AnimatedDiv>
     </div>
   );
 }
