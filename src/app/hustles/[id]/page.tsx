@@ -51,7 +51,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   const hustleData: Hustle | undefined = getHustleById(hustleId);
   
   const [hustle, setHustle] = useState<Hustle | undefined>(hustleData);
-  const [showStartingGuide, setShowStartingGuide] = useState(true);
+  const [showStartingGuide, setShowStartingGuide] = useState(true); // Show by default
   const [displayedTestimonials, setDisplayedTestimonials] = useState<Testimonial[]>(hustleData?.testimonials || []);
 
   useEffect(() => {
@@ -69,19 +69,23 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   const handleAddNewReview = (newReviewData: Omit<Testimonial, 'id'>) => {
     const newReview: Testimonial = {
       ...newReviewData,
-      id: `testimonial-${hustle.id}-client-${Date.now()}`,
+      id: `testimonial-${hustle.id}-client-${Date.now()}`, // Client-side unique ID
     };
+    // Add new review to the beginning of the array
     setDisplayedTestimonials(prevTestimonials => [newReview, ...prevTestimonials]);
   };
   
-  const shouldShowInPageNav = showStartingGuide;
+  // The InPageNav will decide if it should be rendered or not based on its own logic (e.g. if showStartingGuide is true)
+  // We can simplify this here, as the InPageNav might always be useful if content is long.
+  // For now, let's assume it's always shown if the guide content is available.
+  const shouldShowInPageNav = true; // Always show InPageNav if we have detailed content
 
 
   return (
     <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row lg:gap-8">
         {shouldShowInPageNav && <InPageNav />}
-        <main className="w-full lg:flex-grow min-w-0 mt-6 lg:mt-0">
+        <main className="w-full lg:flex-grow min-w-0 mt-6 lg:mt-0"> {/* mt-6 on mobile gives space if InPageNav is sticky */}
             <Card className="w-full shadow-xl rounded-lg overflow-hidden">
             <CardHeader className="p-0 relative">
               <div className="relative w-full h-60 sm:h-72 md:h-96">
@@ -117,8 +121,8 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
             </CardHeader>
             
             <CardContent className="p-4 md:p-6 pt-6 md:pt-8" id="about-hustle">
-              <div className="flex items-center text-muted-foreground mb-3 md:mb-4"> 
-                <Briefcase className="h-5 w-5 md:h-6 md:w-6 mr-2 md:mr-3 text-primary" /> 
+              <div className="flex items-center text-muted-foreground mb-4"> 
+                <Briefcase className="h-6 w-6 md:h-7 md:w-7 mr-3 text-primary" /> 
                 <h2 className="text-xl sm:text-2xl font-semibold text-primary">About this Hustle</h2> 
               </div>
               <CardDescription className="text-sm sm:text-base text-foreground leading-relaxed">
