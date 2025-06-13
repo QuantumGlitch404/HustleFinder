@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Info, DatabaseZap, Share2, Lock, Users, AlertTriangle, ToyBrick, Link as LinkIcon, RefreshCcw, Mail } from "lucide-react";
+import { Shield, Info, DatabaseZap, Share2, Lock, Users, AlertTriangle, ToyBrick, Link as LinkIcon, RefreshCcw } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,15 +9,13 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdatedDate = "October 27, 2023"; // Example date, can be updated
-
   const privacySections = [
     {
       id: "introduction",
       title: "1. Introduction",
       icon: Info,
       content: [
-        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us.",
+        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us through the available channels on our website.",
         "This privacy notice describes how we might use your information if you visit our website at [Your Website URL] or use our services, such as the AI Description Enhancer. It also explains your privacy rights and how the law protects you."
       ]
     },
@@ -29,9 +27,9 @@ export default function PrivacyPage() {
         "Currently, Hustle Finder is primarily an informational website. We do not require user registration for browsing hustles or using most features.",
         "**Information you provide to us:**",
         "When you use our AI Description Enhancer, you voluntarily provide us with the text you wish to be rewritten. This text is processed by our AI model but is not stored permanently on our servers beyond the immediate processing needs of the tool for your session.",
-        "If you contact us directly (e.g., via a future contact form or email), we may receive additional information about you such as your name, email address, and the contents of the message and/or attachments you may send us.",
+        "If you contact us directly (e.g., via a contact form or email if provided elsewhere on the site), we may receive additional information about you such as your name, email address, and the contents of the message and/or attachments you may send us.",
         "**Information automatically collected:**",
-        "Like many websites, we may collect information that your browser sends whenever you visit our Service. This may include information such as your computer's Internet Protocol (\"IP\") address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics. This data is typically anonymized or aggregated and used for analytical purposes."
+        "Like many websites, we may collect information that your browser sends whenever you visit our Service. This may include information such as your computer's Internet Protocol (\"IP\") address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics. This data is typically anonymized or aggregated and used for analytical purposes."
       ]
     },
     {
@@ -45,7 +43,7 @@ export default function PrivacyPage() {
         "Understand and analyze how you use our website and services.",
         "Develop new products, services, features, and functionality (based on aggregated, anonymized data).",
         "Process the text you submit to the AI Description Enhancer to provide you with the rewritten output.",
-        "Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes (if you opt-in).",
+        "Communicate with you if you initiate contact, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes (if you opt-in).",
         "For compliance purposes, including enforcing our Terms & Conditions, or other legal rights, or as may be required by applicable laws and regulations or requested by any judicial process or governmental agency."
       ]
     },
@@ -55,7 +53,7 @@ export default function PrivacyPage() {
       icon: Share2,
       content: [
         "**AI Processing:** The text you submit to the AI Description Enhancer is sent to a third-party AI provider (e.g., Google Gemini via Genkit) for processing. These providers have their own privacy policies, and we encourage you to review them. We do not store the original or rewritten descriptions permanently on our servers after your session.",
-        "**Analytics Providers:** We may share aggregated and anonymized usage data with third-party analytics services (like a self-hosted analytics platform or a privacy-focused alternative to Google Analytics) to help us understand how our Service is being used.",
+        "**Analytics Providers:** We may share aggregated and anonymized usage data with third-party analytics services to help us understand how our Service is being used.",
         "**Legal Requirements:** We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or a government agency).",
         "We do not sell your personal information."
       ]
@@ -90,16 +88,8 @@ export default function PrivacyPage() {
       title: "8. Changes to This Privacy Policy",
       icon: RefreshCcw,
       content: [
-        "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the top of this Privacy Policy.",
+        "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
         "You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page."
-      ]
-    },
-    {
-      id: "contact-us",
-      title: "9. Contact Us",
-      icon: Mail,
-      content: [
-        "If you have any questions about this Privacy Policy, you can contact us at: [Your Contact Email or Link to Contact Page]."
       ]
     }
   ];
@@ -110,9 +100,8 @@ export default function PrivacyPage() {
         <Shield className="mx-auto h-14 w-14 sm:h-20 sm:w-20 text-primary mb-4 sm:mb-6" />
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary">Privacy Policy</h1>
         <p className="mt-3 sm:mt-4 text-md sm:text-lg text-muted-foreground">
-          Your privacy is important to us.
+          Your privacy is important to us. This policy outlines how we collect, use, and protect your information.
         </p>
-        <p className="mt-2 text-xs sm:text-sm text-muted-foreground/80">Last updated: {lastUpdatedDate}</p>
       </header>
 
       <div className="max-w-3xl mx-auto space-y-8">
