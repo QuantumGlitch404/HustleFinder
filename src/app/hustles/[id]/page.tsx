@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, use } from 'react';
-import { notFound } from 'next/navigation'; // Removed useRouter as it's not used
+import { notFound } from 'next/navigation';
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import Image from 'next/image';
@@ -30,8 +30,8 @@ import {
   Star,
   DollarSign,
   Clock,
-  Tool,
-  BarChart3, // Or ShieldCheck / Zap for difficulty
+  Wrench, 
+  BarChart3, 
   HelpCircle,
   AlertTriangle
 } from 'lucide-react';
@@ -53,7 +53,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
 
   return (
     <div className="container mx-auto py-12 px-4">
-      <Card className="max-w-4xl mx-auto shadow-xl rounded-lg overflow-hidden"> {/* Increased max-width for more content */}
+      <Card className="max-w-4xl mx-auto shadow-xl rounded-lg overflow-hidden">
         <CardHeader className="p-0 relative">
           <div className="relative w-full h-72 sm:h-96">
             <Image
@@ -109,7 +109,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
             className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
             aria-expanded={showStartingGuide}
           >
-            {showStartingGuide ? 'Hide Starting Guide & Details' : 'Show Starting Guide & Details'}
+            {showStartingGuide ? 'Hide Details & Guide' : 'Show Details & Guide'}
             {showStartingGuide ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
           </Button>
         </CardFooter>
@@ -119,7 +119,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
             <h2 id="starting-guide-heading" className="sr-only">Starting Guide and Additional Details</h2>
             <div className="p-6 space-y-8">
                 
-              {/* Original Starting Guide Items */}
               <div className="p-4 rounded-lg border bg-card shadow-sm">
                 <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
                   <ListChecks className="h-6 w-6 mr-3" />
@@ -161,9 +160,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 <p className="text-foreground leading-relaxed">{hustle.skillsToLearn}</p>
               </div>
 
-              {/* --- New Sections --- */}
-
-              {/* Key Information Card */}
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-primary">
@@ -192,18 +188,23 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                   <hr className="border-border/50"/>
                   <div>
                     <h4 className="text-lg font-semibold text-primary/90 mb-2 flex items-center">
-                      <Tool className="h-5 w-5 mr-2 text-primary" /> Tools & Platforms
+                      <Wrench className="h-5 w-5 mr-2 text-primary" /> Tools & Platforms 
                     </h4>
                     <ul className="list-disc list-inside text-foreground space-y-1 ml-7">
                       {hustle.toolsNeeded.map(tool => <li key={tool}>{tool}</li>)}
                     </ul>
                   </div>
-                  {/* Difficulty already shown in header badge, can be repeated here if desired */}
+                  <hr className="border-border/50"/>
+                   <div>
+                    <h4 className="text-lg font-semibold text-primary/90 mb-2 flex items-center">
+                      <BarChart3 className="h-5 w-5 mr-2 text-primary" /> Difficulty Level
+                    </h4>
+                    <p className="text-foreground ml-7">{hustle.difficultyEmoji} {hustle.difficultyLevel}</p>
+                  </div>
                 </CardContent>
               </Card>
 
 
-              {/* Testimonials Section */}
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-primary">
@@ -234,7 +235,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 </CardContent>
               </Card>
 
-              {/* FAQs Section */}
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-primary">
@@ -261,7 +261,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 </CardContent>
               </Card>
 
-              {/* Red Flags Section */}
               <Card className="shadow-md rounded-lg border-destructive/70 bg-destructive/5">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-destructive">
@@ -281,7 +280,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 </CardContent>
               </Card>
 
-            </div> {/* End of p-6 space-y-8 */}
+            </div> 
           </section>
         )}
       </Card>
