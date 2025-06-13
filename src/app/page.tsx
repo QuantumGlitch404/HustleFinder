@@ -1,48 +1,247 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Lightbulb } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, Search, Lightbulb, CheckCircle, Rocket, Brain, MessagesSquare, ListChecks, ShieldCheck, TrendingUp, FileText, Users, HelpCircle, Github, Linkedin, ExternalLink } from "lucide-react";
+import { allHustles } from '@/lib/hustle-data';
+import type { Hustle } from '@/types/hustle';
 
 export default function HomePage() {
+  const featuredHustles = allHustles.slice(0, 3); // Get first 3 hustles
+
+  const faqItems = [
+    {
+      id: "faq-1",
+      question: "Is Hustle Finder completely free to use?",
+      answer: "Yes, Hustle Finder is 100% free! We believe in providing open access to opportunities. There are no hidden charges or sign-up requirements to browse hustles or use our AI tools."
+    },
+    {
+      id: "faq-2",
+      question: "How are the hustles verified or curated?",
+      answer: "Our hustles are programmatically generated based on extensive research of common and viable side gig opportunities. While we strive for accuracy and relevance, the 'proof of success' links direct you to real-world resources. Always do your own due diligence before committing to any hustle."
+    },
+    {
+      id: "faq-3",
+      question: "Do I need any specific investment to start these hustles?",
+      answer: "Many hustles listed can be started with minimal to no financial investment, especially those focusing on online services or leveraging existing skills. Each hustle's detail page provides information on 'Tools Needed,' many of which have free tiers."
+    },
+     {
+      id: "faq-4",
+      question: "Can I contribute a hustle idea to the platform?",
+      answer: "We're always looking to expand our database! While direct contribution isn't automated yet, you can reach out to us via the 'Contribute Hustle' link in the footer (coming soon) or our social channels."
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Priya R.",
+      avatarFallback: "PR",
+      quote: "I started my freelance writing journey using Hustle Finder's guidance. The 'Steps to Start' were super helpful, and now I earn ₹20,000+ part-time!",
+      imageHint: "profile person"
+    },
+    {
+      name: "Ahmed K.",
+      avatarFallback: "AK",
+      quote: "The AI description tool helped me understand a complex tech gig. Found a great remote project and boosted my income. This site is a gem!",
+      imageHint: "profile person"
+    },
+    {
+      name: "Sarah M.",
+      avatarFallback: "SM",
+      quote: "As a student, finding flexible work was key. Hustle Finder listed so many options I hadn't considered. The 'Beginner Friendly' tags are awesome.",
+      imageHint: "profile person"
+    }
+  ];
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] py-8 text-center">
-      <Card className="w-full max-w-md sm:max-w-lg md:max-w-2xl shadow-xl">
-        <CardHeader className="pb-4 px-4 sm:px-6">
-          <div className="flex justify-center mb-4 sm:mb-6">
-            <Image 
-              src="https://picsum.photos/seed/hustlefinderlogo/100/100" 
-              alt="Hustle Finder Logo" 
-              width={80} 
-              height={80} 
-              className="rounded-full sm:w-[100px] sm:h-[100px]"
-              data-ai-hint="logo brand" 
-            />
-          </div>
-          <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-            Welcome to Hustle Finder!
-          </CardTitle>
-          <CardDescription className="mt-3 sm:mt-4 text-md sm:text-lg text-muted-foreground">
-            Discover your next side hustle and unlock new opportunities. We provide curated listings and AI tools to help you succeed.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col items-center space-y-5 sm:space-y-6 px-4 sm:px-6">
-          <p className="text-sm sm:text-md">
-            Ready to explore? Browse through numerous side hustles, find one that fits your skills, and get started on your journey to financial independence.
+    <div className="flex flex-col items-center space-y-12 sm:space-y-16 md:space-y-20 py-6 sm:py-8">
+      {/* Hero Section */}
+      <section className="w-full text-center py-12 sm:py-16 md:py-20 bg-gradient-to-br from-primary/80 via-primary to-teal-700 rounded-xl shadow-2xl">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-primary-foreground mb-6">
+            Find Your Perfect Side Hustle.
+          </h1>
+          <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+            Fast, Free, and Real. Unlock opportunities with curated listings and AI-powered guidance.
           </p>
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-300 ease-in-out transform hover:scale-105 text-sm sm:text-base">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md">
+              <Link href="/hustles">
+                <Search className="mr-2 h-5 w-5" />
+                Explore Hustles
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
+              <Link href="/rewrite-description">
+                <Lightbulb className="mr-2 h-5 w-5" />
+                Try AI Guide
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Hustle Finder? Section */}
+      <section className="container mx-auto px-4 w-full">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Why Hustle Finder?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
+            <CardHeader className="items-center text-center p-4 sm:p-6">
+              <div className="p-3 bg-accent/20 rounded-full mb-3">
+                <ListChecks className="h-8 w-8 text-accent" />
+              </div>
+              <CardTitle className="text-lg sm:text-xl">Curated Hustles with Proof</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
+              Access detailed guides and links to real-world success stories for each hustle.
+            </CardContent>
+          </Card>
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
+            <CardHeader className="items-center text-center p-4 sm:p-6">
+              <div className="p-3 bg-accent/20 rounded-full mb-3">
+                <Rocket className="h-8 w-8 text-accent" />
+              </div>
+              <CardTitle className="text-lg sm:text-xl">Fast Start Steps</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
+              Clear, actionable steps to help you begin your chosen side hustle quickly and efficiently.
+            </CardContent>
+          </Card>
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
+            <CardHeader className="items-center text-center p-4 sm:p-6">
+              <div className="p-3 bg-accent/20 rounded-full mb-3">
+                <Brain className="h-8 w-8 text-accent" />
+              </div>
+              <CardTitle className="text-lg sm:text-xl">AI-Powered Suggestions</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
+              Use our AI tool to rewrite hustle descriptions for better understanding, especially for non-native speakers.
+            </CardContent>
+          </Card>
+          <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card">
+            <CardHeader className="items-center text-center p-4 sm:p-6">
+              <div className="p-3 bg-accent/20 rounded-full mb-3">
+                <ShieldCheck className="h-8 w-8 text-accent" />
+              </div>
+              <CardTitle className="text-lg sm:text-xl">100% Free, No Sign-Up</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground p-4 sm:p-6 pt-0">
+              Explore all features and listings without any cost or registration barriers.
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="container mx-auto px-4 w-full bg-secondary/30 py-10 sm:py-12 rounded-xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">How It Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+          <div className="flex flex-col items-center text-center p-4">
+            <Image src="https://placehold.co/150x150.png" alt="Step 1: Browse or Ask AI" width={120} height={120} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+            <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
+            <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use our AI-powered tools to find what suits you best.</p>
+          </div>
+          <div className="flex flex-col items-center text-center p-4">
+            <Image src="https://placehold.co/150x150.png" alt="Step 2: Read Steps & Learn" width={120} height={120} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
+            <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
+            <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
+          </div>
+          <div className="flex flex-col items-center text-center p-4">
+            <Image src="https://placehold.co/150x150.png" alt="Step 3: Start Your Hustle" width={120} height={120} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
+            <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
+            <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Hustles Section */}
+      <section className="container mx-auto px-4 w-full">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {featuredHustles.map((hustle: Hustle) => (
+            <Card key={hustle.id} className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
+              <div className="relative w-full h-40">
+                <Image
+                  src={hustle.imageUrl}
+                  alt={hustle.title}
+                  fill
+                  style={{objectFit:"cover"}}
+                  className="rounded-t-lg"
+                  data-ai-hint={hustle.imageHint}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+              <CardHeader className="p-4">
+                <CardTitle className="text-lg font-semibold mb-1 line-clamp-2">{hustle.title}</CardTitle>
+                <CardDescription className="text-xs text-muted-foreground">{hustle.category}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow p-4 pt-0">
+                <p className="text-sm text-primary font-medium flex items-center">
+                  <TrendingUp className="h-4 w-4 mr-1 text-accent" />
+                  Potential: {hustle.earningPotentials[0]?.range.split('(')[0].trim() || "Varies"}
+                </p>
+              </CardContent>
+              <div className="p-4 pt-2">
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
+                  <Link href={hustle.detailsLink}>
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
             <Link href="/hustles">
-              Explore Hustles
-              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              View All Hustles
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <div className="flex items-center text-xs sm:text-sm text-muted-foreground pt-3 sm:pt-4">
-            <Lightbulb className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-primary" />
-            <span>Use our AI tool to refine hustle descriptions for better understanding!</span>
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary-foreground">What Our Users Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform">
+              <CardContent className="p-4 sm:p-6 text-center">
+                <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
+                  <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
+                  <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
+                </Avatar>
+                <MessagesSquare className="h-6 w-6 text-accent mx-auto mb-2" />
+                <p className="text-sm italic text-muted-foreground mb-3">"{testimonial.quote}"</p>
+                <p className="font-semibold text-sm text-primary">{testimonial.name}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="container mx-auto px-4 w-full max-w-3xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="w-full">
+          {faqItems.map((item) => (
+            <AccordionItem value={item.id} key={item.id} className="border-b border-border/50">
+              <AccordionTrigger className="text-left hover:no-underline py-4 text-base sm:text-lg font-medium text-foreground">
+                <HelpCircle className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
+                {item.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-muted-foreground leading-relaxed pt-1 pb-4 pl-8">
+                {item.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
     </div>
   );
 }
