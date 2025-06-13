@@ -1,9 +1,8 @@
 
 'use client';
 
-import { useState, use } from 'react'; // Added use
-import type { useParams } from 'next/navigation'; // Changed to import type
-import { notFound, useRouter } from 'next/navigation'; // Added useRouter
+import { useState } from 'react';
+import { notFound, useRouter } from 'next/navigation';
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import Image from 'next/image';
@@ -24,18 +23,13 @@ import {
   ExternalLink
 } from 'lucide-react';
 
-// Define props type for the page component
 interface HustleDetailsPageProps {
   params: { id: string };
 }
 
 export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
-  // Use React.use to unwrap the promise from params
-  // This is a pattern for Next.js App Router when params might be dynamic
-  // For this specific case, `params` is directly available but good practice for future.
-  const routeParams = use(Promise.resolve(params));
-  const hustleId = routeParams.id;
-  const router = useRouter(); // For programmatic navigation if needed
+  const hustleId = params.id; // Directly use params.id
+  const router = useRouter(); 
 
   const hustle: Hustle | undefined = getHustleById(hustleId);
   const [showStartingGuide, setShowStartingGuide] = useState(false);
@@ -43,9 +37,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   if (!hustle) {
     notFound();
   }
-
-  // TypeScript knows hustle is defined here due to the notFound() call
-  // if (!hustle) return null; // This line is redundant due to notFound()
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -153,4 +144,3 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
     </div>
   );
 }
-
