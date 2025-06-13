@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, Linkedin, Github, FileText, Users, HelpCircle, ExternalLink } from 'lucide-react';
+import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, Linkedin, Github, FileText, Users, HelpCircle, ExternalLink, Mail, Shield, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -49,42 +49,36 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end">
-                <DropdownMenuLabel>Quick Links</DropdownMenuLabel>
+                <DropdownMenuLabel>More</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/about" className="flex items-center">
-                    <Info className="mr-2 h-4 w-4" />
-                    <span>About Us</span>
+                  <Link href="/contact" className="flex items-center">
+                    <Mail className="mr-2 h-4 w-4" />
+                    <span>Contact</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/hustles" className="flex items-center">
-                    <Briefcase className="mr-2 h-4 w-4" />
-                    <span>All Hustles</span>
+                  <Link href="/terms" className="flex items-center">
+                    <FileText className="mr-2 h-4 w-4" />
+                    <span>Terms & Conditions</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem disabled>
-                  <div className="flex items-center text-muted-foreground/80">
-                    <HelpCircle className="mr-2 h-4 w-4" />
-                    <span>Contact (Coming Soon)</span>
-                  </div>
+                <DropdownMenuItem asChild>
+                  <Link href="/privacy" className="flex items-center">
+                    <Shield className="mr-2 h-4 w-4" />
+                    <span>Privacy Policy</span>
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem disabled>
-                  <div className="flex items-center text-muted-foreground/80">
-                    <Users className="mr-2 h-4 w-4" />
-                    <span>Contribute Hustle (CS)</span>
-                  </div>
+                <DropdownMenuItem asChild>
+                  <Link href="/contribute-hustle" className="flex items-center">
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    <span>Contribute Hustle</span>
+                  </Link>
                 </DropdownMenuItem>
                 
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel>Legal & Social</DropdownMenuLabel>
+                <DropdownMenuLabel>Social</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem disabled>
-                  <div className="flex items-center text-muted-foreground/80">
-                     <FileText className="mr-2 h-4 w-4" />
-                    <span>Privacy Policy (CS)</span>
-                  </div>
-                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
                     <Linkedin className="mr-2 h-4 w-4" />
