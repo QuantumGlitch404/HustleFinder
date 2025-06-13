@@ -1,10 +1,10 @@
 
 'use client';
 
-import { useState, use } from 'react';
+import { useState, use, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import { getHustleById } from '@/lib/hustle-data';
-import type { Hustle } from '@/types/hustle';
+import type { Hustle, Testimonial } from '@/types/hustle';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,8 +33,10 @@ import {
   Wrench, 
   BarChart3, 
   HelpCircle,
-  AlertTriangle
+  AlertTriangle,
+  MessageSquarePlus
 } from 'lucide-react';
+import SubmitReviewForm from '@/components/hustles/SubmitReviewForm'; // New Import
 
 interface HustleDetailsPageProps {
   params: { id: string };
@@ -44,12 +46,36 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   const resolvedParams = use(params as unknown as Promise<{id: string}>);
   const hustleId = resolvedParams.id;
  
-  const hustle: Hustle | undefined = getHustleById(hustleId);
+  const hustleData: Hustle | undefined = getHustleById(hustleId);
+  
+  const [hustle, setHustle] = useState<Hustle | undefined>(hustleData);
   const [showStartingGuide, setShowStartingGuide] = useState(false);
+  const [displayedTestimonials, setDisplayedTestimonials] = useState<Testimonial[]>(hustleData?.testimonials || []);
+
+  useEffect(() => {
+    if (hustleData) {
+      setHustle(hustleData);
+      setDisplayedTestimonials(hustleData.testimonials || []);
+    }
+  }, [hustleData]);
 
   if (!hustle) {
-    notFound();
+    // This can be a loading state or handle initial undefined state if preferred
+    // For now, if hustleData itself was undefined, notFound would be triggered by getHustleById logic
+    // but if hustle state is not yet set, this will show.
+    // To avoid flash of "not found" if hustleData is valid but state update is pending:
+    if(!hustleData) notFound();
+    return <div className="container mx-auto py-12 px-4 text-center">Loading hustle details...</div>;
   }
+
+  const handleAddNewReview = (newReviewData: Omit<Testimonial, 'id'>) => {
+    const newReview: Testimonial = {
+      ...newReviewData,
+      id: `testimonial-${hustle.id}-client-${Date.now()}`,
+    };
+    setDisplayedTestimonials(prevTestimonials => [newReview, ...prevTestimonials]);
+  };
+
 
   return (
     <div className="container mx-auto py-12 px-4">
@@ -208,13 +234,13 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-2xl text-primary">
-                    <Star className="h-6 w-6 mr-3" /> Real User Testimonials ({hustle.testimonials.length})
+                    <Star className="h-6 w-6 mr-3" /> Real User Testimonials ({displayedTestimonials.length})
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-2">
-                  {hustle.testimonials && hustle.testimonials.length > 0 ? (
+                  {displayedTestimonials && displayedTestimonials.length > 0 ? (
                     <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 rounded-md border p-3 bg-background">
-                      {hustle.testimonials.map((testimonial) => (
+                      {displayedTestimonials.map((testimonial) => (
                         <div key={testimonial.id} className="p-3 border rounded-md bg-card shadow-sm">
                           <div className="flex items-center mb-1 justify-between">
                             <p className="text-sm font-semibold text-foreground">{testimonial.reviewerName}</p>
@@ -230,10 +256,32 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-muted-foreground">No testimonials available yet for this hustle.</p>
+                    <p className="text-muted-foreground">No testimonials available yet for this hustle. Be the first to review!</p>
                   )}
                 </CardContent>
               </Card>
+
+              {/* New Review Submission Form Section */}
+              <Card className="shadow-md rounded-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-2xl text-primary">
+                    <MessageSquarePlus className="h-6 w-6 mr-3" /> Write Your Review
+                  </CardTitle>
+                  <CardDescription>Share your experience with this hustle. Your feedback helps others!</CardDescription>
+                </CardHeader>
+                <CardContent className="pt-2">
+                  <SubmitReviewForm 
+                    hustleId={hustle.id} 
+                    onSubmitReview={handleAddNewReview} 
+                  />
+                </CardContent>
+                 <CardFooter>
+                    <p className="text-xs text-muted-foreground">
+                        Note: Reviews submitted are for demonstration purposes and will only be visible during your current session.
+                    </p>
+                </CardFooter>
+              </Card>
+
 
               <Card className="shadow-md rounded-lg">
                 <CardHeader>
@@ -287,3 +335,4 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
     </div>
   );
 }
+
