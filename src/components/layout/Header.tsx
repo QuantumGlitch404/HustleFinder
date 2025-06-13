@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, Linkedin, Github, FileText, Users, HelpCircle, ExternalLink, Mail, Shield, PlusCircle } from 'lucide-react';
+import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, FileText, Mail, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -68,30 +68,6 @@ const Header = () => {
                     <Shield className="mr-2 h-4 w-4" />
                     <span>Privacy Policy</span>
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/contribute-hustle" className="flex items-center">
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    <span>Contribute Hustle</span>
-                  </Link>
-                </DropdownMenuItem>
-                
-                <DropdownMenuSeparator />
-                <DropdownMenuLabel>Social</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                    <Linkedin className="mr-2 h-4 w-4" />
-                    <span>LinkedIn</span>
-                    <ExternalLink className="ml-auto h-3 w-3 opacity-70" />
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a href="https://www.github.com" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                    <Github className="mr-2 h-4 w-4" />
-                    <span>GitHub</span>
-                    <ExternalLink className="ml-auto h-3 w-3 opacity-70" />
-                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
