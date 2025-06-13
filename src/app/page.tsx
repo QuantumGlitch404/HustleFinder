@@ -140,17 +140,17 @@ export default function HomePage() {
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://placehold.co/150x150/A0D2DB/FFFFFF.png" alt="Step 1: Browse or Ask AI" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+            <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Ask AI" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
             <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
             <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use our AI-powered tools to find what suits you best.</p>
           </div>
           <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://placehold.co/150x150/A2D9A0/FFFFFF.png" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
+            <Image src="https://picsum.photos/seed/learningreading/150/150" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
             <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
             <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
           </div>
           <div className="flex flex-col items-center text-center p-4">
-            <Image src="https://placehold.co/150x150/FAD02E/FFFFFF.png" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
+            <Image src="https://picsum.photos/seed/successlaunch/150/150" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
             <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
             <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
           </div>
