@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react'; // Added use
 import { notFound, useRouter } from 'next/navigation';
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
@@ -28,7 +28,10 @@ interface HustleDetailsPageProps {
 }
 
 export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
-  const hustleId = params.id; // Directly use params.id
+  // Unwrap params using React.use() as per the Next.js warning
+  // The 'as unknown as Promise<{id: string}>' cast is to align with runtime behavior indicated by the warning.
+  const resolvedParams = use(params as unknown as Promise<{id: string}>);
+  const hustleId = resolvedParams.id;
   const router = useRouter(); 
 
   const hustle: Hustle | undefined = getHustleById(hustleId);
