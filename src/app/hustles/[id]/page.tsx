@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useState } from 'react';
-import { useParams, notFound } from 'next/navigation'; // Import useParams and notFound
+import { useParams, notFound } from 'next/navigation';
 import { getHustleById } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import Image from 'next/image';
@@ -16,80 +17,64 @@ import {
   ChevronDown, 
   ChevronUp,
   ListChecks,
-  Link as LinkIcon, // Renamed to avoid conflict with NextLink
+  Link as LinkIcon, 
   Lightbulb,
-  GraduationCap
+  GraduationCap,
+  ExternalLink
 } from 'lucide-react';
 
-// Metadata generation remains a server capability.
-// If you uncomment this, ensure params are typed correctly for server context.
-// export async function generateMetadata({ params }: { params: { id: string } }) {
-//   const hustle = getHustleById(params.id);
-//   if (!hustle) {
-//     return {
-//       title: 'Hustle Not Found | Hustle Finder',
-//     };
-//   }
-//   return {
-//     title: `${hustle.title} | Hustle Finder`,
-//     description: `Details about the side hustle: ${hustle.description.substring(0, 150)}...`,
-//   };
-// }
-
-
 export default function HustleDetailsPage() {
-  const routeParams = useParams<{ id: string }>(); // Use the hook
-  const hustleId = routeParams.id; // Access id
+  const routeParams = useParams<{ id: string }>();
+  const hustleId = routeParams.id;
 
   const hustle: Hustle | undefined = getHustleById(hustleId);
   const [showStartingGuide, setShowStartingGuide] = useState(false);
 
   if (!hustle) {
     notFound();
-    // notFound() throws, so a return null isn't strictly necessary for flow but can be for type completeness
-    // if notFound() didn't throw.
   }
 
-  // Ensure hustle is defined before rendering, TypeScript should catch this with strict null checks.
-  // The `if (!hustle)` block above handles this.
-  // For TS, after the notFound() call, hustle is narrowed to type Hustle.
-  // However, to be absolutely explicit for linters or less strict TS settings:
+  // TypeScript knows hustle is defined here due to the notFound() call
   if (!hustle) return null;
 
 
   return (
     <div className="container mx-auto py-12 px-4">
-      <Card className="max-w-3xl mx-auto shadow-xl">
+      <Card className="max-w-3xl mx-auto shadow-xl rounded-lg overflow-hidden">
         <CardHeader className="p-0 relative">
           <div className="relative w-full h-72 sm:h-96">
             <Image
               src={hustle.imageUrl}
               alt={hustle.title}
               fill 
-              style={{objectFit:"cover"}} // Replaced objectFit with style prop
-              className="rounded-t-lg"
+              style={{objectFit:"cover"}}
+              className="rounded-t-lg" 
               data-ai-hint={hustle.imageHint}
+              priority 
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" /> 
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-lg">
-            <CardTitle className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-2">{hustle.title}</CardTitle>
-            <Badge variant="secondary" className="text-sm py-1 px-3 bg-accent text-accent-foreground">
+          <div className="absolute bottom-0 left-0 right-0 p-6"> 
+            <CardTitle className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-2 drop-shadow-md">{hustle.title}</CardTitle>
+            <Badge variant="secondary" className="text-sm py-1 px-3 bg-accent text-accent-foreground shadow">
               <Layers className="h-4 w-4 mr-2" />
               {hustle.category}
             </Badge>
           </div>
         </CardHeader>
+        
         <CardContent className="p-6 pt-8">
-          <div className="flex items-center text-muted-foreground mb-4">
-            <Briefcase className="h-5 w-5 mr-2 text-primary" />
-            <p className="text-lg font-semibold">About this Hustle</p>
+          <div className="flex items-center text-muted-foreground mb-3"> 
+            <Briefcase className="h-6 w-6 mr-3 text-primary" /> 
+            <h2 className="text-2xl font-semibold text-primary">About this Hustle</h2> 
           </div>
           <CardDescription className="text-base text-foreground leading-relaxed">
             {hustle.description}
           </CardDescription>
         </CardContent>
-        <CardFooter className="p-6 flex justify-between items-center">
-          <Button asChild variant="outline">
+
+        <CardFooter className="p-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-t"> 
+          <Button asChild variant="outline" className="w-full sm:w-auto">
             <Link href="/hustles">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Hustles
@@ -97,7 +82,7 @@ export default function HustleDetailsPage() {
           </Button>
           <Button 
             onClick={() => setShowStartingGuide(!showStartingGuide)}
-            className="bg-accent text-accent-foreground hover:bg-accent/90"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
           >
             {showStartingGuide ? 'Hide Starting Guide' : 'Show Starting Guide'}
             {showStartingGuide ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
@@ -105,47 +90,58 @@ export default function HustleDetailsPage() {
         </CardFooter>
 
         {showStartingGuide && (
-          <CardContent className="p-6 pt-6 border-t">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-primary mb-2 flex items-center">
-                  <ListChecks className="h-5 w-5 mr-2" />
-                  Steps to Start
-                </h3>
-                <p className="text-foreground whitespace-pre-line">{hustle.stepsToStart}</p>
+          <section aria-labelledby="starting-guide-heading"> 
+            <CardContent className="p-6 pt-6 border-t bg-secondary/10"> 
+              <h2 id="starting-guide-heading" className="sr-only">Starting Guide</h2> 
+              <div className="space-y-8"> 
+                
+                <div className="p-4 rounded-lg border bg-card shadow-sm">
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
+                    <ListChecks className="h-5 w-5 mr-2" />
+                    Steps to Start
+                  </h3>
+                  <p className="text-foreground leading-relaxed whitespace-pre-line">{hustle.stepsToStart}</p>
+                </div>
+
+                <div className="p-4 rounded-lg border bg-card shadow-sm">
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
+                    <LinkIcon className="h-5 w-5 mr-2" />
+                    Proof of Success
+                  </h3>
+                  <Button asChild variant="link" className="text-accent p-0 h-auto hover:text-accent/80 inline-flex items-center group text-base">
+                    <a
+                      href={hustle.successProofLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Success Stories / Resources
+                      <ExternalLink className="ml-2 h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  </Button>
+                </div>
+
+                <div className="p-4 rounded-lg border bg-card shadow-sm">
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
+                    <Lightbulb className="h-5 w-5 mr-2" />
+                    Tip for Success
+                  </h3>
+                  <p className="text-foreground leading-relaxed">{hustle.successTip}</p>
+                </div>
+
+                <div className="p-4 rounded-lg border bg-card shadow-sm">
+                  <h3 className="text-xl font-semibold text-primary mb-3 flex items-center">
+                    <GraduationCap className="h-5 w-5 mr-2" />
+                    What to Learn
+                  </h3>
+                  <p className="text-foreground leading-relaxed">{hustle.skillsToLearn}</p>
+                </div>
+
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-primary mb-2 flex items-center">
-                  <LinkIcon className="h-5 w-5 mr-2" />
-                  Proof of Success
-                </h3>
-                <a
-                  href={hustle.successProofLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent hover:underline hover:text-accent/80 transition-colors"
-                >
-                  View Success Stories / Resources
-                </a>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-primary mb-2 flex items-center">
-                  <Lightbulb className="h-5 w-5 mr-2" />
-                  Tip for Success
-                </h3>
-                <p className="text-foreground">{hustle.successTip}</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-primary mb-2 flex items-center">
-                  <GraduationCap className="h-5 w-5 mr-2" />
-                  What to Learn
-                </h3>
-                <p className="text-foreground">{hustle.skillsToLearn}</p>
-              </div>
-            </div>
-          </CardContent>
+            </CardContent>
+          </section>
         )}
       </Card>
     </div>
   );
 }
+
