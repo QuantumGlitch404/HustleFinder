@@ -1,22 +1,26 @@
+
 import {genkit} from 'genkit';
 import {googleAI} from '@genkit-ai/googleai';
 
-// Check for API key and log a warning if not found
-// This log will appear in your Vercel function logs during startup or first invocation.
-if (!process.env.GEMINI_API_KEY && !process.env.GOOGLE_API_KEY) {
+// Attempt to get the API key from environment variables
+const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+
+// Log a warning if the API key is not found. This is crucial for debugging.
+if (!apiKey) {
   console.warn(
     'CRITICAL_WARNING: GEMINI_API_KEY (or GOOGLE_API_KEY) is not set in environment variables. ' +
     'Google AI features, such as description rewriting, will NOT work. ' +
-    'Please set this environment variable in your Vercel project settings.'
+    'Please ensure this environment variable is correctly set in your Vercel project settings (for deployed app) or your local .env file (for local development).'
   );
 }
 
+// Configure the Google AI plugin.
+// If an API key is found, pass it explicitly.
+// Otherwise, initialize googleAI() without an explicit key,
+// relying on its default behavior (which might include other auth methods or fail if no key is found and it's required).
+const googleAIPlugin = apiKey ? googleAI({ apiKey }) : googleAI();
+
 export const ai = genkit({
-  plugins: [
-    googleAI({
-      // Genkit will automatically look for GEMINI_API_KEY or GOOGLE_API_KEY
-      // in process.env if apiKey is not explicitly provided here.
-    }),
-  ],
-  model: 'googleai/gemini-2.0-flash',
+  plugins: [googleAIPlugin],
+  model: 'googleai/gemini-2.0-flash', // Ensure this model is appropriate for your key and enabled API
 });
