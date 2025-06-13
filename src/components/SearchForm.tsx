@@ -26,7 +26,7 @@ export default function SearchForm({ initialQuery = '', className }: SearchFormP
     if (trimmedQuery) {
       router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
     } else {
-      router.push('/search'); // Navigate to search page even if query is empty, to show "please enter" message
+      router.push('/search');
     }
   };
 
@@ -37,11 +37,11 @@ export default function SearchForm({ initialQuery = '', className }: SearchFormP
         placeholder="Search hustles by title or description..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="flex-grow"
+        className="flex-grow h-10 sm:h-11 text-sm"
         aria-label="Search hustles"
       />
-      <Button type="submit" variant="default" size="icon" aria-label="Search">
-        <SearchIcon className="h-5 w-5" />
+      <Button type="submit" variant="default" size="icon" aria-label="Search" className="h-10 w-10 sm:h-11 sm:w-11">
+        <SearchIcon className="h-4 w-4 sm:h-5 sm:w-5" />
       </Button>
     </form>
   );

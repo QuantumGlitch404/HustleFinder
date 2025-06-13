@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Target, Zap } from "lucide-react";
 import Image from "next/image";
@@ -9,32 +10,32 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">About Hustle Finder</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+    <div className="container mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary">About Hustle Finder</h1>
+        <p className="mt-3 sm:mt-4 text-md sm:text-lg text-muted-foreground">
           Connecting you with opportunities and empowering your entrepreneurial journey.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-        <div>
+      <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center mb-8 sm:mb-12">
+        <div className="w-full h-64 sm:h-80 md:h-auto">
           <Image 
             src="https://picsum.photos/seed/aboutusteam/600/400" 
             alt="Team working together" 
             width={600} 
             height={400}
-            className="rounded-lg shadow-xl"
+            className="rounded-lg shadow-xl w-full h-full object-cover"
             data-ai-hint="teamwork collaboration"
           />
         </div>
         <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center text-2xl text-primary">
-              <Users className="h-7 w-7 mr-3" /> Who We Are
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="flex items-center text-xl sm:text-2xl text-primary">
+              <Users className="h-6 w-6 sm:h-7 sm:w-7 mr-2 sm:mr-3" /> Who We Are
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 text-muted-foreground">
+          <CardContent className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground p-4 sm:p-6 pt-0">
             <p>
               Hustle Finder is a dedicated platform designed to bridge the gap between individuals seeking flexible work opportunities and the burgeoning world of side hustles. We believe that everyone deserves the chance to pursue their passions, supplement their income, and gain valuable experience outside of traditional employment.
             </p>
@@ -45,14 +46,14 @@ export default function AboutPage() {
         </Card>
       </div>
 
-      <div className="space-y-10">
+      <div className="space-y-6 sm:space-y-10">
         <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center text-2xl text-primary">
-              <Target className="h-7 w-7 mr-3" /> Our Mission
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="flex items-center text-xl sm:text-2xl text-primary">
+              <Target className="h-6 w-6 sm:h-7 sm:w-7 mr-2 sm:mr-3" /> Our Mission
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 text-muted-foreground">
+          <CardContent className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground p-4 sm:p-6 pt-0">
             <p>
               Our mission is to empower individuals by providing easy access to a diverse range of side hustle opportunities. We aim to simplify the search process, offer valuable insights, and foster a community where users can learn, grow, and succeed in their chosen ventures. We strive to make "hustling" accessible, understandable, and rewarding for everyone, regardless of their background or primary language.
             </p>
@@ -60,12 +61,12 @@ export default function AboutPage() {
         </Card>
 
         <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center text-2xl text-primary">
-              <Zap className="h-7 w-7 mr-3" /> Why Hustle Finder?
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="flex items-center text-xl sm:text-2xl text-primary">
+              <Zap className="h-6 w-6 sm:h-7 sm:w-7 mr-2 sm:mr-3" /> Why Hustle Finder?
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 text-muted-foreground">
+          <CardContent className="space-y-3 sm:space-y-4 text-sm sm:text-base text-muted-foreground p-4 sm:p-6 pt-0">
             <p>
               <strong>Curated Listings:</strong> We carefully select and categorize hustles to save you time.
             </p>

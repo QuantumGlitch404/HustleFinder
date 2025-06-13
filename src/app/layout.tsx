@@ -5,7 +5,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
-import ScrollToTopButton from '@/components/layout/ScrollToTopButton'; // Added import
+import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,12 +31,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {children}
         </main>
         <Footer />
         <Toaster />
-        <ScrollToTopButton /> {/* Added component here */}
+        <ScrollToTopButton />
       </body>
     </html>
   );

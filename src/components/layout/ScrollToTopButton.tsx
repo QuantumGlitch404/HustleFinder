@@ -35,14 +35,14 @@ const ScrollToTopButton = () => {
     <Button
       onClick={scrollToTop}
       className={cn(
-        'fixed bottom-8 right-8 p-3 h-auto rounded-full shadow-lg bg-accent text-accent-foreground hover:bg-accent/90 z-50 transition-opacity duration-300 ease-in-out',
+        'fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-2.5 sm:p-3 h-auto rounded-full shadow-lg bg-accent text-accent-foreground hover:bg-accent/90 z-50 transition-opacity duration-300 ease-in-out',
         isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       )}
       aria-label="Scroll to top"
       variant="default"
       size="icon"
     >
-      <ArrowUp className="h-6 w-6" />
+      <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6" />
     </Button>
   );
 };

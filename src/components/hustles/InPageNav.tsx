@@ -3,9 +3,9 @@
 
 import Link from 'next/link';
 import {
-  Info,
+  Briefcase,
   ListChecks,
-  Link as LinkIconLucide, // Renamed to avoid conflict with NextLink
+  Link as LinkIconLucide,
   Lightbulb,
   GraduationCap,
   KeyRound,
@@ -13,13 +13,20 @@ import {
   MessageSquarePlus,
   HelpCircle,
   AlertTriangle,
-  Briefcase,
+  ChevronDown,
+  Menu,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import React from 'react';
-
+import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface NavItem {
   id: string;
@@ -43,6 +50,8 @@ const navItems: NavItem[] = [
 export default function InPageNav() {
   const pathname = usePathname();
   const [activeId, setActiveId] = React.useState<string | null>(null);
+  const isMobile = useIsMobile();
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,7 +62,7 @@ export default function InPageNav() {
           }
         });
       },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 } // Adjust rootMargin to activate when section is near center
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
     );
 
     navItems.forEach((item) => {
@@ -63,15 +72,10 @@ export default function InPageNav() {
       }
     });
 
-    // Set initial activeId based on hash or first item
     const initialHash = window.location.hash.substring(1);
     if (initialHash && navItems.find(item => item.id === initialHash)) {
       setActiveId(initialHash);
-    } else if (navItems.length > 0) {
-      // Optionally, set the first item as active if no hash or if hash is invalid
-      // setActiveId(navItems[0].id); 
     }
-
 
     return () => {
       navItems.forEach((item) => {
@@ -83,11 +87,59 @@ export default function InPageNav() {
     };
   }, []);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.pushState) {
+        history.pushState(null, null, `#${id}`);
+      } else {
+        window.location.hash = `#${id}`;
+      }
+      setActiveId(id);
+      if (isMobile) {
+        setIsDropdownOpen(false); // Close dropdown on mobile after click
+      }
+    }
+  };
+
+  if (isMobile === undefined) { // Avoid rendering until hook resolves
+    return <div className="h-12 w-full lg:w-60 mb-6 lg:mb-0"></div>; // Placeholder
+  }
+
+  if (isMobile) {
+    return (
+      <div className="mb-6 w-full">
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="w-full justify-between text-base py-3">
+              <span>Jump to section</span>
+              <ChevronDown className={`h-5 w-5 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-[calc(100vw-2rem)] sm:w-[calc(100vw-4rem)] md:w-[calc(100vw-8rem)] max-w-md mx-auto" align="start">
+            {navItems.map((item) => (
+              <DropdownMenuItem key={item.id} asChild className={cn(activeId === item.id && "bg-accent text-accent-foreground font-medium")}>
+                <Link href={`${pathname}#${item.id}`} onClick={(e) => handleLinkClick(e, item.id)}>
+                  <item.icon className="mr-2 h-4 w-4 flex-shrink-0" />
+                  {item.title}
+                </Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    );
+  }
 
   return (
-    <aside className="w-full mb-8 lg:mb-0 lg:w-60 rounded-lg border bg-card shadow-sm lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100vh-theme(spacing.32))] lg:overflow-y-auto">
+    <aside className="w-full mb-8 lg:mb-0 lg:w-60 rounded-lg border bg-card shadow-sm lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100vh-theme(spacing.32)-theme(spacing.8))] lg:overflow-y-auto">
       <div className="p-3">
-        <h3 className="text-base font-semibold mb-3 text-primary">On this page</h3>
+        <h3 className="text-base font-semibold mb-3 text-primary flex items-center">
+          <Menu className="h-5 w-5 mr-2 lg:hidden"/> {/* Optional: Icon for "On this page" on desktop */}
+          On this page
+        </h3>
         <ul className="space-y-1.5">
           {navItems.map((item) => (
             <li key={item.id}>
@@ -99,20 +151,7 @@ export default function InPageNav() {
                   activeId === item.id && "bg-accent text-accent-foreground font-medium"
                 )}
               >
-                <Link href={`${pathname}#${item.id}`} onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.getElementById(item.id);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // Update URL hash without page reload for better UX
-                        if (history.pushState) {
-                            history.pushState(null, null, `#${item.id}`);
-                        } else {
-                            window.location.hash = `#${item.id}`;
-                        }
-                        setActiveId(item.id); // Immediately set active state on click
-                    }
-                }}>
+                <Link href={`${pathname}#${item.id}`} onClick={(e) => handleLinkClick(e, item.id)}>
                   <item.icon className="mr-2 h-4 w-4 flex-shrink-0" />
                   {item.title}
                 </Link>

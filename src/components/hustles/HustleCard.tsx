@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Hustle } from '@/types/hustle';
@@ -14,25 +15,26 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
   return (
     <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
       <CardHeader className="p-0">
-        <div className="relative w-full h-48">
+        <div className="relative w-full h-40 sm:h-48">
           <Image
             src={hustle.imageUrl}
             alt={hustle.title}
             fill
-            style={{objectFit:"cover"}} // Replaced objectFit with style prop
+            style={{objectFit:"cover"}}
             data-ai-hint={hustle.imageHint}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
       </CardHeader>
-      <CardContent className="flex-grow p-4 pt-2">
-        <CardTitle className="text-xl font-semibold mb-1 leading-tight">{hustle.title}</CardTitle>
-         <Badge variant="secondary" className="mb-2">{hustle.category}</Badge>
-        <CardDescription className="text-sm text-muted-foreground line-clamp-3">
+      <CardContent className="flex-grow p-3 sm:p-4 pt-2">
+        <CardTitle className="text-lg sm:text-xl font-semibold mb-1 leading-tight line-clamp-2">{hustle.title}</CardTitle>
+         <Badge variant="secondary" className="mb-2 text-xs">{hustle.category}</Badge>
+        <CardDescription className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
           {hustle.description}
         </CardDescription>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
-        <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10">
+      <CardFooter className="p-3 sm:p-4 pt-0">
+        <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
           <Link href={hustle.detailsLink}>
             View Details
             <ArrowRight className="ml-2 h-4 w-4" />
