@@ -280,13 +280,13 @@ const positiveQuoteTemplates = [
   "A fantastic side gig that has the potential to become a full-time income. Highly motivating!"
 ];
 
-const generateTestimonials = (hustleTitle: string, hustleCategory: string, hustleId: string): Testimonial[] => {
+const generateTestimonials = (hustleTitle: string, hustleCategory: string, hustleId: string, uniqueHustleIndex: number): Testimonial[] => {
   const testimonials: Testimonial[] = [];
-  const numReviews = Math.floor(Math.random() * (80 - 50 + 1)) + 50; // 50 to 80
+  const numReviews = 50 + (uniqueHustleIndex % 31); // 50 to 80, deterministic
   for (let i = 0; i < numReviews; i++) {
-    const reviewerName = reviewerNamesBank[Math.floor(Math.random() * reviewerNamesBank.length)];
-    const location = locationsBank[Math.floor(Math.random() * locationsBank.length)];
-    const quoteTemplate = positiveQuoteTemplates[Math.floor(Math.random() * positiveQuoteTemplates.length)];
+    const reviewerName = reviewerNamesBank[(uniqueHustleIndex + i) % reviewerNamesBank.length];
+    const location = locationsBank[(uniqueHustleIndex + i + 1) % locationsBank.length]; // Offset to vary
+    const quoteTemplate = positiveQuoteTemplates[(uniqueHustleIndex + i + 2) % positiveQuoteTemplates.length]; // Offset to vary
     const quote = quoteTemplate
       .replace("[Hustle Title]", hustleTitle)
       .replace("[Hustle Category]", hustleCategory)
@@ -295,7 +295,7 @@ const generateTestimonials = (hustleTitle: string, hustleCategory: string, hustl
     testimonials.push({
       id: `testimonial-${hustleId}-${i}`,
       reviewerName: reviewerName,
-      starRating: Math.floor(Math.random() * 2) + 4, // 4 or 5 stars
+      starRating: 4 + ( (uniqueHustleIndex + i) % 2), // 4 or 5 stars, deterministic
       quote: quote,
       location: location,
     });
@@ -344,7 +344,7 @@ const toolsBank = {
   ai: ["ChatGPT (Free/Plus)", "Google Gemini", "Perplexity AI"],
 };
 
-const generateToolsNeeded = (category: string, title: string): string[] => {
+const generateToolsNeeded = (category: string, title: string, uniqueHustleIndex: number): string[] => {
   let tools = [...toolsBank.common];
   if (category.toLowerCase().includes('creative') || title.toLowerCase().includes('design') || title.toLowerCase().includes('video')) tools.push(...toolsBank.creative);
   if (category.toLowerCase().includes('tech') || title.toLowerCase().includes('develop') || title.toLowerCase().includes('coding') || title.toLowerCase().includes('it')) tools.push(...toolsBank.tech);
@@ -354,14 +354,18 @@ const generateToolsNeeded = (category: string, title: string): string[] => {
   if (title.toLowerCase().includes('e-commerce') || title.toLowerCase().includes('shop') || title.toLowerCase().includes('product list')) tools.push(...toolsBank.ecommerce);
   if (title.toLowerCase().includes('ai') || title.toLowerCase().includes('prompt')) tools.push(...toolsBank.ai);
   
-  // Add some specific tools based on title keywords
   if (title.toLowerCase().includes('tutor')) tools.push("Online Whiteboard Tools");
   if (title.toLowerCase().includes('social media')) tools.push("Buffer/Hootsuite (Free tiers)");
   if (title.toLowerCase().includes('data entry')) tools.push("Microsoft Excel/Google Sheets");
   if (title.toLowerCase().includes('transcription')) tools.push("Express Scribe (Free audio player)");
 
-
-  return Array.from(new Set(tools)).slice(0, 6 + Math.floor(Math.random()*3)); // Limit to 6-8 tools for brevity
+  // Deterministic shuffle based on uniqueHustleIndex for variety
+  const shuffledTools = [...tools];
+  for (let k = 0; k < (uniqueHustleIndex % tools.length); k++) {
+    shuffledTools.push(shuffledTools.shift()!);
+  }
+  
+  return Array.from(new Set(shuffledTools)).slice(0, 6 + (uniqueHustleIndex % 3)); // 6 to 8 tools, deterministic
 };
 
 const difficultyMap: Record<DifficultyLevel, '🔰' | '⚙️' | '🧠'> = {
@@ -401,28 +405,27 @@ const faqAnswerTemplates = [
   "While many free tools exist for [Hustle Title], some premium software (e.g., Adobe suite for designers, Ahrefs for SEOs) can boost productivity but are often not essential when starting out. See our 'Tools Needed' section."
 ];
 
-const generateFaqs = (hustleTitle: string, hustleCategory: string, location: string, hustleId: string): FAQ[] => {
+const generateFaqs = (hustleTitle: string, hustleCategory: string, location: string, hustleId: string, uniqueHustleIndex: number): FAQ[] => {
   const faqs: FAQ[] = [];
-  const numFaqs = Math.floor(Math.random() * (10 - 8 + 1)) + 8; // 8 to 10
-  const usedQuestionIndices = new Set<number>();
+  const numFaqs = 8 + (uniqueHustleIndex % 3); // 8 to 10 FAQs, deterministic
+  
+  const startIndex = uniqueHustleIndex % (faqQuestionTemplates.length - numFaqs + 1);
+  const selectedQuestionTemplates = faqQuestionTemplates.slice(startIndex, startIndex + numFaqs);
+  const selectedAnswerTemplates = faqAnswerTemplates.slice(startIndex, startIndex + numFaqs);
 
-  while (faqs.length < numFaqs && usedQuestionIndices.size < faqQuestionTemplates.length) {
-    const randomIndex = Math.floor(Math.random() * faqQuestionTemplates.length);
-    if (!usedQuestionIndices.has(randomIndex)) {
-      usedQuestionIndices.add(randomIndex);
-      const question = faqQuestionTemplates[randomIndex]
-        .replace("[Hustle Title]", hustleTitle)
-        .replace("[User Location]", location);
-      const answer = faqAnswerTemplates[randomIndex]
-        .replace("[Hustle Title]", hustleTitle)
-        .replace("[Hustle Category]", hustleCategory)
-        .replace("[User Location]", location);
-      faqs.push({
-        id: `faq-${hustleId}-${faqs.length}`,
-        question,
-        answer,
-      });
-    }
+  for (let i = 0; i < numFaqs; i++) {
+    const question = selectedQuestionTemplates[i]
+      .replace("[Hustle Title]", hustleTitle)
+      .replace("[User Location]", location);
+    const answer = selectedAnswerTemplates[i]
+      .replace("[Hustle Title]", hustleTitle)
+      .replace("[Hustle Category]", hustleCategory)
+      .replace("[User Location]", location);
+    faqs.push({
+      id: `faq-${hustleId}-${i}`,
+      question,
+      answer,
+    });
   }
   return faqs;
 };
@@ -440,6 +443,15 @@ const redFlagsBank = [
   "Trust your intuition. If something feels off about an offer or a client, it's okay to decline or ask more clarifying questions."
 ];
 
+const generateRedFlags = (uniqueHustleIndex: number): string[] => {
+    const numFlags = 3 + (uniqueHustleIndex % 2); // 3 or 4 flags, deterministic
+    const selectedFlags: string[] = [];
+    for (let k = 0; k < numFlags; k++) {
+        selectedFlags.push(redFlagsBank[(uniqueHustleIndex + k) % redFlagsBank.length]);
+    }
+    return [...new Set(selectedFlags)]; // Ensure uniqueness if modulo wraps around for small bank
+}
+
 // --- End of New Data Generation Helpers ---
 
 
@@ -448,12 +460,13 @@ export const HUSTLES_PER_PAGE = 10;
 const generateHustles = (count: number, initialIdOffset: number, catList: typeof categories, titleList: string[], descList: string[], isRemote: boolean): Hustle[] => {
   const generatedHustles: Hustle[] = [];
   for (let i = 0; i < count; i++) {
-    const categoryObj = catList[i % catList.length];
-    const baseTitle = titleList[i % titleList.length];
-    const titleVariationSuffix = titleList.length > 0 && count > titleList.length ? ` Expert #${Math.floor(i / titleList.length) + 1}` : '';
+    const uniqueGlobalIndex = initialIdOffset + i;
+    const categoryObj = catList[uniqueGlobalIndex % catList.length];
+    const baseTitle = titleList[uniqueGlobalIndex % titleList.length];
+    const titleVariationSuffix = titleList.length > 0 && count > titleList.length ? ` Expert #${Math.floor(uniqueGlobalIndex / titleList.length) + 1}` : '';
     const title = baseTitle + titleVariationSuffix;
-    const description = descList[i % descList.length];
-    const id = `hustle-${initialIdOffset + i + 1}`;
+    const description = descList[uniqueGlobalIndex % descList.length];
+    const id = `hustle-${uniqueGlobalIndex + 1}`;
     
     let stepsToStart, successProofLink, successTip, skillsToLearn;
 
@@ -469,15 +482,15 @@ const generateHustles = (count: number, initialIdOffset: number, catList: typeof
       skillsToLearn = `To succeed in ${title}, focus on learning: Core skills related to ${categoryObj.name.toLowerCase()} (e.g., ${categoryObj.imageHint.replace(' ', ', ')}), digital marketing and online presence management, customer relationship management (CRM), basic financial literacy, and effective communication.`;
     }
 
-    const difficultyLevel = difficultyLevels[Math.floor(Math.random() * difficultyLevels.length)];
+    const difficultyLevel = difficultyLevels[uniqueGlobalIndex % difficultyLevels.length];
     const difficultyEmoji = difficultyMap[difficultyLevel];
-    const randomUserLocationForFaq = locationsBank[Math.floor(Math.random() * locationsBank.length)];
+    const randomUserLocationForFaq = locationsBank[uniqueGlobalIndex % locationsBank.length];
 
     generatedHustles.push({
       id: id,
       title: title,
       description: description,
-      imageUrl: `https://picsum.photos/seed/${initialIdOffset + i + 1}/400/300`,
+      imageUrl: `https://picsum.photos/seed/${uniqueGlobalIndex + 1}/400/300`,
       imageHint: categoryObj.imageHint,
       category: categoryObj.name,
       detailsLink: `/hustles/${id}`,
@@ -485,16 +498,14 @@ const generateHustles = (count: number, initialIdOffset: number, catList: typeof
       successProofLink: successProofLink,
       successTip: successTip,
       skillsToLearn: skillsToLearn,
-
-      // New fields
-      testimonials: generateTestimonials(title, categoryObj.name, id),
+      testimonials: generateTestimonials(title, categoryObj.name, id, uniqueGlobalIndex),
       earningPotentials: generateEarningPotentials(categoryObj.name),
-      timeRequired: timeRequiredOptions[Math.floor(Math.random() * timeRequiredOptions.length)],
-      toolsNeeded: generateToolsNeeded(categoryObj.name, title),
+      timeRequired: timeRequiredOptions[uniqueGlobalIndex % timeRequiredOptions.length],
+      toolsNeeded: generateToolsNeeded(categoryObj.name, title, uniqueGlobalIndex),
       difficultyLevel: difficultyLevel,
       difficultyEmoji: difficultyEmoji,
-      faqs: generateFaqs(title, categoryObj.name, randomUserLocationForFaq, id),
-      redFlags: [...new Set(Array.from({ length: Math.floor(Math.random() * 2) + 3 }, () => redFlagsBank[Math.floor(Math.random() * redFlagsBank.length)]))], // 3-4 unique random red flags
+      faqs: generateFaqs(title, categoryObj.name, randomUserLocationForFaq, id, uniqueGlobalIndex),
+      redFlags: generateRedFlags(uniqueGlobalIndex),
     });
   }
   return generatedHustles;
@@ -511,3 +522,4 @@ export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
 }
+
