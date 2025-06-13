@@ -100,7 +100,7 @@ const remoteSampleDescriptions = [
   'Help coordinate and track remote projects, ensuring tasks are completed on time.'
 ];
 
-// New data for 120 additional remote hustles
+// Data for 120 additional remote hustles (Batch 2)
 const remoteCategoriesBatch2 = [
   { name: 'Online Micro-Entrepreneurship', imageHint: 'small business online' },
   { name: 'Digital Creative Services', imageHint: 'graphic design video' },
@@ -112,7 +112,7 @@ const remoteCategoriesBatch2 = [
   { name: 'Data & Research Services', imageHint: 'data analysis research' },
 ];
 
-const remoteSampleTitlesBatch2 = [
+const remoteSampleTitlesBatch2 = [ // 50 titles
   'Online Language Conversation Partner', 'Virtual Event Host/Moderator', 'Custom Digital Planner Creator',
   'Social Media Content Scheduler', 'Podcast Editing Services', 'Online Fitness/Wellness Coach (Niche)',
   'Genealogy Researcher (Online)', 'AI Prompt Engineer (Entry Level)', 'Ebook Formatting Specialist',
@@ -130,9 +130,9 @@ const remoteSampleTitlesBatch2 = [
   'Data Annotation for AI (Specialized)', 'Virtual Event Technical Support', 'Online Course Content Creator (Niche)',
   'Personalized Digital Storyteller', 'Remote Software Tester (Specific Domains)', 'E-commerce Customer Service (Multilingual)',
   'Podcast Show Notes Writer', 'Social Media Ad Campaign Manager (Small Scale)'
-]; // 50 titles, 120/50 is not an integer, so some will repeat more. We need 30 for 4 variations, or ensure count is multiple of titles length
+];
 
-const remoteSampleDescriptionsBatch2 = [
+const remoteSampleDescriptionsBatch2 = [ // 50 descriptions
   'Help language learners practice conversation skills via video calls, focusing on fluency and confidence.',
   'Host or moderate online events, webinars, and virtual conferences for global audiences.',
   'Design and sell custom digital planners compatible with popular note-taking apps.',
@@ -185,6 +185,78 @@ const remoteSampleDescriptionsBatch2 = [
   'Manage and optimize small-scale social media advertising campaigns on platforms like Facebook or Instagram.'
 ];
 
+// Data for 120 additional remote hustles (Batch 3)
+const remoteCategoriesBatch3 = [
+  { name: 'Remote Micro-Consulting', imageHint: 'advice consultation' },
+  { name: 'Specialized Digital Assistance', imageHint: 'virtual assistant specialized' },
+  { name: 'Online Content Moderation & Curation', imageHint: 'community management content' },
+  { name: 'Remote Language Services', imageHint: 'translation proofreading' },
+  { name: 'Web Presence Management', imageHint: 'seo social_media' },
+  { name: 'Niche E-commerce Support', imageHint: 'online store support' },
+  { name: 'Remote Learning Facilitation', imageHint: 'online tutoring support' },
+  { name: 'Creative Media Production (Remote)', imageHint: 'video_editing graphics' },
+];
+
+const remoteSampleTitlesBatch3 = [ // 40 titles
+  'Online Research for Academics/Businesses', 'Virtual Technical Documentation Writer', 'Remote Customer Support (Non-Voice)',
+  'Social Media Listening & Reporting', 'E-commerce Product Review Writer', 'Online Language Practice Moderator',
+  'AI Chatbot Training & Optimization', 'Data Cleansing & Formatting Specialist', 'Virtual Event Planning Assistant',
+  'Remote Book Indexer', 'Online Store Inventory Manager (Virtual)', 'Digital Asset Organizer (Cloud Storage)',
+  'Lead Prospecting for Sales Teams (Remote)', 'Online Forum/Community Engagement Specialist', 'Remote Software Beta Tester (Feedback Focus)',
+  'Virtual Project Task Coordinator', 'Personalized Newsletter Curator', 'Online Survey Data Collector',
+  'Remote Graphic Design for Social Media Posts', 'Short Video Clip Editor for Social Media', 'Proofreader for Non-Native English Writers',
+  'Transcription for Academic Interviews', 'Website Content Uploader & Formatter', 'Remote IT Helpdesk (Tier 1)',
+  'Online Marketplace Competitor Analyst', 'Virtual Meeting Minute Taker', 'Customized Digital Template Designer (Canva/Docs)',
+  'Remote Usability Testing Participant', 'Social Media Bio & Profile Writer', 'Online Course Forum Moderator',
+  'Virtual Assistant for Podcasters (Scheduling, Show Notes)', 'Fact-Checker for Online Content', 'Remote Data Entry for Loyalty Programs',
+  'E-commerce Customer Query Handler (Email/Chat)', 'Simple Logo Design for Startups', 'Online Ad Copywriter (Short Form)',
+  'Travel Itinerary Researcher (Budget Focus)', 'Remote Presentation Slide Polisher', 'Virtual Book Club Facilitator',
+  'Creator of Educational Quizzes Online'
+];
+
+const remoteSampleDescriptionsBatch3 = [ // 40 descriptions
+  'Conduct detailed online research on specified topics for academic papers or business reports.',
+  'Write clear, concise technical guides, manuals, and FAQs for software or products remotely.',
+  'Provide customer support via email, chat, or helpdesk tickets, no voice calls required.',
+  'Monitor social media channels for brand mentions, sentiment, and trends, then compile reports.',
+  'Write compelling and informative reviews for e-commerce products to boost sales.',
+  'Moderate online language exchange groups, ensuring respectful interaction and facilitating practice.',
+  'Help train AI chatbots by providing data, testing responses, and suggesting improvements.',
+  'Clean, format, and validate datasets to ensure accuracy and consistency for analysis.',
+  'Assist with the planning and coordination of virtual events, webinars, and online conferences.',
+  'Create comprehensive indexes for books to help readers navigate content efficiently.',
+  'Manage online store inventory levels, track stock, and update listings from a remote location.',
+  'Organize and manage digital files and assets for individuals or businesses using cloud storage solutions.',
+  'Identify and research potential leads for sales teams based on defined criteria, using online tools.',
+  'Actively participate in and moderate online forums or communities to foster engagement and answer questions.',
+  'Test pre-release software, websites, or apps and provide detailed feedback on bugs and usability.',
+  'Coordinate and track tasks for remote projects using project management software.',
+  'Curate and compile personalized newsletters on specific topics for subscribers.',
+  'Collect data through online surveys, ensuring participant recruitment and data integrity.',
+  'Design visually appealing graphics and posts for social media platforms like Instagram, Facebook, and X.',
+  'Edit short video clips for platforms like TikTok, Instagram Reels, or YouTube Shorts.',
+  'Proofread documents written by non-native English speakers to correct grammar and improve clarity.',
+  'Transcribe audio recordings of academic interviews or lectures accurately.',
+  'Upload and format content (text, images, videos) on websites using CMS platforms like WordPress.',
+  'Provide basic IT troubleshooting and support remotely to end-users.',
+  'Analyze competitor pricing, products, and strategies on online marketplaces.',
+  'Attend virtual meetings and accurately record minutes and action items.',
+  'Design custom digital templates for resumes, presentations, or social media using tools like Canva or Google Docs.',
+  'Participate in remote usability testing sessions, providing verbal feedback on software or websites.',
+  'Craft compelling and optimized bios and profiles for individuals or businesses on social media platforms.',
+  'Moderate discussion forums for online courses, answer student questions, and facilitate learning.',
+  'Assist podcasters with scheduling interviews, editing audio, writing show notes, and promoting episodes.',
+  'Verify the accuracy of information and sources for articles, blog posts, and other online content.',
+  'Perform remote data entry tasks for customer loyalty programs, updating member information and points.',
+  'Handle customer inquiries and resolve issues for e-commerce stores through email and live chat.',
+  'Create simple, clean logo designs for new startups or small businesses on a budget.',
+  'Write concise and persuasive copy for online advertisements (e.g., Google Ads, social media ads).',
+  'Research and compile budget-friendly travel itineraries, including accommodation and activity options.',
+  'Enhance and polish existing presentation slides for clarity, consistency, and visual appeal.',
+  'Organize and facilitate online book club discussions, selecting books and guiding conversations.',
+  'Develop engaging online quizzes and assessments for educational or training purposes.'
+];
+
 
 export const HUSTLES_PER_PAGE = 10;
 
@@ -233,9 +305,10 @@ const generateHustles = (count: number, initialIdOffset: number, catList: typeof
 const generalHustles = generateHustles(120, 0, categories, sampleTitles, sampleDescriptions, false);
 const remoteHustlesBatch1 = generateHustles(120, generalHustles.length, remoteCategories, remoteSampleTitles, remoteSampleDescriptions, true);
 const remoteHustlesBatch2 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length, remoteCategoriesBatch2, remoteSampleTitlesBatch2, remoteSampleDescriptionsBatch2, true);
+const remoteHustlesBatch3 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length, remoteCategoriesBatch3, remoteSampleTitlesBatch3, remoteSampleDescriptionsBatch3, true);
 
 
-export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2];
+export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3];
 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
