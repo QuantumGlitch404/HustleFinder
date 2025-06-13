@@ -1,3 +1,4 @@
+
 // src/ai/flows/rewrite-hustle-description.ts
 'use server';
 /**
@@ -33,6 +34,9 @@ const rewriteHustleDescriptionPrompt = ai.definePrompt({
   name: 'rewriteHustleDescriptionPrompt',
   input: {schema: RewriteHustleDescriptionInputSchema},
   output: {schema: RewriteHustleDescriptionOutputSchema},
+  config: { // Specify the model within the config object for the prompt
+    model: 'googleAI/gemini-1.0-pro', 
+  },
   prompt: `Rewrite the following hustle description to be more easily understandable, especially for non-native English speakers. Simplify the language and clarify the benefits. Do not add any new information, just rephrase the existing description.\n\nOriginal Description: {{{description}}}`,
 });
 
