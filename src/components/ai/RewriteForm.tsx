@@ -37,12 +37,23 @@ const RewriteForm = () => {
         variant: "default",
       });
     } catch (err) {
-      console.error('AI Rewrite Error:', err);
-      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
-      setError(`Failed to rewrite description: ${errorMessage}`);
+      console.error('AI Rewrite Error:', err); // This log is useful for Vercel server-side logs.
+      
+      let displayMessage = 'Failed to rewrite description. An unexpected error occurred.';
+      if (err instanceof Error) {
+        // In production, err.message might be the generic "An error occurred in the Server Components render..."
+        // This indicates Next.js has sanitized the original server error.
+        if (err.message.includes('Server Components render') || err.message.includes('NEXT_ আশা_SERVER_ERROR')) { // NEXT_ আশা_SERVER_ERROR is a common digest prefix
+          displayMessage = 'Failed to rewrite description. This could be due to a server configuration issue (e.g., a missing or invalid AI API key) or a temporary problem with the AI service. If you are the site administrator, please check the Vercel server logs for more details (look for a "digest" property or CRITICAL_WARNING). Otherwise, please try again later or contact support.';
+        } else {
+          displayMessage = `Failed to rewrite description: ${err.message}`;
+        }
+      }
+      
+      setError(displayMessage);
       toast({
         title: "Rewrite Failed",
-        description: `Could not rewrite description. ${errorMessage}`,
+        description: displayMessage,
         variant: "destructive",
       });
     } finally {
@@ -73,9 +84,9 @@ const RewriteForm = () => {
             />
           </div>
           {error && (
-            <div className="flex items-center p-2 sm:p-3 rounded-md bg-destructive/10 text-destructive text-xs sm:text-sm">
-              <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-              <p>{error}</p>
+            <div className="flex items-start p-3 sm:p-4 rounded-md bg-destructive/10 text-destructive text-xs sm:text-sm">
+              <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
+              <p className="flex-grow">{error}</p>
             </div>
           )}
           {isLoading && (
