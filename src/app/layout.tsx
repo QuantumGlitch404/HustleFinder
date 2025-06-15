@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { BookmarkProvider } from '@/context/BookmarkContext';
+import { TextSizeProvider } from '@/context/TextSizeContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,15 +39,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <BookmarkProvider>
-            <Header />
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-              {children}
-            </main>
-            <Footer />
-            <Toaster />
-            <ScrollToTopButton />
-          </BookmarkProvider>
+          <TextSizeProvider>
+            <BookmarkProvider>
+              <Header />
+              <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+                {children}
+              </main>
+              <Footer />
+              <Toaster />
+              <ScrollToTopButton />
+            </BookmarkProvider>
+          </TextSizeProvider>
         </ThemeProvider>
       </body>
     </html>

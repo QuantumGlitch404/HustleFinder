@@ -5,10 +5,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info } from "lucide-react";
+import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb } from "lucide-react"; // Removed Info, as it's not used
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
+import DailyHustle from "@/components/home/DailyHustle";
+import TrendingHustlesSection from "@/components/home/TrendingHustlesSection";
 
 export default function HomePage() {
   const featuredHustles = allHustles.slice(0, 3); 
@@ -83,7 +85,8 @@ export default function HomePage() {
               </Button>
                <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
                 <Link href="/about">
-                  <Info className="mr-2 h-5 w-5" />
+                  {/* Info icon was here, but not imported. We can use Lightbulb or Users if needed or remove */}
+                  <Users className="mr-2 h-5 w-5" /> 
                   Learn More
                 </Link>
               </Button>
@@ -91,6 +94,16 @@ export default function HomePage() {
           </div>
         </section>
       </AnimatedDiv>
+      
+      {/* Daily Hustle Suggestion Section */}
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-2xl" once={false}>
+        <DailyHustle />
+      </AnimatedDiv>
+
+      {/* Trending Hustles Section */}
+      <div className="container mx-auto px-4 w-full">
+        <TrendingHustlesSection />
+      </div>
 
       {/* Why Hustle Finder? Section */}
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
@@ -125,21 +138,21 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Search" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+              <Image src="https://placehold.co/150x150.png" alt="Step 1: Browse or Search" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://picsum.photos/seed/learningreading/150/150" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
+              <Image src="https://placehold.co/150x150.png" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
               <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
               <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://picsum.photos/seed/successlaunch/150/150" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
+              <Image src="https://placehold.co/150x150.png" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
               <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
               <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
             </div>
@@ -147,7 +160,8 @@ export default function HomePage() {
         </div>
       </AnimatedDiv>
 
-      {/* Featured Hustles Section */}
+      {/* Featured Hustles Section - Replaced with Trending Hustles, can be added back if needed */}
+      {/*
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full" once={false}>
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -196,6 +210,8 @@ export default function HomePage() {
           </Button>
         </AnimatedDiv>
       </AnimatedDiv>
+      */}
+
 
       {/* Testimonials Section */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg" once={false}>
@@ -209,7 +225,7 @@ export default function HomePage() {
                     <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
                     <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
                   </Avatar>
-                  <Users className="h-6 w-6 text-accent mx-auto mb-2" /> {/* Changed from MessagesSquare to Users */}
+                  <Users className="h-6 w-6 text-accent mx-auto mb-2" />
                   <p className="text-sm italic text-muted-foreground mb-3">"{testimonial.quote}"</p>
                   <p className="font-semibold text-sm text-primary">{testimonial.name}</p>
                 </CardContent>

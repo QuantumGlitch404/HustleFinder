@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, Info, Menu as MenuIcon, FileText, Mail, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
+import { Briefcase, Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react'; // Removed Mail
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -54,18 +54,7 @@ const Header = () => {
               <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel>More</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/contact" className="flex items-center">
-                    <Mail className="mr-2 h-4 w-4" />
-                    <span>Contact</span>
-                  </Link>
-                </DropdownMenuItem>
-                 <DropdownMenuItem asChild>
-                  <Link href="/contribute-hustle" className="flex items-center">
-                    <Briefcase className="mr-2 h-4 w-4" /> {/* Using Briefcase as a placeholder icon */}
-                    <span>Contribute Hustle</span>
-                  </Link>
-                </DropdownMenuItem>
+                {/* Removed Contact and Contribute Hustle Items */}
                 <DropdownMenuItem asChild>
                   <Link href="/terms" className="flex items-center">
                     <FileText className="mr-2 h-4 w-4" />
