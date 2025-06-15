@@ -41,7 +41,6 @@ import SubmitReviewForm from '@/components/hustles/SubmitReviewForm';
 import InPageNav from '@/components/hustles/InPageNav';
 import BookmarkButton from '@/components/hustles/BookmarkButton';
 import ShareHustlePopover from '@/components/hustles/ShareHustlePopover';
-// AdPlaceholder import removed
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
 
 
@@ -139,7 +138,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
               </div>
             </CardHeader>
 
-            {/* Adsterra Banner 728x90 - Top */}
+            {/* Adsterra Banner 728x90 - Hustle Detail Page Top */}
             <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center px-4 md:px-6 pt-4 md:pt-6">
               <div style={{ width: '728px', height: '90px' }}>
                 <script type="text/javascript">
@@ -401,7 +400,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
-                  {/* Adsterra Banner 728x90 - Bottom */}
+                  {/* Adsterra Banner 728x90 - Hustle Detail Page Bottom */}
                   <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
                     <div style={{ width: '728px', height: '90px' }}>
                       <script type="text/javascript">
@@ -428,5 +427,3 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
     </div>
   );
 }
-
-    

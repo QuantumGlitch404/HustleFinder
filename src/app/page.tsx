@@ -4,14 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import Image from "next/image"; // Keep for testimonial avatars
-import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen, Search as SearchIconLucide } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
 import DailyHustle from "@/components/home/DailyHustle";
 import TrendingHustlesSection from "@/components/home/TrendingHustlesSection";
-// AdPlaceholder import removed as it's replaced by direct ad code for banners
 
 export default function HomePage() {
   const featuredHustles = allHustles.slice(0, 3); 
@@ -49,21 +48,21 @@ export default function HomePage() {
       name: "Priya R.",
       avatarFallback: "PR",
       quote: "I started my freelance writing journey using Hustle Finder's guidance. The 'Steps to Start' were super helpful, and now I earn ₹20,000+ part-time!",
-      altText: "Testimonial from Priya R.",
+      altText: "Avatar of Priya R.",
       imageHint: "profile person"
     },
     {
       name: "Ahmed K.",
       avatarFallback: "AK",
       quote: "Found a great remote project and boosted my income. This site is a gem! Being able to save my favorite hustles is a great feature.",
-      altText: "Testimonial from Ahmed K.",
+      altText: "Avatar of Ahmed K.",
       imageHint: "profile person"
     },
     {
       name: "Sarah M.",
       avatarFallback: "SM",
       quote: "As a student, finding flexible work was key. Hustle Finder listed so many options I hadn't considered. The 'Beginner Friendly' tags are awesome.",
-      altText: "Testimonial from Sarah M.",
+      altText: "Avatar of Sarah M.",
       imageHint: "profile person"
     }
   ];
@@ -83,7 +82,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md">
                 <Link href="/hustles">
-                  <Search className="mr-2 h-5 w-5" />
+                  <SearchIconLucide className="mr-2 h-5 w-5" />
                   Explore Hustles
                 </Link>
               </Button>
@@ -98,7 +97,7 @@ export default function HomePage() {
         </section>
       </AnimatedDiv>
 
-      {/* Adsterra Banner 728x90 - Top */}
+      {/* Adsterra Banner 728x90 - Homepage Top */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -166,8 +165,8 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
-                 <Search className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
+              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block ring-2 ring-primary/20">
+                 <SearchIconLucide className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
@@ -175,7 +174,7 @@ export default function HomePage() {
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-               <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
+               <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block ring-2 ring-primary/20">
                 <BookOpen className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
@@ -184,7 +183,7 @@ export default function HomePage() {
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
+              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block ring-2 ring-primary/20">
                 <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
@@ -242,7 +241,7 @@ export default function HomePage() {
         </Accordion>
       </AnimatedDiv>
 
-      {/* Adsterra Banner 728x90 - Bottom */}
+      {/* Adsterra Banner 728x90 - Homepage Bottom */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -263,5 +262,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    

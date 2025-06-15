@@ -9,7 +9,6 @@ import { BookmarkX, Search } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
-// AdPlaceholder import removed
 
 export default function BookmarksPage() {
   const { getBookmarkedHustles } = useBookmarks();
@@ -31,7 +30,7 @@ export default function BookmarksPage() {
         </div>
       </AnimatedDiv>
 
-      {/* Adsterra Banner 728x90 - Top */}
+      {/* Adsterra Banner 728x90 - Bookmarks Page Top */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -82,7 +81,7 @@ export default function BookmarksPage() {
         </AnimatedDiv>
       )}
 
-      {/* Adsterra Banner 728x90 - Bottom */}
+      {/* Adsterra Banner 728x90 - Bookmarks Page Bottom */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -103,5 +102,3 @@ export default function BookmarksPage() {
     </div>
   );
 }
-
-    

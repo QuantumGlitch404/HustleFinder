@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Target, Zap } from "lucide-react";
 import Image from "next/image";
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
-// AdPlaceholder import removed
 
 export const metadata = {
   title: 'About Us | Hustle Finder',
@@ -22,7 +21,7 @@ export default function AboutPage() {
         </div>
       </AnimatedDiv>
 
-      {/* Adsterra Banner 728x90 - Top */}
+      {/* Adsterra Banner 728x90 - About Page Top */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -118,7 +117,7 @@ export default function AboutPage() {
         </AnimatedDiv>
       </div>
 
-      {/* Adsterra Banner 728x90 - Bottom */}
+      {/* Adsterra Banner 728x90 - About Page Bottom */}
       <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
         <div style={{ width: '728px', height: '90px' }}>
           <script type="text/javascript">
@@ -139,5 +138,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
