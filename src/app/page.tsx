@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb } from "lucide-react"; // Removed Info, as it's not used
+import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
@@ -39,7 +39,7 @@ export default function HomePage() {
     {
       id: "faq-5",
       question: "How does the AI Description Enhancer work?",
-      answer: "Our AI Description Enhancer uses advanced language models to rephrase your hustle descriptions. It aims to simplify complex language, clarify benefits, and make your opportunity more accessible, especially to non-native English speakers. Just paste your text, and the AI will suggest an improved version!"
+      answer: "The AI Description Enhancer feature has been temporarily removed. We are working on improving it and plan to reintroduce it in the future with enhanced capabilities."
     }
   ];
 
@@ -85,8 +85,7 @@ export default function HomePage() {
               </Button>
                <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
                 <Link href="/about">
-                  {/* Info icon was here, but not imported. We can use Lightbulb or Users if needed or remove */}
-                  <Users className="mr-2 h-5 w-5" /> 
+                  <Info className="mr-2 h-5 w-5" />
                   Learn More
                 </Link>
               </Button>

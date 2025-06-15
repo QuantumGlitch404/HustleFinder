@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react'; // Removed Mail
+import { Briefcase, Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from './ThemeToggle';
+import TextSizeAdjuster from './TextSizeAdjuster'; // Import TextSizeAdjuster
 
 const Header = () => {
   return (
@@ -42,6 +43,7 @@ const Header = () => {
               </Link>
             </Button>
 
+            <TextSizeAdjuster /> 
             <ThemeToggle />
 
             <DropdownMenu>
@@ -54,7 +56,6 @@ const Header = () => {
               <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel>More</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {/* Removed Contact and Contribute Hustle Items */}
                 <DropdownMenuItem asChild>
                   <Link href="/terms" className="flex items-center">
                     <FileText className="mr-2 h-4 w-4" />

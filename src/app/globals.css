@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,34 +15,34 @@
     --popover-foreground: 0 0% 3.9%;
 
     --primary: 180 100% 25.1%; /* Teal #008080 */
-    --primary-foreground: 180 25% 95.1%; /* Light color for text on teal */
+    --primary-foreground: 180 25% 95.1%; /* Light color for text on teal (e.g. hsl(180, 25%, 95.1%) -> #edf8f8) */
 
-    --secondary: 0 0% 87.8%; /* Slightly darker gray than background for secondary elements */
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 0 0% 90%; /* Slightly darker gray for secondary elements like subtle cards or sections */
+    --secondary-foreground: 0 0% 15%; /* Darker text for secondary backgrounds */
 
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 0 0% 96.1%; /* Very light gray for muted backgrounds, e.g., hover states for list items */
+    --muted-foreground: 0 0% 45.1%; /* Softer text color for muted content */
 
     --accent: 51 100% 50%; /* Gold #FFD700 */
-    --accent-foreground: 51 100% 15%; /* Dark color for text on gold */
+    --accent-foreground: 51 100% 15%; /* Dark color for text on gold (e.g. hsl(51, 100%, 15%) -> #4d4200) */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 85%;
-    --input: 0 0% 89.8%;
+    --border: 0 0% 85%; /* Default border color, slightly darker than background */
+    --input: 0 0% 92%; /* Input field background, slightly off-white */
     --ring: 180 100% 30.1%; /* Teal for focus rings */
 
     --radius: 0.5rem;
 
-    /* Keeping sidebar variables, might be used by some shadcn components internally or for future features */
+    /* Sidebar variables - kept for potential future use or if some components rely on them */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-foreground: 0 0% 3.9%;
     --sidebar-primary: 180 100% 25.1%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 180 10% 90%;
-    --sidebar-accent-foreground: 180 100% 20.1%;
-    --sidebar-border: 220 13% 91%;
+    --sidebar-primary-foreground: 180 25% 95.1%;
+    --sidebar-accent: 180 10% 90%; /* Lighter teal for sidebar accent */
+    --sidebar-accent-foreground: 180 100% 20.1%; /* Darker teal text on sidebar accent */
+    --sidebar-border: 0 0% 89.8%;
     --sidebar-ring: 180 100% 30.1%;
 
     --chart-1: 12 76% 61%;
@@ -52,42 +53,42 @@
   }
 
   .dark {
-    --background: 224 71% 4%; /* Very Dark Blue */
-    --foreground: 210 20% 98%; /* Almost White */
+    --background: 224 71% 10%; /* Darker Blue-Gray */
+    --foreground: 210 20% 92%; /* Lighter Gray text */
 
-    --card: 224 71% 9%; /* Dark Blue, slightly lighter than bg */
-    --card-foreground: 210 20% 98%;
+    --card: 224 71% 14%; /* Slightly Lighter Dark Blue-Gray for cards */
+    --card-foreground: 210 20% 92%;
 
-    --popover: 224 71% 9%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 224 71% 12%; /* Darker popover */
+    --popover-foreground: 210 20% 92%;
 
     --primary: 180 100% 35%; /* Teal - slightly brighter for dark mode */
-    --primary-foreground: 180 25% 95.1%;
+    --primary-foreground: 180 25% 95.1%; /* Light color for text on teal */
 
-    --secondary: 220 20% 15%; /* Dark Gray */
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 220 20% 18%; /* Darker Gray for secondary elements */
+    --secondary-foreground: 210 20% 85%; /* Lighter text for dark secondary backgrounds */
 
-    --muted: 220 20% 12%; /* Darker Gray */
-    --muted-foreground: 210 20% 60%;
+    --muted: 220 20% 15%; /* Very Dark Gray for muted backgrounds */
+    --muted-foreground: 210 20% 55%; /* Softer, grayish text for dark muted content */
 
     --accent: 51 100% 60%; /* Gold - slightly brighter for dark mode */
     --accent-foreground: 51 100% 10%; /* Very dark for text on gold */
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 62.8% 50.6%; /* Slightly desaturated red for dark mode */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 20% 20%; /* Dark Border */
-    --input: 220 20% 18%; /* Dark Input */
-    --ring: 180 100% 40%; /* Teal for focus rings */
+    --border: 220 20% 25%; /* Dark Border, visible against dark backgrounds */
+    --input: 220 20% 20%; /* Dark Input background */
+    --ring: 180 100% 40%; /* Teal for focus rings, slightly brighter */
     
     /* Sidebar dark theme adjustments */
-    --sidebar-background: 224 71% 6%;
+    --sidebar-background: 224 71% 8%; /* Even darker for sidebar */
     --sidebar-foreground: 210 20% 90%;
     --sidebar-primary: 180 100% 35%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 180 50% 20%;
+    --sidebar-primary-foreground: 180 25% 95.1%;
+    --sidebar-accent: 180 50% 25%; /* Darker teal for sidebar accent */
     --sidebar-accent-foreground: 180 25% 85%;
-    --sidebar-border: 220 20% 15%;
+    --sidebar-border: 220 20% 20%;
     --sidebar-ring: 180 100% 40%;
 
     --chart-1: 220 70% 50%;
@@ -103,6 +104,83 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
+  /* Ensure headings and strong text also inherit foreground color by default */
+  h1, h2, h3, h4, h5, h6, strong {
+    @apply text-foreground;
+  }
+}
+
+/* Animation utilities for AnimatedDiv */
+@layer utilities {
+  .animate-in {
+    animation-duration: var(--animate-duration, 500ms); /* Default duration */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  .fade-in { animation-name: fadeIn; }
+  .zoom-in-90 { animation-name: zoomIn90; }
+  .zoom-in-95 { animation-name: zoomIn95; }
+  .slide-in-from-bottom-4 { animation-name: slideInFromBottom4; }
+  .slide-in-from-bottom-8 { animation-name: slideInFromBottom8; }
+  .slide-in-from-top-4 { animation-name: slideInFromTop4; }
+  .slide-in-from-top-8 { animation-name: slideInFromTop8; }
+  .slide-in-from-left-4 { animation-name: slideInFromLeft4; }
+  .slide-in-from-left-8 { animation-name: slideInFromLeft8; }
+  .slide-in-from-right-4 { animation-name: slideInFromRight4; }
+  .slide-in-from-right-8 { animation-name: slideInFromRight8; }
+
+  /* Tailwind's JIT might not pick up dynamic delay classes, so define a few common ones */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn90 {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes zoomIn95 {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInFromBottom4 {
+  from { opacity: 0; transform: translateY(1rem); } /* 1rem = 16px, equivalent to Tailwind's -4 spacing unit */
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromBottom8 {
+  from { opacity: 0; transform: translateY(2rem); } /* 2rem = 32px, equivalent to Tailwind's -8 spacing unit */
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromTop4 {
+  from { opacity: 0; transform: translateY(-1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromTop8 {
+  from { opacity: 0; transform: translateY(-2rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromLeft4 {
+  from { opacity: 0; transform: translateX(-1rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromLeft8 {
+  from { opacity: 0; transform: translateX(-2rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromRight4 {
+  from { opacity: 0; transform: translateX(1rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromRight8 {
+  from { opacity: 0; transform: translateX(2rem); }
+  to { opacity: 1; transform: translateX(0); }
 }

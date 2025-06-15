@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import TextSizeAdjuster from './TextSizeAdjuster';
+// TextSizeAdjuster is removed from here
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
             <br className="sm:hidden"/>
             Made By QuantumGlitch404.
           </p>
-          <TextSizeAdjuster />
+          {/* Placeholder for any future footer controls if needed */}
         </div>
       </div>
     </footer>
