@@ -6,6 +6,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
+import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import { BookmarkProvider } from '@/context/BookmarkContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,13 +32,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
-        <Header />
-        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
-        <ScrollToTopButton />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <BookmarkProvider>
+            <Header />
+            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+              {children}
+            </main>
+            <Footer />
+            <Toaster />
+            <ScrollToTopButton />
+          </BookmarkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

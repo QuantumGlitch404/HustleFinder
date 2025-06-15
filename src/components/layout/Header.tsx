@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, BrainCircuit, Info, Menu as MenuIcon, FileText, Mail, Shield } from 'lucide-react';
+import { Briefcase, Info, Menu as MenuIcon, FileText, Mail, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   return (
@@ -29,9 +30,9 @@ const Header = () => {
               </Link>
             </Button>
             <Button variant="ghost" asChild className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground px-2 py-1 sm:px-3 h-auto text-xs sm:text-sm">
-              <Link href="/rewrite-description" className="flex items-center space-x-1">
-                <BrainCircuit className="h-4 w-4" />
-                <span>Rewrite</span>
+              <Link href="/bookmarks" className="flex items-center space-x-1">
+                <BookmarkIcon className="h-4 w-4" />
+                <span>Saved</span>
               </Link>
             </Button>
             <Button variant="ghost" asChild className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground px-2 py-1 sm:px-3 h-auto text-xs sm:text-sm">
@@ -40,6 +41,8 @@ const Header = () => {
                 <span>About</span>
               </Link>
             </Button>
+
+            <ThemeToggle />
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -55,6 +58,12 @@ const Header = () => {
                   <Link href="/contact" className="flex items-center">
                     <Mail className="mr-2 h-4 w-4" />
                     <span>Contact</span>
+                  </Link>
+                </DropdownMenuItem>
+                 <DropdownMenuItem asChild>
+                  <Link href="/contribute-hustle" className="flex items-center">
+                    <Briefcase className="mr-2 h-4 w-4" /> {/* Using Briefcase as a placeholder icon */}
+                    <span>Contribute Hustle</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>

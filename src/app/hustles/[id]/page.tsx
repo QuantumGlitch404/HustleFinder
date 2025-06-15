@@ -35,10 +35,14 @@ import {
   HelpCircle,
   AlertTriangle,
   MessageSquarePlus,
-  KeyRound
+  KeyRound,
+  Share2,
+  Heart
 } from 'lucide-react';
 import SubmitReviewForm from '@/components/hustles/SubmitReviewForm'; 
 import InPageNav from '@/components/hustles/InPageNav';
+import BookmarkButton from '@/components/hustles/BookmarkButton';
+import ShareHustlePopover from '@/components/hustles/ShareHustlePopover';
 
 interface HustleDetailsPageProps {
   params: { id: string };
@@ -51,8 +55,10 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   const hustleData: Hustle | undefined = getHustleById(hustleId);
   
   const [hustle, setHustle] = useState<Hustle | undefined>(hustleData);
-  const [showStartingGuide, setShowStartingGuide] = useState(true); // Show by default
+  const [showStartingGuide, setShowStartingGuide] = useState(true);
   const [displayedTestimonials, setDisplayedTestimonials] = useState<Testimonial[]>(hustleData?.testimonials || []);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     if (hustleData) {
@@ -69,23 +75,18 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
   const handleAddNewReview = (newReviewData: Omit<Testimonial, 'id'>) => {
     const newReview: Testimonial = {
       ...newReviewData,
-      id: `testimonial-${hustle.id}-client-${Date.now()}`, // Client-side unique ID
+      id: `testimonial-${hustle.id}-client-${Date.now()}`, 
     };
-    // Add new review to the beginning of the array
     setDisplayedTestimonials(prevTestimonials => [newReview, ...prevTestimonials]);
   };
   
-  // The InPageNav will decide if it should be rendered or not based on its own logic (e.g. if showStartingGuide is true)
-  // We can simplify this here, as the InPageNav might always be useful if content is long.
-  // For now, let's assume it's always shown if the guide content is available.
-  const shouldShowInPageNav = true; // Always show InPageNav if we have detailed content
-
+  const shouldShowInPageNav = true; 
 
   return (
     <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row lg:gap-8">
         {shouldShowInPageNav && <InPageNav />}
-        <main className="w-full lg:flex-grow min-w-0 mt-6 lg:mt-0"> {/* mt-6 on mobile gives space if InPageNav is sticky */}
+        <main className="w-full lg:flex-grow min-w-0 mt-6 lg:mt-0">
             <Card className="w-full shadow-xl rounded-lg overflow-hidden">
             <CardHeader className="p-0 relative">
               <div className="relative w-full h-60 sm:h-72 md:h-96">
@@ -99,6 +100,22 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                   priority 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" /> 
+                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex space-x-2 bg-card/70 backdrop-blur-sm p-1.5 rounded-lg">
+                  <BookmarkButton 
+                    hustleId={hustle.id} 
+                    size="default" 
+                    variant="ghost" 
+                    className="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2"
+                  />
+                  <ShareHustlePopover 
+                    hustleTitle={hustle.title} 
+                    hustleUrl={pathname} 
+                    triggerSize="default" 
+                    triggerVariant="ghost" 
+                    isIconOnly={true}
+                    triggerClassName="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2"
+                  />
+                </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6"> 
                 <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-foreground mb-2 drop-shadow-md">{hustle.title}</CardTitle>
@@ -137,6 +154,23 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                   Back to Hustles
                 </Link>
               </Button>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                <BookmarkButton 
+                    hustleId={hustle.id} 
+                    size="default" 
+                    variant="outline" 
+                    isIconOnly={false} 
+                    className="w-full sm:w-auto"
+                />
+                <ShareHustlePopover 
+                    hustleTitle={hustle.title} 
+                    hustleUrl={pathname} 
+                    triggerSize="default" 
+                    triggerVariant="outline"
+                    isIconOnly={false}
+                    triggerClassName="w-full sm:w-auto"
+                />
+              </div>
               <Button 
                 onClick={() => setShowStartingGuide(!showStartingGuide)}
                 className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto text-sm sm:text-base"

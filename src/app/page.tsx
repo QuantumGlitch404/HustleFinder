@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Search, Lightbulb, CheckCircle, Rocket, Brain, MessagesSquare, ListChecks, ShieldCheck, TrendingUp, FileText, Users, HelpCircle, Github, Linkedin, ExternalLink } from "lucide-react";
+import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
@@ -17,7 +17,7 @@ export default function HomePage() {
     {
       id: "faq-1",
       question: "Is Hustle Finder completely free to use?",
-      answer: "Yes, Hustle Finder is 100% free! We believe in providing open access to opportunities. There are no hidden charges or sign-up requirements to browse hustles or use our AI tools."
+      answer: "Yes, Hustle Finder is 100% free! We believe in providing open access to opportunities. There are no hidden charges or sign-up requirements to browse hustles."
     },
     {
       id: "faq-2",
@@ -31,8 +31,8 @@ export default function HomePage() {
     },
      {
       id: "faq-4",
-      question: "How does the AI Description Enhancer work?",
-      answer: "Our AI Description Enhancer uses advanced language models to rephrase your hustle descriptions. It aims to simplify complex language, clarify benefits, and make your opportunity more accessible, especially to non-native English speakers. Just paste your text, and the AI will suggest an improved version!"
+      question: "How can I save or bookmark hustles I'm interested in?",
+      answer: "You can easily save hustles by clicking the heart icon on any hustle card or on the hustle details page. Your saved hustles can be found on the 'Saved Hustles' page, accessible from the header."
     }
   ];
 
@@ -46,7 +46,7 @@ export default function HomePage() {
     {
       name: "Ahmed K.",
       avatarFallback: "AK",
-      quote: "The AI description tool helped me understand a complex tech gig. Found a great remote project and boosted my income. This site is a gem!",
+      quote: "Found a great remote project and boosted my income. This site is a gem! Being able to save my favorite hustles is a great feature.",
       imageHint: "profile person"
     },
     {
@@ -67,7 +67,7 @@ export default function HomePage() {
               Find Your Perfect Side Hustle.
             </h1>
             <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Fast, Free, and Real. Unlock opportunities with curated listings and AI-powered guidance.
+              Fast, Free, and Real. Unlock opportunities with curated listings and helpful tools.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md">
@@ -76,10 +76,10 @@ export default function HomePage() {
                   Explore Hustles
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
-                <Link href="/rewrite-description">
-                  <Lightbulb className="mr-2 h-5 w-5" />
-                  Try AI Guide
+               <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent/10 transition-transform duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto text-base sm:text-lg px-8 py-3 rounded-lg shadow-md bg-primary-foreground/10 hover:text-accent-foreground">
+                <Link href="/about">
+                  <Info className="mr-2 h-5 w-5" />
+                  Learn More
                 </Link>
               </Button>
             </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
           {[
             { icon: ListChecks, title: "Curated Hustles with Proof", desc: "Access detailed guides and links to real-world success stories for each hustle.", delay: "delay-100" },
             { icon: Rocket, title: "Fast Start Steps", desc: "Clear, actionable steps to help you begin your chosen side hustle quickly and efficiently.", delay: "delay-200" },
-            { icon: Brain, title: "AI-Powered Suggestions", desc: "Use our AI tool to rewrite hustle descriptions for better understanding, especially for non-native speakers.", delay: "delay-300" },
+            { icon: Lightbulb, title: "Helpful Tools", desc: "Save your favorite hustles, share them easily, and switch themes for your comfort.", delay: "delay-300" },
             { icon: ShieldCheck, title: "100% Free, No Sign-Up", desc: "Explore all features and listings without any cost or registration barriers.", delay: "delay-400" }
           ].map((item, index) => (
             <AnimatedDiv key={index} animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass={item.delay}>
@@ -120,9 +120,9 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100">
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Ask AI" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+              <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Search" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
-              <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use our AI-powered tools to find what suits you best.</p>
+              <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200">
@@ -204,7 +204,7 @@ export default function HomePage() {
                     <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
                     <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
                   </Avatar>
-                  <MessagesSquare className="h-6 w-6 text-accent mx-auto mb-2" />
+                  <Users className="h-6 w-6 text-accent mx-auto mb-2" /> {/* Changed from MessagesSquare to Users */}
                   <p className="text-sm italic text-muted-foreground mb-3">"{testimonial.quote}"</p>
                   <p className="font-semibold text-sm text-primary">{testimonial.name}</p>
                 </CardContent>
@@ -236,5 +236,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
