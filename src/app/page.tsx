@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info } from "lucide-react";
+import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
@@ -137,42 +137,27 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image 
-                src="https://placehold.co/150x150.png" 
-                alt="Illustration of searching and discovering opportunities" 
-                width={150} 
-                height={150} 
-                className="rounded-full mb-4 shadow-md" 
-                data-ai-hint="discovery search" 
-              />
+              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
+                <Search className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
+              </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image 
-                src="https://placehold.co/150x150.png" 
-                alt="Illustration of learning and acquiring new skills" 
-                width={150} 
-                height={150} 
-                className="rounded-full mb-4 shadow-md" 
-                data-ai-hint="learning skills" 
-              />
+               <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
+                <BookOpen className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
+              </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
               <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image 
-                src="https://placehold.co/150x150.png" 
-                alt="Illustration of launching a new venture or journey" 
-                width={150} 
-                height={150} 
-                className="rounded-full mb-4 shadow-md" 
-                data-ai-hint="journey launch" 
-              />
+              <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
+                <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
+              </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
               <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
             </div>
@@ -242,7 +227,7 @@ export default function HomePage() {
               <Card className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform h-full">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
-                    <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
+                    <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={`${testimonial.name} - Hustle Finder User`} data-ai-hint={testimonial.imageHint} />
                     <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
                   </Avatar>
                   <Users className="h-6 w-6 text-accent mx-auto mb-2" />
@@ -278,4 +263,5 @@ export default function HomePage() {
   );
 }
 
+    
     
