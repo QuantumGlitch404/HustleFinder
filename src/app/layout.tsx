@@ -8,7 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { BookmarkProvider } from '@/context/BookmarkContext';
-// AdBlockDetector import removed
+import AdBlockDetector from '@/components/layout/AdBlockDetector';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -44,13 +44,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <BookmarkProvider>
-            <Header />
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-              {children}
-            </main>
-            <Footer />
-            <Toaster />
-            <ScrollToTopButton />
+            <AdBlockDetector>
+              <Header />
+              <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+                {children}
+              </main>
+              <Footer />
+              <Toaster />
+              <ScrollToTopButton />
+            </AdBlockDetector>
           </BookmarkProvider>
         </ThemeProvider>
         {/* Adsterra Social Bar Ad Code */}
