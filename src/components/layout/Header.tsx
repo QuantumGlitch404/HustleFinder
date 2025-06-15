@@ -11,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from './ThemeToggle';
-import TextSizeAdjuster from './TextSizeAdjuster'; // Import TextSizeAdjuster
 
 const Header = () => {
   return (
@@ -43,7 +42,6 @@ const Header = () => {
               </Link>
             </Button>
 
-            <TextSizeAdjuster /> 
             <ThemeToggle />
 
             <DropdownMenu>
