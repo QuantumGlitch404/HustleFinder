@@ -33,11 +33,19 @@ export default function BookmarkButton({ hustleId, className, size = "icon", var
       variant={variant}
       size={size}
       onClick={toggleBookmark}
-      className={cn("p-2", bookmarked ? "text-destructive hover:text-destructive/90" : "text-muted-foreground hover:text-primary", className)}
+      className={cn(
+        "p-2",
+        bookmarked 
+          ? "text-destructive hover:text-destructive/90" 
+          : "text-primary/70 hover:text-primary", // Changed default color
+        className
+      )}
       aria-label={bookmarked ? 'Remove from bookmarks' : 'Add to bookmarks'}
+      data-bookmarked={bookmarked} // For easier selection if needed for styling
     >
       <Heart className={cn("h-5 w-5", bookmarked && "fill-destructive")} />
       {!isIconOnly && <span className="ml-2">{bookmarked ? 'Saved' : 'Save'}</span>}
     </Button>
   );
 }
+

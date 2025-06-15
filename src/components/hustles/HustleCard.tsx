@@ -32,7 +32,7 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
             hustleId={hustle.id} 
             size="sm" 
             variant="ghost" 
-            className="h-7 w-7 p-1" 
+            className="h-7 w-7 p-1" // Base color handled by BookmarkButton internal logic
             isIconOnly={true} 
           />
           <ShareHustlePopover 
@@ -41,7 +41,7 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
             triggerSize="sm" 
             triggerVariant="ghost"
             isIconOnly={true} 
-            triggerClassName="h-7 w-7 p-1"
+            triggerClassName="h-7 w-7 p-1" // Base color handled by ShareHustlePopover internal logic
           />
         </div>
       </CardHeader>
@@ -53,7 +53,7 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
         </CardDescription>
       </CardContent>
       <CardFooter className="p-3 sm:p-4 pt-0">
-        <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
+        <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground text-sm">
           <Link href={hustle.detailsLink}>
             View Details
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -65,3 +65,4 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
 };
 
 export default HustleCard;
+
