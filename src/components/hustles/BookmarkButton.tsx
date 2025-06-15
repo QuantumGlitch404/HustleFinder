@@ -11,7 +11,7 @@ interface BookmarkButtonProps {
   className?: string;
   size?: "default" | "sm" | "lg" | "icon" | null | undefined;
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
-  isIconOnly?: boolean;
+  isIconOnly?: boolean; // Default to false
 }
 
 export default function BookmarkButton({ hustleId, className, size = "icon", variant = "ghost", isIconOnly = false }: BookmarkButtonProps) {

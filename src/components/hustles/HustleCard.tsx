@@ -28,7 +28,13 @@ const HustleCard: React.FC<HustleCardProps> = ({ hustle }) => {
           />
         </div>
         <div className="absolute top-2 right-2 flex space-x-1 bg-card/70 backdrop-blur-sm p-1 rounded-md">
-          <BookmarkButton hustleId={hustle.id} size="sm" variant="ghost" className="h-7 w-7 p-1" />
+          <BookmarkButton 
+            hustleId={hustle.id} 
+            size="sm" 
+            variant="ghost" 
+            className="h-7 w-7 p-1" 
+            isIconOnly={true} 
+          />
           <ShareHustlePopover 
             hustleTitle={hustle.title} 
             hustleUrl={hustle.detailsLink} 

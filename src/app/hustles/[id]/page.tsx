@@ -103,17 +103,18 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex space-x-2 bg-card/70 backdrop-blur-sm p-1.5 rounded-lg">
                   <BookmarkButton 
                     hustleId={hustle.id} 
-                    size="default" 
+                    size="sm" // Using sm for a slightly smaller base button
                     variant="ghost" 
-                    className="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2"
+                    className="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-destructive" // Adjusted classes for icon button
+                    isIconOnly={true}
                   />
                   <ShareHustlePopover 
                     hustleTitle={hustle.title} 
                     hustleUrl={pathname} 
-                    triggerSize="default" 
+                    triggerSize="sm" // Using sm for a slightly smaller base button
                     triggerVariant="ghost" 
                     isIconOnly={true}
-                    triggerClassName="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2"
+                    triggerClassName="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-primary" // Adjusted classes for icon button
                   />
                 </div>
               </div>
