@@ -36,13 +36,14 @@ import {
   AlertTriangle,
   MessageSquarePlus,
   KeyRound,
-  Share2,
-  Heart
 } from 'lucide-react';
 import SubmitReviewForm from '@/components/hustles/SubmitReviewForm'; 
 import InPageNav from '@/components/hustles/InPageNav';
 import BookmarkButton from '@/components/hustles/BookmarkButton';
 import ShareHustlePopover from '@/components/hustles/ShareHustlePopover';
+import AdPlaceholder from '@/components/ads/AdPlaceholder';
+import AnimatedDiv from '@/components/animations/AnimatedDiv';
+
 
 interface HustleDetailsPageProps {
   params: { id: string };
@@ -103,18 +104,18 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex space-x-2 bg-card/70 backdrop-blur-sm p-1.5 rounded-lg">
                   <BookmarkButton 
                     hustleId={hustle.id} 
-                    size="sm" // Using sm for a slightly smaller base button
+                    size="sm"
                     variant="ghost" 
-                    className="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-destructive" // Adjusted classes for icon button
+                    className="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-destructive"
                     isIconOnly={true}
                   />
                   <ShareHustlePopover 
                     hustleTitle={hustle.title} 
                     hustleUrl={pathname} 
-                    triggerSize="sm" // Using sm for a slightly smaller base button
+                    triggerSize="sm"
                     triggerVariant="ghost" 
                     isIconOnly={true}
-                    triggerClassName="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-primary" // Adjusted classes for icon button
+                    triggerClassName="h-8 w-8 p-1.5 sm:h-9 sm:w-9 sm:p-2 text-white hover:text-primary"
                   />
                 </div>
               </div>
@@ -137,6 +138,15 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                 </div>
               </div>
             </CardHeader>
+
+            {/* Ad Placeholder 1 - Top */}
+            <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full px-4 md:px-6 pt-4 md:pt-6">
+              <AdPlaceholder 
+                description={`Hustle Page Ad Slot 1 (Top) - ${hustle.title}`}
+                adTypeSuggestion="Banner"
+                dimensionsSuggestion="Responsive or 728x90px"
+              />
+            </AnimatedDiv>
             
             <CardContent className="p-4 md:p-6 pt-6 md:pt-8" id="about-hustle">
               <div className="flex items-center text-muted-foreground mb-4"> 
@@ -273,6 +283,14 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
+                  {/* Ad Placeholder 2 - Mid 1 */}
+                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+                    <AdPlaceholder 
+                      description={`Hustle Page Ad Slot 2 (Mid-Guide) - ${hustle.title}`}
+                      adTypeSuggestion="In-Content Unit or Native Banner"
+                      dimensionsSuggestion="Responsive"
+                    />
+                  </AnimatedDiv>
 
                   <Card className="shadow-md rounded-lg" id="testimonials">
                     <CardHeader className="p-3 md:p-4 pb-0 md:pb-0">
@@ -303,6 +321,15 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                       )}
                     </CardContent>
                   </Card>
+
+                  {/* Ad Placeholder 3 - Mid 2 */}
+                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+                    <AdPlaceholder 
+                      description={`Hustle Page Ad Slot 3 (Mid-Guide) - ${hustle.title}`}
+                      adTypeSuggestion="In-Content Unit or Native Banner"
+                      dimensionsSuggestion="Responsive"
+                    />
+                  </AnimatedDiv>
 
                   <Card className="shadow-md rounded-lg" id="write-review">
                     <CardHeader className="p-3 md:p-4 pb-0 md:pb-0">
@@ -370,6 +397,14 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
+                  {/* Ad Placeholder 4 - Bottom */}
+                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+                    <AdPlaceholder 
+                      description={`Hustle Page Ad Slot 4 (Bottom) - ${hustle.title}`}
+                      adTypeSuggestion="Banner"
+                      dimensionsSuggestion="Responsive or 728x90px"
+                    />
+                  </AnimatedDiv>
                 </div> 
               </section>
             )}

@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from 'react'; // Added React import
+import React from 'react';
 import { useBookmarks } from '@/context/BookmarkContext';
 import { allHustles } from '@/lib/hustle-data';
 import HustleCard from '@/components/hustles/HustleCard';
@@ -9,13 +9,13 @@ import { BookmarkX, Search } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
+import AdPlaceholder from '@/components/ads/AdPlaceholder';
 
 export default function BookmarksPage() {
   const { getBookmarkedHustles } = useBookmarks();
   const [bookmarkedHustles, setBookmarkedHustles] = React.useState(() => getBookmarkedHustles(allHustles));
 
   React.useEffect(() => {
-    // Update if bookmarks change (e.g. from another tab, though less likely with localStorage focus)
     setBookmarkedHustles(getBookmarkedHustles(allHustles));
   }, [getBookmarkedHustles]);
 
@@ -29,6 +29,15 @@ export default function BookmarksPage() {
             Revisit the opportunities you've bookmarked.
           </p>
         </div>
+      </AnimatedDiv>
+
+      {/* Ad Placeholder 1 - Top */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+        <AdPlaceholder 
+          description="Saved Page Ad Slot 1 (Top)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="Responsive"
+        />
       </AnimatedDiv>
 
       {bookmarkedHustles.length > 0 ? (
@@ -62,6 +71,15 @@ export default function BookmarksPage() {
           </div>
         </AnimatedDiv>
       )}
+
+      {/* Ad Placeholder 2 - Bottom */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full mt-8">
+        <AdPlaceholder 
+          description="Saved Page Ad Slot 2 (Bottom)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="Responsive"
+        />
+      </AnimatedDiv>
     </div>
   );
 }

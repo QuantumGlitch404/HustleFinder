@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Target, Zap } from "lucide-react";
 import Image from "next/image";
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
+import AdPlaceholder from "@/components/ads/AdPlaceholder";
 
 export const metadata = {
   title: 'About Us | Hustle Finder',
@@ -19,6 +20,15 @@ export default function AboutPage() {
             Connecting you with opportunities and empowering your entrepreneurial journey.
           </p>
         </div>
+      </AnimatedDiv>
+
+      {/* Ad Placeholder 1 - Top */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+        <AdPlaceholder 
+          description="About Page Ad Slot 1 (Top)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="Responsive"
+        />
       </AnimatedDiv>
 
       <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center mb-8 sm:mb-12">
@@ -50,6 +60,15 @@ export default function AboutPage() {
           </Card>
         </AnimatedDiv>
       </div>
+
+      {/* Ad Placeholder 2 - Mid */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
+        <AdPlaceholder 
+          description="About Page Ad Slot 2 (Mid)"
+          adTypeSuggestion="Native Banner or Banner"
+          dimensionsSuggestion="Responsive"
+        />
+      </AnimatedDiv>
 
       <div className="space-y-6 sm:space-y-10">
         <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-300">
@@ -91,6 +110,15 @@ export default function AboutPage() {
           </Card>
         </AnimatedDiv>
       </div>
+
+      {/* Ad Placeholder 3 - Bottom */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full mt-8">
+        <AdPlaceholder 
+          description="About Page Ad Slot 3 (Bottom)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="Responsive"
+        />
+      </AnimatedDiv>
     </div>
   );
 }

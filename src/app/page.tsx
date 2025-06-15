@@ -11,6 +11,7 @@ import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
 import DailyHustle from "@/components/home/DailyHustle";
 import TrendingHustlesSection from "@/components/home/TrendingHustlesSection";
+import AdPlaceholder from "@/components/ads/AdPlaceholder";
 
 export default function HomePage() {
   const featuredHustles = allHustles.slice(0, 3); 
@@ -48,18 +49,21 @@ export default function HomePage() {
       name: "Priya R.",
       avatarFallback: "PR",
       quote: "I started my freelance writing journey using Hustle Finder's guidance. The 'Steps to Start' were super helpful, and now I earn ₹20,000+ part-time!",
+      altText: "Testimonial from Priya R.",
       imageHint: "profile person"
     },
     {
       name: "Ahmed K.",
       avatarFallback: "AK",
       quote: "Found a great remote project and boosted my income. This site is a gem! Being able to save my favorite hustles is a great feature.",
+      altText: "Testimonial from Ahmed K.",
       imageHint: "profile person"
     },
     {
       name: "Sarah M.",
       avatarFallback: "SM",
       quote: "As a student, finding flexible work was key. Hustle Finder listed so many options I hadn't considered. The 'Beginner Friendly' tags are awesome.",
+      altText: "Testimonial from Sarah M.",
       imageHint: "profile person"
     }
   ];
@@ -93,6 +97,15 @@ export default function HomePage() {
           </div>
         </section>
       </AnimatedDiv>
+
+      {/* Ad Placeholder 1 - Top */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full">
+        <AdPlaceholder 
+          description="Homepage Ad Slot 1 (Top)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="728x90px or Responsive"
+        />
+      </AnimatedDiv>
       
       {/* Daily Hustle Suggestion Section */}
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-2xl" once={false}>
@@ -103,6 +116,15 @@ export default function HomePage() {
       <div className="container mx-auto px-4 w-full">
         <TrendingHustlesSection />
       </div>
+
+      {/* Ad Placeholder 2 - Mid 1 */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-100" className="container mx-auto px-4 w-full">
+        <AdPlaceholder 
+          description="Homepage Ad Slot 2 (Mid)"
+          adTypeSuggestion="Native Banner or Banner"
+          dimensionsSuggestion="Responsive or 300x250px"
+        />
+      </AnimatedDiv>
 
       {/* Why Hustle Finder? Section */}
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
@@ -138,7 +160,7 @@ export default function HomePage() {
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
               <div className="p-4 bg-primary/10 rounded-full mb-4 shadow-md inline-block">
-                <Search className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
+                 <Search className="h-16 w-16 sm:h-20 sm:w-20 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
@@ -165,58 +187,14 @@ export default function HomePage() {
         </div>
       </AnimatedDiv>
 
-      {/* Featured Hustles Section - Replaced with Trending Hustles, can be added back if needed */}
-      {/*
-      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full" once={false}>
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {featuredHustles.map((hustle: Hustle, index: number) => (
-            <AnimatedDiv key={hustle.id} animationClasses="fade-in zoom-in-95" durationClass="duration-500" delayClass={`delay-${index * 100}`} once={false}>
-              <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
-                <div className="relative w-full h-40">
-                  <Image
-                    src={hustle.imageUrl}
-                    alt={hustle.title}
-                    fill
-                    style={{objectFit:"cover"}}
-                    className="rounded-t-lg"
-                    data-ai-hint={hustle.imageHint}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-                <CardHeader className="p-4">
-                  <CardTitle className="text-lg font-semibold mb-1 line-clamp-2">{hustle.title}</CardTitle>
-                  <CardDescription className="text-xs text-muted-foreground">{hustle.category}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow p-4 pt-0">
-                  <p className="text-sm text-primary font-medium flex items-center">
-                    <TrendingUp className="h-4 w-4 mr-1 text-accent" />
-                    Potential: {hustle.earningPotentials[0]?.range.split('(')[0].trim() || "Varies"}
-                  </p>
-                </CardContent>
-                <div className="p-4 pt-2">
-                  <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/10 text-sm">
-                    <Link href={hustle.detailsLink}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </Card>
-            </AnimatedDiv>
-          ))}
-        </div>
-        <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="text-center mt-8" once={false}>
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
-            <Link href="/hustles">
-              View All Hustles
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </AnimatedDiv>
+      {/* Ad Placeholder 3 - Mid 2 */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-200" className="container mx-auto px-4 w-full">
+        <AdPlaceholder 
+          description="Homepage Ad Slot 3 (Mid)"
+          adTypeSuggestion="Native Banner or Banner"
+          dimensionsSuggestion="Responsive or 300x250px"
+        />
       </AnimatedDiv>
-      */}
-
 
       {/* Testimonials Section */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg" once={false}>
@@ -227,7 +205,7 @@ export default function HomePage() {
               <Card className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform h-full">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
-                    <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={`${testimonial.name} - Hustle Finder User`} data-ai-hint={testimonial.imageHint} />
+                    <AvatarImage src={`https://placehold.co/80x80.png?text=${testimonial.avatarFallback}`} alt={testimonial.altText} data-ai-hint={testimonial.imageHint} />
                     <AvatarFallback className="text-lg bg-secondary text-secondary-foreground">{testimonial.avatarFallback}</AvatarFallback>
                   </Avatar>
                   <Users className="h-6 w-6 text-accent mx-auto mb-2" />
@@ -259,9 +237,15 @@ export default function HomePage() {
           ))}
         </Accordion>
       </AnimatedDiv>
+
+      {/* Ad Placeholder 4 - Bottom */}
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="container mx-auto px-4 w-full">
+        <AdPlaceholder 
+          description="Homepage Ad Slot 4 (Bottom)"
+          adTypeSuggestion="Banner"
+          dimensionsSuggestion="728x90px or Responsive"
+        />
+      </AnimatedDiv>
     </div>
   );
 }
-
-    
-    

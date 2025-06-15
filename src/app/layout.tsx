@@ -48,6 +48,13 @@ export default function RootLayout({
               <ScrollToTopButton />
             </BookmarkProvider>
         </ThemeProvider>
+        {/* 
+          Consider placing page-level Adsterra scripts here, such as:
+          - Popunder ad script
+          - Social Bar ad script
+          These usually go before the closing </body> tag.
+          Example: <script async src="your-adsterra-popunder-script.js"></script> 
+        */}
       </body>
     </html>
   );
