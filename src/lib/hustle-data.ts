@@ -195,24 +195,59 @@ const remoteCategoriesBatch3 = [
   { name: 'Creative Media Production (Remote)', imageHint: 'video_editing graphics' },
 ];
 
-const remoteSampleTitlesBatch3 = [ 
+const remoteSampleTitlesBatch3 = [
+  // Remote Micro-Consulting (15 titles)
   'Online Research for Academics/Businesses', 'Virtual Technical Documentation Writer', 'Remote Customer Support (Non-Voice)',
   'Social Media Listening & Reporting', 'E-commerce Product Review Writer', 'Online Language Practice Moderator',
   'AI Chatbot Training & Optimization', 'Data Cleansing & Formatting Specialist', 'Virtual Event Planning Assistant',
   'Remote Book Indexer', 'Online Store Inventory Manager (Virtual)', 'Digital Asset Organizer (Cloud Storage)',
   'Lead Prospecting for Sales Teams (Remote)', 'Online Forum/Community Engagement Specialist', 'Remote Software Beta Tester (Feedback Focus)',
+  // Specialized Digital Assistance (15 titles)
   'Virtual Project Task Coordinator', 'Personalized Newsletter Curator', 'Online Survey Data Collector',
   'Remote Graphic Design for Social Media Posts', 'Short Video Clip Editor for Social Media', 'Proofreader for Non-Native English Writers',
   'Transcription for Academic Interviews', 'Website Content Uploader & Formatter', 'Remote IT Helpdesk (Tier 1)',
   'Online Marketplace Competitor Analyst', 'Virtual Meeting Minute Taker', 'Customized Digital Template Designer (Canva/Docs)',
   'Remote Usability Testing Participant', 'Social Media Bio & Profile Writer', 'Online Course Forum Moderator',
+  // Online Content Moderation & Curation (15 titles)
   'Virtual Assistant for Podcasters (Scheduling, Show Notes)', 'Fact-Checker for Online Content', 'Remote Data Entry for Loyalty Programs',
   'E-commerce Customer Query Handler (Email/Chat)', 'Simple Logo Design for Startups', 'Online Ad Copywriter (Short Form)',
   'Travel Itinerary Researcher (Budget Focus)', 'Remote Presentation Slide Polisher', 'Virtual Book Club Facilitator',
-  'Creator of Educational Quizzes Online'
+  'Creator of Educational Quizzes Online', 'Online Community Guideline Enforcer', 'Digital Content Tagging Specialist',
+  'Stock Photo Curation Assistant', 'User-Generated Content Reviewer', 'Forum Spam & Abuse Monitor',
+  // Remote Language Services (15 titles)
+  'Bilingual Customer Support Agent (Chat/Email)', 'Document Translation (Specific Fields)', 'Website Localization Tester',
+  'Subtitling for Indie Films', 'Proofreading for Translated Texts', 'Language Tutoring for Specific Exams',
+  'Voice-over for Localized Training Materials', 'Cultural Sensitivity Reviewer for Content', 'Glossary & Terminology Creator',
+  'Interpretation for Small Online Meetings', 'Transcreation of Marketing Slogans', 'Language Quality Assurance Tester',
+  'Resume/CV Translation for Job Seekers', 'Linguistic Annotation for AI', 'Medical Document Translator (Certified)',
+  // Web Presence Management (15 titles)
+  'Basic SEO Keyword Researcher', 'Local SEO Citation Builder', 'Social Media Engagement Specialist',
+  'WordPress Content Updater', 'Google My Business Profile Optimizer', 'Online Review Management Assistant',
+  'Blog Comment Moderator & Responder', 'Forum Profile Link Builder (Ethical)', 'Social Media Analytics Reporter (Basic)',
+  'Website Broken Link Checker', 'Image Alt Text Writer for SEO', 'Competitor Social Media Watcher',
+  'Content Repurposing for Social Media', 'Directory Submission Specialist', 'Social Bookmarking Assistant',
+  // Niche E-commerce Support (15 titles)
+  'Etsy Shop Customer Service Rep', 'Amazon FBA Virtual Assistant (Basic Tasks)', 'Product Description Writer for Dropshippers',
+  'Order Processing & Tracking Assistant', 'E-commerce Return Management Support', 'Affiliate Product Research Assistant',
+  'Shopify Store Content Entry', 'Customer Review Responder (E-commerce)', 'Influencer Outreach for Small Brands',
+  'E-commerce Competitor Price Monitor', 'Product Image Resizing/Optimization', 'Abandoned Cart Email Sequencer (Basic Setup)',
+  'E-commerce Data Entry for Product Specs', 'Social Media Shop Integration Assistant', 'Loyalty Program Data Management',
+  // Remote Learning Facilitation (15 titles)
+  'Online Homework Helper (Specific Subjects)', 'Virtual Study Hall Monitor', 'Discussion Forum Facilitator for Courses',
+  'Technical Support for E-learning Platforms', 'Student Progress Tracker (Assistant)', 'Online Quiz Creator/Grader (Simple)',
+  'Resource Curation for Online Courses', 'Virtual Classroom Assistant (Admin Tasks)', 'Feedback Collector for Online Training',
+  'Student Onboarding Assistant (Virtual)', 'Certificate of Completion Generator', 'Live Q&A Session Moderator (Chat)',
+  'Learning Management System (LMS) Data Entry', 'Accessibility Checker for Course Materials', 'Online Workshop Co-host (Support Role)',
+  // Creative Media Production (Remote) (15 titles)
+  'Basic Video Intro/Outro Creator', 'Podcast Audio Cleanup Assistant', 'Social Media Graphic Resizer',
+  'Canva Template Customizer', 'Stock Video Footage Researcher', 'Simple Infographic Designer (Canva)',
+  'Thumbnail Creator for YouTube Videos', 'Presentation Slide Designer (Basic)', 'Photo Retouching (Minor Adjustments)',
+  'Video Subtitle Burner-in', 'Audio Transcription for Video Captions', 'Music Playlist Curator for Content Creators',
+  'Animated GIF Creator from Video Clips', 'Digital Sticker Designer for Messaging Apps', 'Portfolio Website Content Updater (Creative)',
 ];
 
-const remoteSampleDescriptionsBatch3 = [ 
+const remoteSampleDescriptionsBatch3 = [
+  // Remote Micro-Consulting (15 descriptions)
   'Conduct detailed online research on specified topics for academic papers or business reports.',
   'Write clear, concise technical guides, manuals, and FAQs for software or products remotely.',
   'Provide customer support via email, chat, or helpdesk tickets, no voice calls required.',
@@ -228,6 +263,7 @@ const remoteSampleDescriptionsBatch3 = [
   'Identify and research potential leads for sales teams based on defined criteria, using online tools.',
   'Actively participate in and moderate online forums or communities to foster engagement and answer questions.',
   'Test pre-release software, websites, or apps and provide detailed feedback on bugs and usability.',
+  // Specialized Digital Assistance (15 descriptions)
   'Coordinate and track tasks for remote projects using project management software.',
   'Curate and compile personalized newsletters on specific topics for subscribers.',
   'Collect data through online surveys, ensuring participant recruitment and data integrity.',
@@ -243,6 +279,7 @@ const remoteSampleDescriptionsBatch3 = [
   'Participate in remote usability testing sessions, providing verbal feedback on software or websites.',
   'Craft compelling and optimized bios and profiles for individuals or businesses on social media platforms.',
   'Moderate discussion forums for online courses, answer student questions, and facilitate learning.',
+  // Online Content Moderation & Curation (15 descriptions)
   'Assist podcasters with scheduling interviews, editing audio, writing show notes, and promoting episodes.',
   'Verify the accuracy of information and sources for articles, blog posts, and other online content.',
   'Perform remote data entry tasks for customer loyalty programs, updating member information and points.',
@@ -252,8 +289,94 @@ const remoteSampleDescriptionsBatch3 = [
   'Research and compile budget-friendly travel itineraries, including accommodation and activity options.',
   'Enhance and polish existing presentation slides for clarity, consistency, and visual appeal.',
   'Organize and facilitate online book club discussions, selecting books and guiding conversations.',
-  'Develop engaging online quizzes and assessments for educational or training purposes.'
+  'Develop engaging online quizzes and assessments for educational or training purposes.',
+  'Enforce community guidelines in online forums or social media groups to maintain a positive environment.',
+  'Accurately tag digital content (images, articles, videos) with relevant keywords for better organization and searchability.',
+  'Assist in curating and selecting high-quality stock photos for various projects based on specific criteria.',
+  'Review and approve or reject user-generated content based on platform policies and quality standards.',
+  'Monitor online forums and communities for spam, abusive behavior, and policy violations, taking appropriate action.',
+  // Remote Language Services (15 descriptions)
+  'Provide customer support in two or more languages via chat or email, assisting international customers.',
+  'Translate documents in specialized fields like legal, medical, or technical, requiring subject matter expertise.',
+  'Test localized versions of websites or software to ensure linguistic accuracy and cultural appropriateness.',
+  'Create accurate and well-timed subtitles for independent films or videos for a global audience.',
+  'Review and edit translated texts to ensure accuracy, fluency, and consistency with the source material.',
+  'Offer personalized language tutoring to help students prepare for specific language proficiency exams.',
+  'Record voice-overs for training materials, e-learning modules, or corporate videos in various languages.',
+  'Review content for cultural sensitivities and appropriateness for specific target markets or regions.',
+  'Develop and maintain glossaries and terminology databases for consistent translations across projects.',
+  'Provide real-time or consecutive interpretation services for small online meetings or webinars.',
+  'Adapt marketing slogans and advertising copy to resonate culturally and linguistically with new target markets.',
+  'Perform quality assurance checks on translated content to ensure it meets linguistic and client standards.',
+  'Translate resumes, CVs, and cover letters for job seekers applying for positions in different countries.',
+  'Annotate text data with linguistic information (e.g., part-of-speech tagging, named entity recognition) for AI training.',
+  'Translate sensitive medical documents accurately, often requiring certification and specialized knowledge.',
+  // Web Presence Management (15 descriptions)
+  'Conduct basic keyword research to identify relevant search terms for website content and SEO strategies.',
+  'Build local business citations on online directories and platforms to improve local search visibility.',
+  'Engage with followers, respond to comments, and foster community on social media platforms.',
+  'Update website content, blog posts, and images on WordPress or similar CMS platforms.',
+  'Optimize Google My Business profiles with accurate information, photos, and posts to attract local customers.',
+  'Monitor and respond to online reviews on platforms like Google, Yelp, and industry-specific sites.',
+  'Moderate blog comments to prevent spam and engage with readers, fostering a positive community.',
+  'Build relevant backlinks by participating in online forums and communities (ethically and without spamming).',
+  'Compile basic reports on social media performance using platform analytics or simple tracking tools.',
+  'Regularly check websites for broken links and report them for fixing to improve user experience and SEO.',
+  'Write descriptive alt text for images on websites to improve accessibility and image SEO.',
+  'Monitor competitors\' social media activities to identify trends, content strategies, and engagement tactics.',
+  'Repurpose existing content (e.g., blog posts into social media updates, videos into articles) for wider reach.',
+  'Submit websites and business information to relevant online directories for increased visibility.',
+  'Share website content and articles on social bookmarking sites to generate traffic and backlinks.',
+  // Niche E-commerce Support (15 descriptions)
+  'Provide customer service for Etsy shop owners, handling inquiries, orders, and resolving issues.',
+  'Assist Amazon FBA sellers with basic tasks like inventory monitoring, customer communication, or product research.',
+  'Write compelling and keyword-rich product descriptions for dropshipping stores to attract buyers.',
+  'Help e-commerce businesses process orders, track shipments, and update customers on order status.',
+  'Manage customer returns and exchanges for online stores, ensuring a smooth process for buyers.',
+  'Research profitable products and niches for affiliate marketers to promote on their websites or social media.',
+  'Enter and update product information, images, and pricing on Shopify stores.',
+  'Respond to customer reviews on e-commerce platforms, addressing feedback and maintaining brand reputation.',
+  'Identify and reach out to relevant influencers for collaborations with small e-commerce brands.',
+  'Monitor competitor pricing on e-commerce platforms to help businesses stay competitive.',
+  'Resize and optimize product images for fast loading times and better visual appeal on e-commerce sites.',
+  'Set up basic automated email sequences for abandoned carts to recover potential sales.',
+  'Perform accurate data entry of product specifications, SKUs, and other details for e-commerce catalogs.',
+  'Help integrate e-commerce products with social media shops like Instagram Shopping or Facebook Shops.',
+  'Manage customer data and engagement for e-commerce loyalty programs, tracking points and rewards.',
+  // Remote Learning Facilitation (15 descriptions)
+  'Assist students with their homework in specific subjects through online chat or video calls.',
+  'Supervise online study sessions, ensuring students stay on task and providing a conducive learning environment.',
+  'Facilitate discussions in online course forums, encouraging participation and answering student questions.',
+  'Provide technical support to users of e-learning platforms, troubleshooting login or access issues.',
+  'Help track student progress and completion of assignments in online courses for instructors.',
+  'Create and grade simple online quizzes or assignments based on provided materials and rubrics.',
+  'Curate and organize learning resources, articles, and videos for online courses or training programs.',
+  'Perform administrative tasks for virtual classrooms, such as managing attendance or distributing materials.',
+  'Collect and compile feedback from students on online training sessions or course content.',
+  'Assist new students with the onboarding process for online courses or virtual learning environments.',
+  'Generate and distribute certificates of completion for students who finish online courses or workshops.',
+  'Moderate the chat and Q&A during live online Q&A sessions or webinars, ensuring smooth interaction.',
+  'Enter data into Learning Management Systems (LMS), such as student information or course content.',
+  'Review online course materials for accessibility compliance, ensuring they are usable by students with disabilities.',
+  'Act as a co-host or technical support for online workshops, assisting the main facilitator and participants.',
+  // Creative Media Production (Remote) (15 descriptions)
+  'Create simple and engaging video intros and outros for YouTube channels or online presentations.',
+  'Clean up podcast audio by removing background noise, ums/ahs, and improving overall sound quality.',
+  'Resize and adapt existing graphics for various social media platforms, ensuring optimal dimensions.',
+  'Customize pre-made Canva templates with client branding, text, and images for quick graphic design.',
+  'Research and source royalty-free stock video footage for use in various video projects.',
+  'Design simple and clear infographics using tools like Canva to visualize data or information.',
+  'Create eye-catching and click-worthy thumbnails for YouTube videos to increase views.',
+  'Design basic presentation slides using PowerPoint, Google Slides, or Canva, focusing on clarity.',
+  'Perform minor photo retouching tasks like color correction, blemish removal, or background cleanup.',
+  'Permanently embed subtitles into video files for distribution on platforms without native subtitle support.',
+  'Transcribe audio from videos accurately to create captions or subtitles, improving accessibility.',
+  'Curate music playlists with royalty-free or licensed tracks for content creators to use in their videos.',
+  'Create short animated GIFs from video clips for use in social media, emails, or blog posts.',
+  'Design custom digital stickers or emojis for use in messaging apps or online communities.',
+  'Update and maintain content on creative portfolio websites, adding new projects and information.',
 ];
+
 
 // --- New Data Generation Helpers ---
 
