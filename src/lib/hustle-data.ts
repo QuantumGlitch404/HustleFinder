@@ -111,7 +111,7 @@ const remoteCategoriesBatch2 = [
   { name: 'Data & Research Services', imageHint: 'data analysis research' },
 ];
 
-const remoteSampleTitlesBatch2 = [ 
+const remoteSampleTitlesBatch2 = [
   'Online Language Conversation Partner', 'Virtual Event Host/Moderator', 'Custom Digital Planner Creator',
   'Social Media Content Scheduler', 'Podcast Editing Services', 'Online Fitness/Wellness Coach (Niche)',
   'Genealogy Researcher (Online)', 'AI Prompt Engineer (Entry Level)', 'Ebook Formatting Specialist',
@@ -131,7 +131,7 @@ const remoteSampleTitlesBatch2 = [
   'Podcast Show Notes Writer', 'Social Media Ad Campaign Manager (Small Scale)'
 ];
 
-const remoteSampleDescriptionsBatch2 = [ 
+const remoteSampleDescriptionsBatch2 = [
   'Help language learners practice conversation skills via video calls, focusing on fluency and confidence.',
   'Host or moderate online events, webinars, and virtual conferences for global audiences.',
   'Design and sell custom digital planners compatible with popular note-taking apps.',
@@ -196,49 +196,41 @@ const remoteCategoriesBatch3 = [
 ];
 
 const remoteSampleTitlesBatch3 = [
-  // Remote Micro-Consulting (15 titles)
   'Online Research for Academics/Businesses', 'Virtual Technical Documentation Writer', 'Remote Customer Support (Non-Voice)',
   'Social Media Listening & Reporting', 'E-commerce Product Review Writer', 'Online Language Practice Moderator',
   'AI Chatbot Training & Optimization', 'Data Cleansing & Formatting Specialist', 'Virtual Event Planning Assistant',
   'Remote Book Indexer', 'Online Store Inventory Manager (Virtual)', 'Digital Asset Organizer (Cloud Storage)',
   'Lead Prospecting for Sales Teams (Remote)', 'Online Forum/Community Engagement Specialist', 'Remote Software Beta Tester (Feedback Focus)',
-  // Specialized Digital Assistance (15 titles)
   'Virtual Project Task Coordinator', 'Personalized Newsletter Curator', 'Online Survey Data Collector',
   'Remote Graphic Design for Social Media Posts', 'Short Video Clip Editor for Social Media', 'Proofreader for Non-Native English Writers',
   'Transcription for Academic Interviews', 'Website Content Uploader & Formatter', 'Remote IT Helpdesk (Tier 1)',
   'Online Marketplace Competitor Analyst', 'Virtual Meeting Minute Taker', 'Customized Digital Template Designer (Canva/Docs)',
   'Remote Usability Testing Participant', 'Social Media Bio & Profile Writer', 'Online Course Forum Moderator',
-  // Online Content Moderation & Curation (15 titles)
   'Virtual Assistant for Podcasters (Scheduling, Show Notes)', 'Fact-Checker for Online Content', 'Remote Data Entry for Loyalty Programs',
   'E-commerce Customer Query Handler (Email/Chat)', 'Simple Logo Design for Startups', 'Online Ad Copywriter (Short Form)',
   'Travel Itinerary Researcher (Budget Focus)', 'Remote Presentation Slide Polisher', 'Virtual Book Club Facilitator',
   'Creator of Educational Quizzes Online', 'Online Community Guideline Enforcer', 'Digital Content Tagging Specialist',
   'Stock Photo Curation Assistant', 'User-Generated Content Reviewer', 'Forum Spam & Abuse Monitor',
-  // Remote Language Services (15 titles)
   'Bilingual Customer Support Agent (Chat/Email)', 'Document Translation (Specific Fields)', 'Website Localization Tester',
   'Subtitling for Indie Films', 'Proofreading for Translated Texts', 'Language Tutoring for Specific Exams',
   'Voice-over for Localized Training Materials', 'Cultural Sensitivity Reviewer for Content', 'Glossary & Terminology Creator',
   'Interpretation for Small Online Meetings', 'Transcreation of Marketing Slogans', 'Language Quality Assurance Tester',
   'Resume/CV Translation for Job Seekers', 'Linguistic Annotation for AI', 'Medical Document Translator (Certified)',
-  // Web Presence Management (15 titles)
   'Basic SEO Keyword Researcher', 'Local SEO Citation Builder', 'Social Media Engagement Specialist',
   'WordPress Content Updater', 'Google My Business Profile Optimizer', 'Online Review Management Assistant',
   'Blog Comment Moderator & Responder', 'Forum Profile Link Builder (Ethical)', 'Social Media Analytics Reporter (Basic)',
   'Website Broken Link Checker', 'Image Alt Text Writer for SEO', 'Competitor Social Media Watcher',
   'Content Repurposing for Social Media', 'Directory Submission Specialist', 'Social Bookmarking Assistant',
-  // Niche E-commerce Support (15 titles)
   'Etsy Shop Customer Service Rep', 'Amazon FBA Virtual Assistant (Basic Tasks)', 'Product Description Writer for Dropshippers',
   'Order Processing & Tracking Assistant', 'E-commerce Return Management Support', 'Affiliate Product Research Assistant',
   'Shopify Store Content Entry', 'Customer Review Responder (E-commerce)', 'Influencer Outreach for Small Brands',
   'E-commerce Competitor Price Monitor', 'Product Image Resizing/Optimization', 'Abandoned Cart Email Sequencer (Basic Setup)',
   'E-commerce Data Entry for Product Specs', 'Social Media Shop Integration Assistant', 'Loyalty Program Data Management',
-  // Remote Learning Facilitation (15 titles)
   'Online Homework Helper (Specific Subjects)', 'Virtual Study Hall Monitor', 'Discussion Forum Facilitator for Courses',
   'Technical Support for E-learning Platforms', 'Student Progress Tracker (Assistant)', 'Online Quiz Creator/Grader (Simple)',
   'Resource Curation for Online Courses', 'Virtual Classroom Assistant (Admin Tasks)', 'Feedback Collector for Online Training',
   'Student Onboarding Assistant (Virtual)', 'Certificate of Completion Generator', 'Live Q&A Session Moderator (Chat)',
   'Learning Management System (LMS) Data Entry', 'Accessibility Checker for Course Materials', 'Online Workshop Co-host (Support Role)',
-  // Creative Media Production (Remote) (15 titles)
   'Basic Video Intro/Outro Creator', 'Podcast Audio Cleanup Assistant', 'Social Media Graphic Resizer',
   'Canva Template Customizer', 'Stock Video Footage Researcher', 'Simple Infographic Designer (Canva)',
   'Thumbnail Creator for YouTube Videos', 'Presentation Slide Designer (Basic)', 'Photo Retouching (Minor Adjustments)',
@@ -247,7 +239,6 @@ const remoteSampleTitlesBatch3 = [
 ];
 
 const remoteSampleDescriptionsBatch3 = [
-  // Remote Micro-Consulting (15 descriptions)
   'Conduct detailed online research on specified topics for academic papers or business reports.',
   'Write clear, concise technical guides, manuals, and FAQs for software or products remotely.',
   'Provide customer support via email, chat, or helpdesk tickets, no voice calls required.',
@@ -263,7 +254,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Identify and research potential leads for sales teams based on defined criteria, using online tools.',
   'Actively participate in and moderate online forums or communities to foster engagement and answer questions.',
   'Test pre-release software, websites, or apps and provide detailed feedback on bugs and usability.',
-  // Specialized Digital Assistance (15 descriptions)
   'Coordinate and track tasks for remote projects using project management software.',
   'Curate and compile personalized newsletters on specific topics for subscribers.',
   'Collect data through online surveys, ensuring participant recruitment and data integrity.',
@@ -279,7 +269,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Participate in remote usability testing sessions, providing verbal feedback on software or websites.',
   'Craft compelling and optimized bios and profiles for individuals or businesses on social media platforms.',
   'Moderate discussion forums for online courses, answer student questions, and facilitate learning.',
-  // Online Content Moderation & Curation (15 descriptions)
   'Assist podcasters with scheduling interviews, editing audio, writing show notes, and promoting episodes.',
   'Verify the accuracy of information and sources for articles, blog posts, and other online content.',
   'Perform remote data entry tasks for customer loyalty programs, updating member information and points.',
@@ -295,7 +284,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Assist in curating and selecting high-quality stock photos for various projects based on specific criteria.',
   'Review and approve or reject user-generated content based on platform policies and quality standards.',
   'Monitor online forums and communities for spam, abusive behavior, and policy violations, taking appropriate action.',
-  // Remote Language Services (15 descriptions)
   'Provide customer support in two or more languages via chat or email, assisting international customers.',
   'Translate documents in specialized fields like legal, medical, or technical, requiring subject matter expertise.',
   'Test localized versions of websites or software to ensure linguistic accuracy and cultural appropriateness.',
@@ -311,7 +299,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Translate resumes, CVs, and cover letters for job seekers applying for positions in different countries.',
   'Annotate text data with linguistic information (e.g., part-of-speech tagging, named entity recognition) for AI training.',
   'Translate sensitive medical documents accurately, often requiring certification and specialized knowledge.',
-  // Web Presence Management (15 descriptions)
   'Conduct basic keyword research to identify relevant search terms for website content and SEO strategies.',
   'Build local business citations on online directories and platforms to improve local search visibility.',
   'Engage with followers, respond to comments, and foster community on social media platforms.',
@@ -327,7 +314,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Repurpose existing content (e.g., blog posts into social media updates, videos into articles) for wider reach.',
   'Submit websites and business information to relevant online directories for increased visibility.',
   'Share website content and articles on social bookmarking sites to generate traffic and backlinks.',
-  // Niche E-commerce Support (15 descriptions)
   'Provide customer service for Etsy shop owners, handling inquiries, orders, and resolving issues.',
   'Assist Amazon FBA sellers with basic tasks like inventory monitoring, customer communication, or product research.',
   'Write compelling and keyword-rich product descriptions for dropshipping stores to attract buyers.',
@@ -343,7 +329,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Perform accurate data entry of product specifications, SKUs, and other details for e-commerce catalogs.',
   'Help integrate e-commerce products with social media shops like Instagram Shopping or Facebook Shops.',
   'Manage customer data and engagement for e-commerce loyalty programs, tracking points and rewards.',
-  // Remote Learning Facilitation (15 descriptions)
   'Assist students with their homework in specific subjects through online chat or video calls.',
   'Supervise online study sessions, ensuring students stay on task and providing a conducive learning environment.',
   'Facilitate discussions in online course forums, encouraging participation and answering student questions.',
@@ -359,7 +344,6 @@ const remoteSampleDescriptionsBatch3 = [
   'Enter data into Learning Management Systems (LMS), such as student information or course content.',
   'Review online course materials for accessibility compliance, ensuring they are usable by students with disabilities.',
   'Act as a co-host or technical support for online workshops, assisting the main facilitator and participants.',
-  // Creative Media Production (Remote) (15 descriptions)
   'Create simple and engaging video intros and outros for YouTube channels or online presentations.',
   'Clean up podcast audio by removing background noise, ums/ahs, and improving overall sound quality.',
   'Resize and adapt existing graphics for various social media platforms, ensuring optimal dimensions.',
@@ -377,8 +361,199 @@ const remoteSampleDescriptionsBatch3 = [
   'Update and maintain content on creative portfolio websites, adding new projects and information.',
 ];
 
+const remoteCategoriesBatch4 = [
+  { name: 'Remote Creative & Media Support', imageHint: 'creative media remote' },
+  { name: 'Virtual Business Operations', imageHint: 'business operations virtual' },
+  { name: 'Online Marketing & Sales Assistance', imageHint: 'marketing sales online' },
+  { name: 'Specialized Remote Tutoring & Coaching', imageHint: 'tutoring coaching specialized' },
+  { name: 'Digital Content Organization & Management', imageHint: 'content management digital' },
+  { name: 'Remote E-commerce Enhancement', imageHint: 'ecommerce enhancement online' },
+  { name: 'Niche Online Research & Data Tasks', imageHint: 'research data niche' },
+  { name: 'Remote Technical & Customer Assistance', imageHint: 'technical customer support' },
+];
 
-// --- New Data Generation Helpers ---
+const remoteSampleTitlesBatch4 = [
+  // Remote Creative & Media Support (15)
+  'Podcast Intro/Outro Music Composer', 'Video Thumbnail A/B Tester', 'Social Media AR Filter Designer (Basic)',
+  'Royalty-Free Sound Effect Creator', 'Custom Zoom Virtual Background Designer', 'Animated Explainer Video Scriptwriter',
+  'Photo Color Correction Specialist', 'Canva Template Pack Creator (for niches)', 'Ebook Cover Mockup Designer',
+  'Social Media Video Ad Creator (Short)', 'Music Transcription Services (Simple Pieces)', 'Gaming Stream Overlay Designer (Basic)',
+  'Infographic Content Researcher', 'Voice Tag/Producer Drop Creator', 'Content Repurposing for Different Platforms',
+  // Virtual Business Operations (15)
+  'Travel Arrangement Virtual Assistant', 'Online Subscription Management', 'Digital File Conversion Services',
+  'Appointment Scheduling & Calendar Management', 'Online Event Registration Support', 'Virtual Mail Management (Scanning/Forwarding)',
+  'CRM Data Entry & Cleanup Specialist', 'Standard Operating Procedure (SOP) Drafter', 'Online Form Builder & Manager',
+  'Expense Tracking & Reporting Assistant', 'Remote Team Meeting Facilitator (Tech Setup)', 'Cloud Storage Organization Expert',
+  'Business License & Permit Researcher', 'Competitor Research & Analysis Reporter', 'Presentation Formatting & Polishing',
+  // Online Marketing & Sales Assistance (15)
+  'Social Media Post Scheduler (Bulk)', 'Email Marketing Campaign Assistant (Setup)', 'Affiliate Marketing Link Manager',
+  'LinkedIn Profile Optimization Specialist', 'Online Survey Distribution & Collection', 'Basic Google Analytics Reporter',
+  'Customer Testimonial Collector & Organizer', 'Pinterest Pin Designer & Scheduler', 'Sales Lead List Building (Basic)',
+  'Forum Marketing & Engagement (Ethical)', 'Product Hunt Launch Support Assistant', 'Online Advertising Click Fraud Monitor (Basic)',
+  'Hashtag Research & Strategy Assistant', 'Landing Page Content Proofreader', 'Social Media Contest Manager (Basic)',
+  // Specialized Remote Tutoring & Coaching (15)
+  'Standardized Test Prep Tutor (Specific Section)', 'Software Skills Tutor (e.g., Excel, Canva)', 'Language Pronunciation Coach (Online)',
+  'Homework Accountability Partner', 'Study Skills Coach for Students', 'Homeschooling Support Tutor (Specific Subject)',
+  'Adult Learner Tech Skills Tutor', 'Online Music Theory Tutor (Beginner)', 'Coding Basics Tutor for Kids',
+  'Public Speaking Practice Partner (Online)', 'Mindfulness & Meditation Guide (Online)', 'Financial Literacy Coach (Basics)',
+  'Job Interview Practice Coach (Remote)', 'Digital Organization Coach', 'Hobby Skills Tutor (e.g., Knitting, Painting - Online)',
+  // Digital Content Organization & Management (15)
+  'Blog Content Calendar Manager', 'Digital Photo Organizer & Tagger', 'Website Content Audit Assistant (Links, Typos)',
+  'Podcast Episode Archive Manager', 'Social Media Content Library Curator', 'Online Course Material Organizer',
+  'Dropbox/Google Drive Clean-up Specialist', 'Evernote/Notion Organization Consultant', 'Digital Recipe Book Compiler',
+  'Ebook Library Management (Calibre)', 'Video Content Meta-data Optimizer (Tags, Descriptions)', 'Online Portfolio Content Updater',
+  'Digital Asset Management (DAM) Assistant (Basic)', 'Client Document Portal Manager (Secure Sharing)', 'FAQ Database Creator & Maintainer',
+  // Remote E-commerce Enhancement (15)
+  'E-commerce Product Variation Lister', 'Shopify App Research & Recommendation', 'Amazon Product Q&A Responder',
+  'Etsy Shop Announcement Writer', 'Customer Loyalty Program Assistant (Points Tracking)', 'Abandoned Cart Recovery Email Writer',
+  'Competitor Product Feature Analyst', 'Social Commerce Post Creator (Link In Bio Tools)', 'E-commerce Product Bundling Assistant',
+  'Online Store Coupon Code Manager', 'Product Sourcing Assistant (AliExpress/DHGate)', 'E-commerce Blog Content Ideator',
+  'Customer Review Sentiment Analyst', 'Dropshipping Order Fulfillment Monitor', 'Charity Auction Online Listing Creator',
+  // Niche Online Research & Data Tasks (15)
+  'Academic Paper Summarizer', 'Market Trend Research Assistant (Specific Industry)', 'Grant Writing Research Support',
+  'Historical Data Entry Specialist', 'Genealogical Record Transcriber', 'Scientific Article Finder',
+  'Public Domain Content Curator', 'Legal Document Proofreader (Non-Advisory)', 'Real Estate Property Listing Data Collector',
+  'Competitor Pricing Data Scraper (Manual)', 'Online News Aggregator & Summarizer (Niche)', 'Sports Statistics Compiler',
+  'Film/TV Show Database Contributor (Fact Checking)', 'Product Patent Search Assistant (Basic)', 'Local Event Listing Compiler (Online Sources)',
+  // Remote Technical & Customer Assistance (15)
+  'Basic WordPress Plugin Support', 'Mobile App User Support (FAQ-based)', 'SaaS Product Onboarding Assistant (Guidance)',
+  'Online Community Technical Moderator', 'Software Bug Reporter (User Perspective)', 'Password Manager Setup Assistant',
+  'Remote Desktop Support (Guidance Only)', 'Website Accessibility Checker (Basic Tools)', 'Data Backup & Recovery Guide (Basic)',
+  'Email Configuration Support (Common Clients)', 'IoT Device Setup Helper (Remote Guidance)', 'VPN Setup Assistance (User-Level)',
+  'Online Gaming Server Admin (Basic Tasks)', 'Browser Extension Troubleshooting Assistant', 'Forum Signature Link Checker'
+];
+
+const remoteSampleDescriptionsBatch4 = [
+  // Remote Creative & Media Support (15)
+  'Create custom, catchy intro and outro music jingles for podcasters to enhance their branding.',
+  'Help YouTubers and content creators optimize video thumbnails by setting up and analyzing A/B tests for better click-through rates.',
+  'Design simple yet engaging augmented reality (AR) filters for Instagram Stories or Snapchat using basic creator tools.',
+  'Produce and edit unique, high-quality sound effects for use in videos, games, or other media projects.',
+  'Design custom, branded virtual backgrounds for professionals to use in Zoom, Microsoft Teams, or other video conferencing platforms.',
+  'Write clear, engaging, and concise scripts for short animated explainer videos for businesses or educational content.',
+  'Provide professional photo color correction and grading services to enhance images for web or print.',
+  'Develop sets of themed, customizable Canva templates for specific niches (e.g., real estate, coaching) for others to use.',
+  'Create realistic 3D mockups for ebook covers to be used in marketing materials and online listings.',
+  'Produce short, attention-grabbing video advertisements suitable for social media platforms like Instagram, Facebook, or TikTok.',
+  'Transcribe simple musical pieces or melodies into sheet music or digital notation for musicians.',
+  'Design basic, non-animated overlays for gaming streams on platforms like Twitch or YouTube Gaming.',
+  'Research and gather data, statistics, and key points to be used in creating informative infographics.',
+  'Create unique voice tags or producer drops for DJs, music producers, or podcasters to brand their audio content.',
+  'Adapt existing content (e.g., blog posts into video scripts, videos into social media snippets) for wider platform reach.',
+  // Virtual Business Operations (15)
+  'Assist busy professionals or businesses with researching and booking flights, accommodations, and transportation.',
+  'Manage and track online subscriptions and recurring payments for individuals or small businesses, identifying cost-saving opportunities.',
+  'Convert digital files between various formats (e.g., PDF to Word, JPG to PNG, audio to text snippets).',
+  'Handle appointment scheduling, calendar management, and reminder services for clients remotely.',
+  'Provide support for online event registration, managing attendee lists, and sending out event information.',
+  'Offer virtual mail management services, including scanning physical mail to digital and forwarding important documents.',
+  'Enter, update, and clean up data in Customer Relationship Management (CRM) systems like HubSpot or Salesforce.',
+  'Help businesses document their processes by drafting Standard Operating Procedures (SOPs) for various tasks.',
+  'Create and manage online forms for surveys, feedback collection, or lead generation using tools like Google Forms or Typeform.',
+  'Track business or personal expenses, categorize them, and prepare simple financial reports.',
+  'Provide technical setup and moderation for remote team meetings, ensuring smooth operation of conferencing tools.',
+  'Organize and manage files and folders in cloud storage systems like Google Drive, Dropbox, or OneDrive for better accessibility.',
+  'Research and gather information on necessary business licenses and permits for specific locations or industries.',
+  'Conduct research on competitors, analyze their strategies, and compile reports with key findings and insights.',
+  'Format and polish presentations (PowerPoint, Google Slides) for visual consistency and professionalism.',
+  // Online Marketing & Sales Assistance (15)
+  'Schedule social media posts in bulk across multiple platforms using tools like Buffer or Hootsuite.',
+  'Assist with setting up email marketing campaigns, including template customization and list segmentation in tools like Mailchimp.',
+  'Manage and track affiliate marketing links, ensuring they are correctly implemented and generating clicks/sales.',
+  'Optimize LinkedIn profiles for professionals to enhance their personal brand and networking opportunities.',
+  'Distribute online surveys and polls to target audiences and collect responses for market research.',
+  'Generate basic reports from Google Analytics to track website traffic, user behavior, and campaign performance.',
+  'Reach out to customers to collect testimonials and reviews, and organize them for marketing use.',
+  'Design visually appealing pins for Pinterest and schedule them to drive traffic and engagement.',
+  'Build lists of potential sales leads based on specified criteria using online research tools (no cold calling).',
+  'Engage in relevant online forums and communities to build brand presence and answer questions (non-spammy).',
+  'Provide support for Product Hunt launches, including creating materials and engaging with the community.',
+  'Monitor online advertising campaigns for basic signs of click fraud or bot activity using simple checks.',
+  'Research relevant hashtags for social media posts to increase visibility and reach for specific niches.',
+  'Proofread content for landing pages, checking for grammar, spelling, and clarity before publication.',
+  'Manage basic aspects of social media contests or giveaways, such as tracking entries and announcing winners.',
+  // Specialized Remote Tutoring & Coaching (15)
+  'Provide online tutoring for specific sections of standardized tests like SAT, GRE, GMAT, or local academic exams.',
+  'Teach individuals how to use specific software applications effectively, such as Microsoft Excel, Canva, or Adobe Photoshop (basics).',
+  'Coach non-native speakers on language pronunciation and accent reduction through online video sessions.',
+  'Act as an accountability partner for students, helping them stay on track with their homework and study schedules.',
+  'Offer online coaching on effective study skills, time management, and test-taking strategies for students of all ages.',
+  'Provide tutoring support for homeschooled students in specific subjects, aligning with their curriculum.',
+  'Help adult learners develop essential technology skills for daily life or work, such as email, internet navigation, or basic software use.',
+  'Teach beginner-level music theory concepts, such as reading notes, understanding scales, and basic harmony, via online lessons.',
+  'Introduce children to the fundamentals of coding and programming through fun, interactive online sessions.',
+  'Serve as an online practice partner for individuals looking to improve their public speaking or presentation skills.',
+  'Guide individuals through mindfulness exercises and meditation techniques via online sessions for stress reduction.',
+  'Provide basic financial literacy coaching, covering topics like budgeting, saving, and understanding credit.',
+  'Help individuals prepare for job interviews by conducting mock interviews and providing feedback remotely.',
+  'Coach individuals on digital organization techniques for managing files, emails, and online information effectively.',
+  'Offer online tutoring for specific hobbies like knitting, painting, creative writing, or basic coding for hobbyists.',
+  // Digital Content Organization & Management (15)
+  'Manage and update blog content calendars, scheduling posts, and ensuring content is published on time.',
+  'Organize and tag large collections of digital photos for individuals or businesses for easy retrieval.',
+  'Assist with website content audits by checking for broken links, typos, outdated information, and formatting issues.',
+  'Organize and manage archives of podcast episodes, ensuring proper tagging, descriptions, and accessibility.',
+  'Curate and maintain a library of approved social media content (images, videos, text) for brands.',
+  'Organize online course materials, including videos, documents, and quizzes, within a learning management system (LMS).',
+  'Help individuals or businesses clean up and organize their Dropbox, Google Drive, or other cloud storage accounts.',
+  'Provide consulting or assistance in setting up and organizing information within Evernote, Notion, or similar productivity tools.',
+  'Compile and organize digital recipes into a searchable and user-friendly format for personal or commercial use.',
+  'Manage and organize ebook libraries using software like Calibre, including metadata editing and format conversion.',
+  'Optimize metadata (titles, descriptions, tags) for video content on platforms like YouTube or Vimeo to improve searchability.',
+  'Update and maintain content on online portfolios for creatives, ensuring projects are current and well-presented.',
+  'Provide basic assistance with Digital Asset Management (DAM) systems, including uploading and tagging assets.',
+  'Manage secure client document portals, uploading files, setting permissions, and organizing documents for professional services.',
+  'Create and maintain a centralized FAQ database for businesses to use for customer support or internal knowledge.',
+  // Remote E-commerce Enhancement (15)
+  'List products with multiple variations (size, color, etc.) accurately on e-commerce platforms like Shopify or WooCommerce.',
+  'Research and recommend suitable Shopify apps to enhance store functionality, marketing, or customer service.',
+  'Monitor and respond to customer questions asked on Amazon product listings in a timely and helpful manner.',
+  'Write engaging and informative shop announcements for Etsy sellers to update customers on new products or promotions.',
+  'Assist with managing customer loyalty programs, including tracking points, issuing rewards, and communicating with members.',
+  'Draft and set up email sequences for abandoned cart recovery to encourage customers to complete their purchases.',
+  'Analyze competitor product features, pricing, and customer reviews to identify opportunities for improvement.',
+  'Create engaging posts for social commerce platforms (e.g., Instagram Shop, Facebook Shop) using "link in bio" tools.',
+  'Assist e-commerce businesses with creating attractive and logical product bundles to increase average order value.',
+  'Manage and update online store coupon codes, ensuring they are active, correctly applied, and tracked.',
+  'Help source products for e-commerce stores from platforms like AliExpress or DHGate, focusing on specific criteria.',
+  'Brainstorm and research blog content ideas relevant to an e-commerce store\'s niche to attract organic traffic.',
+  'Analyze customer reviews to identify common themes, sentiment, and areas for product or service improvement.',
+  'Monitor dropshipping order fulfillment processes, track shipments, and communicate updates to customers.',
+  'Create online listings for charity auctions or fundraising events, including descriptions, images, and bidding information.',
+  // Niche Online Research & Data Tasks (15)
+  'Summarize academic papers or research articles into concise, easy-to-understand abstracts or reports.',
+  'Assist with market trend research for specific industries, gathering data from online sources and compiling reports.',
+  'Provide research support for grant writing, finding relevant funding opportunities and gathering required information.',
+  'Perform accurate data entry of historical records, documents, or archives into digital databases.',
+  'Transcribe handwritten genealogical records, census data, or old documents for family history research.',
+  'Find and retrieve specific scientific articles or research papers from online databases and libraries.',
+  'Curate and compile lists of public domain content (images, texts, music) for creators or businesses.',
+  'Proofread legal documents for typos, grammatical errors, and formatting issues (non-advisory, non-legal-practice role).',
+  'Collect data on real estate property listings from various online sources for market analysis.',
+  'Manually scrape pricing data or product information from competitor websites for market research.',
+  'Aggregate and summarize news articles or blog posts on specific niche topics for newsletters or reports.',
+  'Compile sports statistics from various sources for fantasy leagues, sports blogs, or personal analysis.',
+  'Contribute to and fact-check information on online film or TV show databases like IMDb or TMDb.',
+  'Assist with basic product patent searches using online databases to identify existing patents.',
+  'Compile lists of local events, workshops, or activities from online sources for community calendars or guides.',
+  // Remote Technical & Customer Assistance (15)
+  'Provide basic troubleshooting support for common WordPress plugin issues based on documentation.',
+  'Offer user support for mobile apps, primarily answering frequently asked questions and guiding users to resources.',
+  'Assist new users in onboarding to SaaS products by providing guided tours or answering initial setup questions.',
+  'Act as a technical moderator for online communities, helping users with platform-related issues and enforcing guidelines.',
+  'Identify, replicate, and clearly report software bugs or usability issues from a user\'s perspective.',
+  'Help individuals set up and manage password manager software for improved online security.',
+  'Provide remote desktop support by guiding users through troubleshooting steps verbally or via chat (no direct control).',
+  'Use basic online tools to check websites for common accessibility issues and report findings.',
+  'Guide users through basic data backup procedures for their computers or mobile devices.',
+  'Assist users with configuring common email clients (like Gmail, Outlook) for their email accounts.',
+  'Help users set up and troubleshoot basic IoT (Internet of Things) devices through remote guidance.',
+  'Provide assistance to users in setting up VPN services on their devices for secure internet access.',
+  'Perform basic administrative tasks for online gaming servers, such as monitoring and light moderation.',
+  'Help users troubleshoot common issues with browser extensions or add-ons.',
+  'Check online forum signatures for broken links or non-compliant content as a moderation task.'
+];
+
 
 const reviewerNamesBank = [
   "Priya Sharma", "Rajesh Kumar", "Aisha Begum", "Vikram Singh", "Meera Devi", "Amit Patel", "Sneha Gupta", "Rohan Mehta",
@@ -431,12 +606,12 @@ const generateEarningPotentials = (hustleCategory: string): EarningPotential[] =
   let intermediateLowMultiplier = 1.5, intermediateHighMultiplier = 3;
   let advancedLowMultiplier = 3, advancedHighMultiplier = 7;
 
-  if (hustleCategory.toLowerCase().includes('tech') || hustleCategory.toLowerCase().includes('consulting')) {
+  if (hustleCategory.toLowerCase().includes('tech') || hustleCategory.toLowerCase().includes('consulting') || hustleCategory.toLowerCase().includes('development')) {
     beginnerLow = 7000; beginnerHigh = 20000;
     intermediateHighMultiplier = 4; advancedHighMultiplier = 10;
-  } else if (hustleCategory.toLowerCase().includes('creative') || hustleCategory.toLowerCase().includes('writing')) {
+  } else if (hustleCategory.toLowerCase().includes('creative') || hustleCategory.toLowerCase().includes('writing') || hustleCategory.toLowerCase().includes('marketing') || hustleCategory.toLowerCase().includes('media')) {
     beginnerLow = 5000; beginnerHigh = 15000;
-  } else if (hustleCategory.toLowerCase().includes('education')) {
+  } else if (hustleCategory.toLowerCase().includes('education') || hustleCategory.toLowerCase().includes('tutoring') || hustleCategory.toLowerCase().includes('coaching')) {
     beginnerLow = 4000; beginnerHigh = 12000;
   }
 
@@ -465,31 +640,41 @@ const toolsBank = {
   onlinePlatforms: ["Upwork", "Fiverr", "Freelancer.com", "PeoplePerHour", "LinkedIn"],
   ecommerce: ["Shopify (Paid, but some tasks don't require own store)", "WooCommerce", "Facebook Marketplace", "Instagram Shopping"],
   ai: ["ChatGPT (Free/Plus)", "Google Gemini", "Perplexity AI"],
+  marketing: ["Google Analytics (Free)", "Mailchimp (Free tier)", "Buffer/Hootsuite (Free tiers)", "Google Keyword Planner"],
+  operations: ["Google Workspace/Microsoft Office 365", "Slack/Microsoft Teams", "Notion/Evernote"],
+  data: ["Google Sheets/Microsoft Excel", "Tableau Public (Free data viz)"],
 };
 
 const generateToolsNeeded = (category: string, title: string, uniqueHustleIndex: number): string[] => {
   let tools = [...toolsBank.common];
-  if (category.toLowerCase().includes('creative') || title.toLowerCase().includes('design') || title.toLowerCase().includes('video')) tools.push(...toolsBank.creative);
-  if (category.toLowerCase().includes('tech') || title.toLowerCase().includes('develop') || title.toLowerCase().includes('coding') || title.toLowerCase().includes('it')) tools.push(...toolsBank.tech);
-  if (category.toLowerCase().includes('writing') || title.toLowerCase().includes('content') || title.toLowerCase().includes('edit') || title.toLowerCase().includes('proofread')) tools.push(...toolsBank.writing);
-  if (category.toLowerCase().includes('service') || title.toLowerCase().includes('assistant') || title.toLowerCase().includes('support') || title.toLowerCase().includes('consult') || title.toLowerCase().includes('coach')) tools.push(...toolsBank.services);
-  if (category.toLowerCase().includes('online') || category.toLowerCase().includes('digital') || category.toLowerCase().includes('remote')) tools.push(...toolsBank.onlinePlatforms);
-  if (title.toLowerCase().includes('e-commerce') || title.toLowerCase().includes('shop') || title.toLowerCase().includes('product list')) tools.push(...toolsBank.ecommerce);
-  if (title.toLowerCase().includes('ai') || title.toLowerCase().includes('prompt')) tools.push(...toolsBank.ai);
-  
-  if (title.toLowerCase().includes('tutor')) tools.push("Online Whiteboard Tools");
-  if (title.toLowerCase().includes('social media')) tools.push("Buffer/Hootsuite (Free tiers)");
-  if (title.toLowerCase().includes('data entry')) tools.push("Microsoft Excel/Google Sheets");
-  if (title.toLowerCase().includes('transcription')) tools.push("Express Scribe (Free audio player)");
+  const lowerCategory = category.toLowerCase();
+  const lowerTitle = title.toLowerCase();
 
-  // Deterministic shuffle based on uniqueHustleIndex for variety
+  if (lowerCategory.includes('creative') || lowerTitle.includes('design') || lowerTitle.includes('video') || lowerTitle.includes('music') || lowerTitle.includes('photo')) tools.push(...toolsBank.creative);
+  if (lowerCategory.includes('tech') || lowerTitle.includes('develop') || lowerTitle.includes('coding') || lowerTitle.includes('it') || lowerTitle.includes('software')) tools.push(...toolsBank.tech);
+  if (lowerCategory.includes('writing') || lowerTitle.includes('content') || lowerTitle.includes('edit') || lowerTitle.includes('proofread') || lowerTitle.includes('script')) tools.push(...toolsBank.writing);
+  if (lowerCategory.includes('service') || lowerCategory.includes('support') || lowerTitle.includes('assistant') || lowerTitle.includes('support') || lowerTitle.includes('consult') || lowerTitle.includes('coach') || lowerTitle.includes('manage')) tools.push(...toolsBank.services);
+  if (lowerCategory.includes('online') || lowerCategory.includes('digital') || lowerCategory.includes('remote')) tools.push(...toolsBank.onlinePlatforms);
+  if (lowerCategory.includes('ecommerce') || lowerTitle.includes('e-commerce') || lowerTitle.includes('shop') || lowerTitle.includes('product list') || lowerTitle.includes('etsy') || lowerTitle.includes('amazon')) tools.push(...toolsBank.ecommerce);
+  if (lowerTitle.includes('ai') || lowerTitle.includes('prompt') || lowerTitle.includes('chatbot')) tools.push(...toolsBank.ai);
+  if (lowerCategory.includes('marketing') || lowerTitle.includes('marketing') || lowerTitle.includes('seo') || lowerTitle.includes('social media') || lowerTitle.includes('ad ')) tools.push(...toolsBank.marketing);
+  if (lowerCategory.includes('operations') || lowerTitle.includes('operations') || lowerTitle.includes('admin') || lowerTitle.includes('schedule') || lowerTitle.includes('calendar')) tools.push(...toolsBank.operations);
+  if (lowerCategory.includes('data') || lowerTitle.includes('data') || lowerTitle.includes('research') || lowerTitle.includes('analyst') || lowerTitle.includes('survey')) tools.push(...toolsBank.data);
+
+
+  if (lowerTitle.includes('tutor')) tools.push("Online Whiteboard Tools");
+  if (lowerTitle.includes('social media')) tools.push("Buffer/Hootsuite (Free tiers)"); // Already in marketing but good to reinforce
+  if (lowerTitle.includes('data entry')) tools.push("Microsoft Excel/Google Sheets"); // Already in data but good to reinforce
+  if (lowerTitle.includes('transcription')) tools.push("Express Scribe (Free audio player)");
+
   const shuffledTools = [...tools];
   for (let k = 0; k < (uniqueHustleIndex % tools.length); k++) {
     shuffledTools.push(shuffledTools.shift()!);
   }
-  
+
   return Array.from(new Set(shuffledTools)).slice(0, 6 + (uniqueHustleIndex % 3)); // 6 to 8 tools, deterministic
 };
+
 
 const difficultyMap: Record<DifficultyLevel, '🔰' | '⚙️' | '🧠'> = {
   'Beginner Friendly': '🔰',
@@ -531,7 +716,7 @@ const faqAnswerTemplates = [
 const generateFaqs = (hustleTitle: string, hustleCategory: string, location: string, hustleId: string, uniqueHustleIndex: number): FAQ[] => {
   const faqs: FAQ[] = [];
   const numFaqs = 8 + (uniqueHustleIndex % 3); // 8 to 10 FAQs, deterministic
-  
+
   const startIndex = uniqueHustleIndex % (faqQuestionTemplates.length - numFaqs + 1);
   const selectedQuestionTemplates = faqQuestionTemplates.slice(startIndex, startIndex + numFaqs);
   const selectedAnswerTemplates = faqAnswerTemplates.slice(startIndex, startIndex + numFaqs);
@@ -575,9 +760,6 @@ const generateRedFlags = (uniqueHustleIndex: number): string[] => {
     return [...new Set(selectedFlags)]; // Ensure uniqueness if modulo wraps around for small bank
 }
 
-// --- End of New Data Generation Helpers ---
-
-
 export const HUSTLES_PER_PAGE = 10;
 
 const generateHustles = (count: number, initialIdOffset: number, catList: typeof categories, titleList: string[], descList: string[], isRemote: boolean): Hustle[] => {
@@ -590,7 +772,7 @@ const generateHustles = (count: number, initialIdOffset: number, catList: typeof
     const title = baseTitle + titleVariationSuffix;
     const description = descList[uniqueGlobalIndex % descList.length];
     const id = `hustle-${uniqueGlobalIndex + 1}`;
-    
+
     let stepsToStart, successProofLink, successTip, skillsToLearn;
 
     if (isRemote) {
@@ -598,7 +780,7 @@ const generateHustles = (count: number, initialIdOffset: number, catList: typeof
       successProofLink = `https://www.google.com/search?q=how+to+succeed+as+remote+${encodeURIComponent(baseTitle.replace(/\(Remote\)|\(Entry Level\)|\(Niche\)|\(e\.g\..*\)/gi, '').trim())}`;
       successTip = `Success tip for ${title} (Remote): Focus on over-delivering on quality, maintaining proactive and clear communication with clients across different time zones, and actively building a strong online reputation through positive reviews and testimonials. Continuously upskill and adapt to stay competitive in the global market. Network online within your field.`;
       skillsToLearn = `For ${title} (Remote), learn: Core skills for ${categoryObj.name} (e.g., ${categoryObj.imageHint.replace(' ', ', ')}), strong digital literacy, proficiency in English (or the primary language of your target clients), excellent time management and self-discipline, cross-cultural communication etiquette, and proficiency in using remote work software and platforms. Basic project management and negotiation skills are also beneficial.`;
-    } else { 
+    } else {
       stepsToStart = `Generic steps for ${title}:\n1. Research the market demand and identify your target audience for ${title}.\n2. Create a basic business plan outlining your services, pricing, and goals.\n3. Develop your ${categoryObj.name.toLowerCase()} product/service offering to a high standard.\n4. Market yourself effectively online and offline; build a strong personal brand or business presence.\n5. Continuously seek feedback, learn from experiences, adapt to market changes, and iterate on your offerings.`;
       successProofLink = `https://www.google.com/search?q=success+stories+${encodeURIComponent(baseTitle.replace(/\(Remote\)|\(Entry Level\)|\(Niche\)|\(e\.g\..*\)/gi, '').trim())}`;
       successTip = `Key to success in ${title}: Be persistent, highly adaptable, and always prioritize delivering quality and value. Network actively within the ${categoryObj.name} community and related fields.`;
@@ -638,11 +820,13 @@ const generalHustles = generateHustles(120, 0, categories, sampleTitles, sampleD
 const remoteHustlesBatch1 = generateHustles(120, generalHustles.length, remoteCategories, remoteSampleTitles, remoteSampleDescriptions, true);
 const remoteHustlesBatch2 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length, remoteCategoriesBatch2, remoteSampleTitlesBatch2, remoteSampleDescriptionsBatch2, true);
 const remoteHustlesBatch3 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length, remoteCategoriesBatch3, remoteSampleTitlesBatch3, remoteSampleDescriptionsBatch3, true);
+const remoteHustlesBatch4 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length + remoteHustlesBatch3.length, remoteCategoriesBatch4, remoteSampleTitlesBatch4, remoteSampleDescriptionsBatch4, true);
 
 
-export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3];
+export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3, ...remoteHustlesBatch4];
 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
 }
 
+    
