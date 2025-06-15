@@ -41,7 +41,7 @@ import SubmitReviewForm from '@/components/hustles/SubmitReviewForm';
 import InPageNav from '@/components/hustles/InPageNav';
 import BookmarkButton from '@/components/hustles/BookmarkButton';
 import ShareHustlePopover from '@/components/hustles/ShareHustlePopover';
-import AdPlaceholder from '@/components/ads/AdPlaceholder';
+// AdPlaceholder import removed
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
 
 
@@ -139,14 +139,24 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
               </div>
             </CardHeader>
 
-            {/* Ad Placeholder 1 - Top (Banner Ad) */}
-            <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full px-4 md:px-6 pt-4 md:pt-6">
-              <AdPlaceholder 
-                description={`Hustle Page Ad Slot 1 (Top) - ${hustle.title}`}
-                adTypeSuggestion="Banner"
-                dimensionsSuggestion="Responsive or 728x90px"
-              />
-            </AnimatedDiv>
+            {/* Adsterra Banner 728x90 - Top */}
+            <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center px-4 md:px-6 pt-4 md:pt-6">
+              <div style={{ width: '728px', height: '90px' }}>
+                <script type="text/javascript">
+                  {`
+                    // Adsterra Banner 728x90 - Hustle Detail Page Top
+                    atOptions = {
+                      'key' : '87e9049723680c8cfa98207827c2583a',
+                      'format' : 'iframe',
+                      'height' : 90,
+                      'width' : 728,
+                      'params' : {}
+                    };
+                  `}
+                </script>
+                <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+              </div>
+            </div>
             
             <CardContent className="p-4 md:p-6 pt-6 md:pt-8" id="about-hustle">
               <div className="flex items-center text-muted-foreground mb-4"> 
@@ -320,7 +330,6 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                   </Card>
 
                   {/* Adsterra Native Banner Ad Slot 3 (Mid-Guide 2) */}
-                  {/* See comment in src/app/page.tsx regarding potential ID conflicts if these are meant to be different Adsterra native ad units */}
                   <div className="w-full my-4 sm:my-6">
                     <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
                     <div id="container-58439ef56bf081ebf459341353943de6"></div>
@@ -392,14 +401,24 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
-                  {/* Ad Placeholder 4 - Bottom (Banner Ad) */}
-                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-                    <AdPlaceholder 
-                      description={`Hustle Page Ad Slot 4 (Bottom) - ${hustle.title}`}
-                      adTypeSuggestion="Banner"
-                      dimensionsSuggestion="Responsive or 728x90px"
-                    />
-                  </AnimatedDiv>
+                  {/* Adsterra Banner 728x90 - Bottom */}
+                  <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+                    <div style={{ width: '728px', height: '90px' }}>
+                      <script type="text/javascript">
+                        {`
+                          // Adsterra Banner 728x90 - Hustle Detail Page Bottom
+                          atOptions = {
+                            'key' : '87e9049723680c8cfa98207827c2583a',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                          };
+                        `}
+                      </script>
+                      <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+                    </div>
+                  </div>
                 </div> 
               </section>
             )}
@@ -409,3 +428,5 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
     </div>
   );
 }
+
+    

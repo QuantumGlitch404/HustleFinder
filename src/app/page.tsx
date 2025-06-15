@@ -4,14 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/image"; // Keep for testimonial avatars
 import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
 import DailyHustle from "@/components/home/DailyHustle";
 import TrendingHustlesSection from "@/components/home/TrendingHustlesSection";
-import AdPlaceholder from "@/components/ads/AdPlaceholder";
+// AdPlaceholder import removed as it's replaced by direct ad code for banners
 
 export default function HomePage() {
   const featuredHustles = allHustles.slice(0, 3); 
@@ -98,14 +98,24 @@ export default function HomePage() {
         </section>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 1 - Top (Banner Ad) */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full">
-        <AdPlaceholder 
-          description="Homepage Ad Slot 1 (Top)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="728x90px or Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Top */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - Homepage Top
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
       
       {/* Daily Hustle Suggestion Section */}
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-2xl" once={false}>
@@ -185,11 +195,6 @@ export default function HomePage() {
       </AnimatedDiv>
 
       {/* Adsterra Native Banner Ad Slot 3 (Mid 2) */}
-      {/* Note: Adsterra recommends unique div IDs if you have multiple native banners from *different* ad units on the same page.
-          However, if this is the *same* native banner ad unit code meant to be shown multiple times, using the same ID might be intended by Adsterra.
-          If these are supposed to be different native ad creatives/units, you'd get a different script and div ID from Adsterra for the second one.
-          Assuming for now it's okay to reuse or they intend for this behavior. If not, a unique ID and script would be needed from Adsterra for a second distinct native ad.
-      */}
       <div className="container mx-auto px-4 w-full my-6 sm:my-8">
         <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
         <div id="container-58439ef56bf081ebf459341353943de6"></div>
@@ -237,14 +242,26 @@ export default function HomePage() {
         </Accordion>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 4 - Bottom (Banner Ad) */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="container mx-auto px-4 w-full">
-        <AdPlaceholder 
-          description="Homepage Ad Slot 4 (Bottom)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="728x90px or Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Bottom */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - Homepage Bottom
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
     </div>
   );
 }
+
+    

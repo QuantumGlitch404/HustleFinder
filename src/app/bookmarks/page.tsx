@@ -9,7 +9,7 @@ import { BookmarkX, Search } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
-import AdPlaceholder from '@/components/ads/AdPlaceholder';
+// AdPlaceholder import removed
 
 export default function BookmarksPage() {
   const { getBookmarkedHustles } = useBookmarks();
@@ -31,14 +31,24 @@ export default function BookmarksPage() {
         </div>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 1 - Top */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-        <AdPlaceholder 
-          description="Saved Page Ad Slot 1 (Top)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Top */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - Bookmarks Page Top
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
 
       {bookmarkedHustles.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -72,14 +82,26 @@ export default function BookmarksPage() {
         </AnimatedDiv>
       )}
 
-      {/* Ad Placeholder 2 - Bottom */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full mt-8">
-        <AdPlaceholder 
-          description="Saved Page Ad Slot 2 (Bottom)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Bottom */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - Bookmarks Page Bottom
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
     </div>
   );
 }
+
+    

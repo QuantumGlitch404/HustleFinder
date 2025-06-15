@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Target, Zap } from "lucide-react";
 import Image from "next/image";
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
-import AdPlaceholder from "@/components/ads/AdPlaceholder";
+// AdPlaceholder import removed
 
 export const metadata = {
   title: 'About Us | Hustle Finder',
@@ -22,14 +22,24 @@ export default function AboutPage() {
         </div>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 1 - Top (Banner Ad) */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-        <AdPlaceholder 
-          description="About Page Ad Slot 1 (Top)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Top */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - About Page Top
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
 
       <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center mb-8 sm:mb-12">
         <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" className="w-full h-64 sm:h-80 md:h-auto">
@@ -108,14 +118,26 @@ export default function AboutPage() {
         </AnimatedDiv>
       </div>
 
-      {/* Ad Placeholder 3 - Bottom (Banner Ad) */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full mt-8">
-        <AdPlaceholder 
-          description="About Page Ad Slot 3 (Bottom)"
-          adTypeSuggestion="Banner"
-          dimensionsSuggestion="Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Banner 728x90 - Bottom */}
+      <div className="my-6 sm:my-8 w-full flex justify-center items-center text-center">
+        <div style={{ width: '728px', height: '90px' }}>
+          <script type="text/javascript">
+            {`
+              // Adsterra Banner 728x90 - About Page Bottom
+              atOptions = {
+                'key' : '87e9049723680c8cfa98207827c2583a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            `}
+          </script>
+          <script type="text/javascript" src="//jackalclenchedbedside.com/87e9049723680c8cfa98207827c2583a/invoke.js"></script>
+        </div>
+      </div>
     </div>
   );
 }
+
+    
