@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb } from "lucide-react";
+import { ArrowRight, Search, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
@@ -33,6 +33,11 @@ export default function HomePage() {
       id: "faq-4",
       question: "How can I save or bookmark hustles I'm interested in?",
       answer: "You can easily save hustles by clicking the heart icon on any hustle card or on the hustle details page. Your saved hustles can be found on the 'Saved Hustles' page, accessible from the header."
+    },
+    {
+      id: "faq-5",
+      question: "How does the AI Description Enhancer work?",
+      answer: "Our AI Description Enhancer uses advanced language models to rephrase your hustle descriptions. It aims to simplify complex language, clarify benefits, and make your opportunity more accessible, especially to non-native English speakers. Just paste your text, and the AI will suggest an improved version!"
     }
   ];
 
@@ -97,7 +102,7 @@ export default function HomePage() {
             { icon: Lightbulb, title: "Helpful Tools", desc: "Save your favorite hustles, share them easily, and switch themes for your comfort.", delay: "delay-300" },
             { icon: ShieldCheck, title: "100% Free, No Sign-Up", desc: "Explore all features and listings without any cost or registration barriers.", delay: "delay-400" }
           ].map((item, index) => (
-            <AnimatedDiv key={index} animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass={item.delay}>
+            <AnimatedDiv key={index} animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass={item.delay} once={false}>
               <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1 bg-card h-full flex flex-col">
                 <CardHeader className="items-center text-center p-4 sm:p-6">
                   <div className="p-3 bg-accent/20 rounded-full mb-3">
@@ -115,24 +120,24 @@ export default function HomePage() {
       </AnimatedDiv>
 
       {/* How It Works Section */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-secondary/30 py-10 sm:py-12 rounded-xl">
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-secondary/30 py-10 sm:py-12 rounded-xl" once={false}>
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
-          <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100">
+          <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
               <Image src="https://picsum.photos/seed/searchbrowse/150/150" alt="Step 1: Browse or Search" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
             </div>
           </AnimatedDiv>
-          <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200">
+          <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" once={false}>
             <div className="flex flex-col items-center text-center p-4">
               <Image src="https://picsum.photos/seed/learningreading/150/150" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
               <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
               <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
             </div>
           </AnimatedDiv>
-          <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300">
+          <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300" once={false}>
             <div className="flex flex-col items-center text-center p-4">
               <Image src="https://picsum.photos/seed/successlaunch/150/150" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
               <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
@@ -143,11 +148,11 @@ export default function HomePage() {
       </AnimatedDiv>
 
       {/* Featured Hustles Section */}
-      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full" once={false}>
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Featured Hustles</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {featuredHustles.map((hustle: Hustle, index: number) => (
-            <AnimatedDiv key={hustle.id} animationClasses="fade-in zoom-in-95" durationClass="duration-500" delayClass={`delay-${index * 100}`}>
+            <AnimatedDiv key={hustle.id} animationClasses="fade-in zoom-in-95" durationClass="duration-500" delayClass={`delay-${index * 100}`} once={false}>
               <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
                 <div className="relative w-full h-40">
                   <Image
@@ -182,7 +187,7 @@ export default function HomePage() {
             </AnimatedDiv>
           ))}
         </div>
-        <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="text-center mt-8">
+        <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="text-center mt-8" once={false}>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
             <Link href="/hustles">
               View All Hustles
@@ -193,11 +198,11 @@ export default function HomePage() {
       </AnimatedDiv>
 
       {/* Testimonials Section */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg">
+      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg" once={false}>
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary-foreground">What Our Users Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
-            <AnimatedDiv key={index} animationClasses="fade-in zoom-in-90" durationClass="duration-500" delayClass={`delay-${index * 150}`}>
+            <AnimatedDiv key={index} animationClasses="fade-in zoom-in-90" durationClass="duration-500" delayClass={`delay-${index * 150}`} once={false}>
               <Card className="bg-card/90 backdrop-blur-sm shadow-lg transform hover:scale-105 transition-transform h-full">
                 <CardContent className="p-4 sm:p-6 text-center">
                   <Avatar className="w-16 h-16 mx-auto mb-4 border-2 border-accent shadow-md">
@@ -215,11 +220,11 @@ export default function HomePage() {
       </AnimatedDiv>
 
       {/* FAQ Section */}
-      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-3xl">
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full max-w-3xl" once={false}>
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-primary">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
           {faqItems.map((item, index) => (
-            <AnimatedDiv key={item.id} animationClasses="fade-in slide-in-from-bottom-4" durationClass="duration-500" delayClass={`delay-${index * 100}`}>
+            <AnimatedDiv key={item.id} animationClasses="fade-in slide-in-from-bottom-4" durationClass="duration-500" delayClass={`delay-${index * 100}`} once={false}>
               <AccordionItem value={item.id} className="border-b border-border/50">
                 <AccordionTrigger className="text-left hover:no-underline py-4 text-base sm:text-lg font-medium text-foreground">
                   <HelpCircle className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
