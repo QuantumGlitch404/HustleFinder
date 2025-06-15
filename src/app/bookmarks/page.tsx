@@ -1,6 +1,7 @@
 
 "use client";
 
+import React from 'react'; // Added React import
 import { useBookmarks } from '@/context/BookmarkContext';
 import { allHustles } from '@/lib/hustle-data';
 import HustleCard from '@/components/hustles/HustleCard';
