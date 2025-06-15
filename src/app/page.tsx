@@ -137,21 +137,42 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
           <AnimatedDiv animationClasses="fade-in slide-in-from-left-8" durationClass="duration-500" delayClass="delay-100" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://placehold.co/150x150.png" alt="Step 1: Browse or Search" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="search browse" />
+              <Image 
+                src="https://placehold.co/150x150.png" 
+                alt="Illustration of searching and discovering opportunities" 
+                width={150} 
+                height={150} 
+                className="rounded-full mb-4 shadow-md" 
+                data-ai-hint="discovery search" 
+              />
               <h3 className="text-xl font-semibold mb-2 text-primary">1. Discover Opportunities</h3>
               <p className="text-sm text-muted-foreground">Browse our extensive list of side hustles or use the search to find what suits you best.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://placehold.co/150x150.png" alt="Step 2: Read Steps & Learn" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="learning reading" />
+              <Image 
+                src="https://placehold.co/150x150.png" 
+                alt="Illustration of learning and acquiring new skills" 
+                width={150} 
+                height={150} 
+                className="rounded-full mb-4 shadow-md" 
+                data-ai-hint="learning skills" 
+              />
               <h3 className="text-xl font-semibold mb-2 text-primary">2. Learn the Ropes</h3>
               <p className="text-sm text-muted-foreground">Each hustle comes with detailed steps, tools needed, earning potential, and tips for success.</p>
             </div>
           </AnimatedDiv>
           <AnimatedDiv animationClasses="fade-in slide-in-from-right-8" durationClass="duration-500" delayClass="delay-300" once={false}>
             <div className="flex flex-col items-center text-center p-4">
-              <Image src="https://placehold.co/150x150.png" alt="Step 3: Start Your Hustle" width={150} height={150} className="rounded-full mb-4 shadow-md" data-ai-hint="success launch" />
+              <Image 
+                src="https://placehold.co/150x150.png" 
+                alt="Illustration of launching a new venture or journey" 
+                width={150} 
+                height={150} 
+                className="rounded-full mb-4 shadow-md" 
+                data-ai-hint="journey launch" 
+              />
               <h3 className="text-xl font-semibold mb-2 text-primary">3. Begin Your Journey</h3>
               <p className="text-sm text-muted-foreground">Empowered with knowledge, take the first step towards your new side income stream today!</p>
             </div>
