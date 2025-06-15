@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Briefcase, Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
+import { Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -18,14 +18,32 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-3">
           <Link href="/" className="flex items-center space-x-2 text-lg sm:text-xl font-bold hover:opacity-80 transition-opacity">
-            <Briefcase className="h-6 w-6 sm:h-7 sm:w-7" />
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 sm:h-7 sm:w-7"
+              aria-hidden="true"
+            >
+              <line x1="6" y1="6" x2="6" y2="18" />
+              <line x1="12" y1="6" x2="12" y2="18" />
+              <line x1="6" y1="12" x2="12" y2="12" />
+              <line x1="12" y1="12" x2="18" y2="12" />
+              <polyline points="15 9 18 12 15 15" />
+            </svg>
             <span>Hustle Finder</span>
           </Link>
           
           <nav className="flex items-center space-x-1 sm:space-x-2">
             <Button variant="ghost" asChild className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground px-2 py-1 sm:px-3 h-auto text-xs sm:text-sm">
               <Link href="/hustles" className="flex items-center space-x-1">
-                <Briefcase className="h-4 w-4" />
+                {/* Using a generic Briefcase for this link, distinct from main logo */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                 <span>Hustles</span>
               </Link>
             </Button>
