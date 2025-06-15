@@ -28,36 +28,20 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
         setAdBlockerDetected(false);
       }
     } else {
-      // If bait isn't rendered, assume no ad blocker for now, will re-check
-      // This path might also be hit if an aggressive adblocker removes the bait element entirely
-      // A more robust solution might involve checking if known ad network scripts loaded.
-      // For this implementation, we rely on the bait's visibility.
-      // To be safe, if bait is null after a delay, we could assume it was blocked.
-      // Let's try to detect if it's truly null vs not yet rendered.
-      // If the component is mounted and baitRef.current is still null, it might have been removed.
-      // However, for simplicity and to avoid false positives on fast networks, we'll stick to visibility.
       setAdBlockerDetected(false); 
     }
   };
 
   useEffect(() => {
-    // Initial check after a delay to allow ad blockers to modify the DOM
     const checkTimeout = setTimeout(checkAdBlocker, 1500);
-
-    // Optional: Re-check periodically (can be resource-intensive and annoying)
-    // const interval = setInterval(checkAdBlocker, 7000);
-
     return () => {
       clearTimeout(checkTimeout);
-      // clearInterval(interval);
     };
-  }, []); // Run only on mount
+  }, []);
 
-  // Re-check if the visibility of the page changes (e.g., user switches tabs and comes back)
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        // Slight delay to ensure DOM is stable after tab switch
         setTimeout(checkAdBlocker, 500);
       }
     };
@@ -69,40 +53,34 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
 
 
   const handleRecheck = () => {
-    // Give a very brief moment for any changes to take effect if user *just* disabled it
     setTimeout(checkAdBlocker, 100);
   };
 
   return (
     <>
-      {/* Bait element for ad blocker detection */}
-      {/* This element is designed to be targeted and hidden by ad blockers. */}
       <div
         ref={baitRef}
-        className="textads banner-ads ad-banner advertisement ad-slot ad-placeholder ad-unit" // Common classes
+        className="textads banner-ads ad-banner advertisement ad-slot ad-placeholder ad-unit"
         style={{
           height: '1px',
           width: '1px',
           position: 'fixed',
-          left: '-10000px', // Position off-screen
+          left: '-10000px',
           top: '-10000px',
-          opacity: '0.01', // Make it effectively invisible but still in DOM
-          pointerEvents: 'none', // Not interactive
-          zIndex: '-1', // Ensure it's behind everything
+          opacity: '0.01',
+          pointerEvents: 'none',
+          zIndex: '-1',
         }}
         aria-hidden="true"
-        data-nosnippet // Tell search engines not to snippet this
+        data-nosnippet
       >
         Sponsored Content Advertisement Unit
       </div>
 
       {adBlockerDetected && (
         <AlertDialog open={adBlockerDetected} onOpenChange={(isOpen) => {
-            // We control the open state strictly with adBlockerDetected.
-            // If user tries to close it (e.g. ESC key), and adBlockerDetected is still true,
-            // it will effectively re-open or stay open.
             if (!isOpen && adBlockerDetected) {
-                // Optional: could re-trigger a check or just rely on the button
+                // Stays open if adblocker is still detected
             }
         }}>
           <AlertDialogContent className="max-w-lg w-[90%] sm:w-full rounded-lg">
@@ -130,15 +108,7 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
           </AlertDialogContent>
         </AlertDialog>
       )}
-
-      {/* Conditionally render children. The div wrapper ensures layout consistency. */}
       <div style={{ visibility: adBlockerDetected ? 'hidden' : 'visible', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        {/* 
-          The main content is wrapped in a div that takes full viewport height.
-          If adBlockerDetected is true, its visibility is hidden.
-          This is preferred over display:none for some edge cases where display:none might interfere with component mounting/unmounting states more abruptly.
-          The parent of this component (RootLayout's body) should also be display:flex and flex-direction:column.
-        */}
         {children}
       </div>
     </>
