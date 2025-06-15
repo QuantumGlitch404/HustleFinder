@@ -98,7 +98,7 @@ export default function HomePage() {
         </section>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 1 - Top */}
+      {/* Ad Placeholder 1 - Top (Banner Ad) */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full">
         <AdPlaceholder 
           description="Homepage Ad Slot 1 (Top)"
@@ -117,14 +117,11 @@ export default function HomePage() {
         <TrendingHustlesSection />
       </div>
 
-      {/* Ad Placeholder 2 - Mid 1 */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-100" className="container mx-auto px-4 w-full">
-        <AdPlaceholder 
-          description="Homepage Ad Slot 2 (Mid)"
-          adTypeSuggestion="Native Banner or Banner"
-          dimensionsSuggestion="Responsive or 300x250px"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Native Banner Ad Slot 2 (Mid 1) */}
+      <div className="container mx-auto px-4 w-full my-6 sm:my-8">
+        <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
+        <div id="container-58439ef56bf081ebf459341353943de6"></div>
+      </div>
 
       {/* Why Hustle Finder? Section */}
       <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" className="container mx-auto px-4 w-full">
@@ -187,14 +184,16 @@ export default function HomePage() {
         </div>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 3 - Mid 2 */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-200" className="container mx-auto px-4 w-full">
-        <AdPlaceholder 
-          description="Homepage Ad Slot 3 (Mid)"
-          adTypeSuggestion="Native Banner or Banner"
-          dimensionsSuggestion="Responsive or 300x250px"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Native Banner Ad Slot 3 (Mid 2) */}
+      {/* Note: Adsterra recommends unique div IDs if you have multiple native banners from *different* ad units on the same page.
+          However, if this is the *same* native banner ad unit code meant to be shown multiple times, using the same ID might be intended by Adsterra.
+          If these are supposed to be different native ad creatives/units, you'd get a different script and div ID from Adsterra for the second one.
+          Assuming for now it's okay to reuse or they intend for this behavior. If not, a unique ID and script would be needed from Adsterra for a second distinct native ad.
+      */}
+      <div className="container mx-auto px-4 w-full my-6 sm:my-8">
+        <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
+        <div id="container-58439ef56bf081ebf459341353943de6"></div>
+      </div>
 
       {/* Testimonials Section */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="container mx-auto px-4 w-full bg-gradient-to-r from-teal-600 to-primary py-10 sm:py-12 rounded-xl shadow-lg" once={false}>
@@ -238,7 +237,7 @@ export default function HomePage() {
         </Accordion>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 4 - Bottom */}
+      {/* Ad Placeholder 4 - Bottom (Banner Ad) */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" delayClass="delay-300" className="container mx-auto px-4 w-full">
         <AdPlaceholder 
           description="Homepage Ad Slot 4 (Bottom)"

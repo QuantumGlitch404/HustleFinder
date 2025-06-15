@@ -139,7 +139,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
               </div>
             </CardHeader>
 
-            {/* Ad Placeholder 1 - Top */}
+            {/* Ad Placeholder 1 - Top (Banner Ad) */}
             <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full px-4 md:px-6 pt-4 md:pt-6">
               <AdPlaceholder 
                 description={`Hustle Page Ad Slot 1 (Top) - ${hustle.title}`}
@@ -283,14 +283,11 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
-                  {/* Ad Placeholder 2 - Mid 1 */}
-                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-                    <AdPlaceholder 
-                      description={`Hustle Page Ad Slot 2 (Mid-Guide) - ${hustle.title}`}
-                      adTypeSuggestion="In-Content Unit or Native Banner"
-                      dimensionsSuggestion="Responsive"
-                    />
-                  </AnimatedDiv>
+                  {/* Adsterra Native Banner Ad Slot 2 (Mid-Guide 1) */}
+                  <div className="w-full my-4 sm:my-6">
+                    <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
+                    <div id="container-58439ef56bf081ebf459341353943de6"></div>
+                  </div>
 
                   <Card className="shadow-md rounded-lg" id="testimonials">
                     <CardHeader className="p-3 md:p-4 pb-0 md:pb-0">
@@ -322,15 +319,13 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
-                  {/* Ad Placeholder 3 - Mid 2 */}
-                  <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-                    <AdPlaceholder 
-                      description={`Hustle Page Ad Slot 3 (Mid-Guide) - ${hustle.title}`}
-                      adTypeSuggestion="In-Content Unit or Native Banner"
-                      dimensionsSuggestion="Responsive"
-                    />
-                  </AnimatedDiv>
-
+                  {/* Adsterra Native Banner Ad Slot 3 (Mid-Guide 2) */}
+                  {/* See comment in src/app/page.tsx regarding potential ID conflicts if these are meant to be different Adsterra native ad units */}
+                  <div className="w-full my-4 sm:my-6">
+                    <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
+                    <div id="container-58439ef56bf081ebf459341353943de6"></div>
+                  </div>
+                  
                   <Card className="shadow-md rounded-lg" id="write-review">
                     <CardHeader className="p-3 md:p-4 pb-0 md:pb-0">
                       <CardTitle className="flex items-center text-xl sm:text-2xl text-primary">
@@ -397,7 +392,7 @@ export default function HustleDetailsPage({ params }: HustleDetailsPageProps) {
                     </CardContent>
                   </Card>
 
-                  {/* Ad Placeholder 4 - Bottom */}
+                  {/* Ad Placeholder 4 - Bottom (Banner Ad) */}
                   <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
                     <AdPlaceholder 
                       description={`Hustle Page Ad Slot 4 (Bottom) - ${hustle.title}`}

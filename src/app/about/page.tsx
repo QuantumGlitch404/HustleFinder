@@ -22,7 +22,7 @@ export default function AboutPage() {
         </div>
       </AnimatedDiv>
 
-      {/* Ad Placeholder 1 - Top */}
+      {/* Ad Placeholder 1 - Top (Banner Ad) */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
         <AdPlaceholder 
           description="About Page Ad Slot 1 (Top)"
@@ -61,14 +61,11 @@ export default function AboutPage() {
         </AnimatedDiv>
       </div>
 
-      {/* Ad Placeholder 2 - Mid */}
-      <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full">
-        <AdPlaceholder 
-          description="About Page Ad Slot 2 (Mid)"
-          adTypeSuggestion="Native Banner or Banner"
-          dimensionsSuggestion="Responsive"
-        />
-      </AnimatedDiv>
+      {/* Adsterra Native Banner Ad Slot 2 (Mid) */}
+      <div className="w-full my-6 sm:my-8">
+        <script async="async" data-cfasync="false" src="//jackalclenchedbedside.com/58439ef56bf081ebf459341353943de6/invoke.js"></script>
+        <div id="container-58439ef56bf081ebf459341353943de6"></div>
+      </div>
 
       <div className="space-y-6 sm:space-y-10">
         <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-300">
@@ -111,7 +108,7 @@ export default function AboutPage() {
         </AnimatedDiv>
       </div>
 
-      {/* Ad Placeholder 3 - Bottom */}
+      {/* Ad Placeholder 3 - Bottom (Banner Ad) */}
       <AnimatedDiv animationClasses="fade-in" durationClass="duration-500" className="w-full mt-8">
         <AdPlaceholder 
           description="About Page Ad Slot 3 (Bottom)"

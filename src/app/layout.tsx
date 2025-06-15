@@ -31,6 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Adsterra Popunder Ad Code */}
+        <script type='text/javascript' src='//jackalclenchedbedside.com/ec/07/c1/ec07c17a32efce457d679024e1f8ffbe.js'></script>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
@@ -48,13 +52,8 @@ export default function RootLayout({
               <ScrollToTopButton />
             </BookmarkProvider>
         </ThemeProvider>
-        {/* 
-          Consider placing page-level Adsterra scripts here, such as:
-          - Popunder ad script
-          - Social Bar ad script
-          These usually go before the closing </body> tag.
-          Example: <script async src="your-adsterra-popunder-script.js"></script> 
-        */}
+        {/* Adsterra Social Bar Ad Code */}
+        <script type='text/javascript' src='//jackalclenchedbedside.com/94/0f/ff/940fff7131c886df3d66c9f960bf9916.js'></script>
       </body>
     </html>
   );
