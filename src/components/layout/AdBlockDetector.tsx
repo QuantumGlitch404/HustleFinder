@@ -33,16 +33,18 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
   };
 
   useEffect(() => {
+    // Initial check after a short delay to allow ad blockers to act
     const checkTimeout = setTimeout(checkAdBlocker, 1500);
     return () => {
       clearTimeout(checkTimeout);
     };
   }, []);
 
+  // Re-check when tab visibility changes
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        setTimeout(checkAdBlocker, 500);
+        setTimeout(checkAdBlocker, 500); // Re-check shortly after tab becomes visible
       }
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -53,6 +55,7 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
 
 
   const handleRecheck = () => {
+    // Brief delay to allow potential changes (user disabling ad blocker) to take effect
     setTimeout(checkAdBlocker, 100);
   };
 
@@ -64,23 +67,24 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
         style={{
           height: '1px',
           width: '1px',
-          position: 'fixed',
-          left: '-10000px',
-          top: '-10000px',
-          opacity: '0.01',
-          pointerEvents: 'none',
-          zIndex: '-1',
+          position: 'fixed', // Important for detection
+          left: '-10000px', // Move it off-screen
+          top: '-10000px',  // Move it off-screen
+          opacity: '0.01', // Make it virtually invisible
+          pointerEvents: 'none', // Prevent any interaction
+          zIndex: '-1', // Ensure it's behind everything
         }}
         aria-hidden="true"
-        data-nosnippet
+        data-nosnippet // Tell search engines to ignore this
       >
         Sponsored Content Advertisement Unit
       </div>
 
       {adBlockerDetected && (
         <AlertDialog open={adBlockerDetected} onOpenChange={(isOpen) => {
+            // Prevent closing the dialog if ad blocker is still detected by user action (e.g. pressing Esc)
             if (!isOpen && adBlockerDetected) {
-                // Stays open if adblocker is still detected
+                // Dialog should stay open
             }
         }}>
           <AlertDialogContent className="max-w-lg w-[90%] sm:w-full rounded-lg">
@@ -108,9 +112,9 @@ const AdBlockDetector: React.FC<AdBlockDetectorProps> = ({ children }) => {
           </AlertDialogContent>
         </AlertDialog>
       )}
-      <div style={{ visibility: adBlockerDetected ? 'hidden' : 'visible', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        {children}
-      </div>
+      
+      {/* Conditionally render children only if no ad blocker is detected */}
+      {!adBlockerDetected && children}
     </>
   );
 };
