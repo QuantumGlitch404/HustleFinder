@@ -1,6 +1,7 @@
 
 "use client";
 
+import type React from 'react'; // For React.MouseEvent type
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -9,7 +10,7 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Share2, Twitter, Link as LinkIcon, Copy, Mail } from "lucide-react"; // Using MessageCircle for WhatsApp-like
+import { Share2, Twitter, Link as LinkIcon, Mail } from "lucide-react"; // Using LinkIcon for Copy Link button for consistency
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,23 @@ interface ShareHustlePopoverProps {
   isIconOnly?: boolean;
 }
 
+// Using MessageCircle for WhatsApp-like icon (copied from previous state, ensure it's defined if not imported)
+const MessageCircle = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={cn("lucide lucide-message-circle", className)}
+  >
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
+  </svg>
+);
+
+
 export default function ShareHustlePopover({
   hustleTitle,
   hustleUrl,
@@ -33,26 +51,26 @@ export default function ShareHustlePopover({
   const { toast } = useToast();
   const fullHustleUrl = typeof window !== 'undefined' ? `${window.location.origin}${hustleUrl}` : hustleUrl;
 
+  const shareText = `Check out this hustle: ${hustleTitle}`;
 
   const shareOptions = [
     {
       name: "Twitter",
       icon: Twitter,
       action: () => {
-        const text = `Check out this hustle: ${hustleTitle}`;
         window.open(
-          `https://twitter.com/intent/tweet?url=${encodeURIComponent(fullHustleUrl)}&text=${encodeURIComponent(text)}`,
+          `https://twitter.com/intent/tweet?url=${encodeURIComponent(fullHustleUrl)}&text=${encodeURIComponent(shareText)}`,
           "_blank"
         );
       },
     },
     {
       name: "WhatsApp",
-      icon: MessageCircle, // Using MessageCircle for WhatsApp
+      icon: MessageCircle,
       action: () => {
-        const text = `Check out this hustle: ${hustleTitle}\n${fullHustleUrl}`;
+        const whatsappText = `${shareText}\n${fullHustleUrl}`;
         window.open(
-          `https://wa.me/?text=${encodeURIComponent(text)}`,
+          `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
           "_blank"
         );
       },
@@ -80,38 +98,32 @@ export default function ShareHustlePopover({
     },
   ];
 
-  const handleNativeShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: hustleTitle,
-          text: `Check out this hustle: ${hustleTitle}`,
-          url: fullHustleUrl,
-        });
-      } catch (error) {
-        console.error("Error sharing:", error);
-        // Fallback to popover if native share fails or is cancelled by user
-        // (Popover is already open, so no specific action needed here other than logging)
-      }
-    }
-  };
-
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant={triggerVariant}
           size={triggerSize}
-          className={cn("text-primary/70 hover:text-primary", triggerClassName)} // Changed default color
+          className={cn("text-primary/70 hover:text-primary", triggerClassName)}
           aria-label="Share hustle"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            // Attempt native share first if not icon only. Icon only implies it's part of popover trigger logic
-            if (!isIconOnly && navigator.share) {
-                 handleNativeShare();
+          onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation(); // Prevent event from bubbling up to parent Link/Card elements
+
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: hustleTitle,
+                  text: shareText,
+                  url: fullHustleUrl,
+                });
+                // If native share is successful, prevent the popover from opening.
+                event.preventDefault(); 
+              } catch (error) {
+                console.error("Native share failed or was cancelled, opening popover as fallback:", error);
+                // Do NOT call event.preventDefault() here; let the Radix PopoverTrigger open the popover.
+              }
             }
-            // If native share is not available or it's icon only, the popover will open.
+            // If navigator.share is not available, Radix PopoverTrigger will open the popover by default.
           }}
         >
           <Share2 className="h-5 w-5" />
@@ -121,7 +133,7 @@ export default function ShareHustlePopover({
       <PopoverContent className="w-60 sm:w-72 p-0">
         <div className="p-4">
             <h4 className="font-medium leading-none mb-1">Share this Hustle</h4>
-            <p className="text-sm text-muted-foreground mb-3 line-clamp-1">{hustleTitle}</p>
+            <p className="text-sm text-muted-foreground mb-3 line-clamp-1" title={hustleTitle}>{hustleTitle}</p>
         </div>
         <div className="grid gap-1 p-2 pt-0">
           {shareOptions.map((option) => (
@@ -132,6 +144,8 @@ export default function ShareHustlePopover({
               onClick={(e) => {
                 e.stopPropagation(); // Prevent popover from closing immediately if it's a sub-trigger
                 option.action();
+                // For simplicity, let user click away or Radix handle popover close on action.
+                // If explicit close is needed, Popover would need to be controlled with useState.
               }}
             >
               <option.icon className="mr-2 h-4 w-4" />
@@ -140,26 +154,11 @@ export default function ShareHustlePopover({
           ))}
         </div>
          <div className="p-2 border-t">
-            <Label htmlFor="hustle-link" className="sr-only">Hustle Link</Label>
-            <Input id="hustle-link" defaultValue={fullHustleUrl} readOnly className="h-8 text-xs"/>
+            {/* Ensure unique ID for accessibility if multiple share components on one page */}
+            <Label htmlFor={`hustle-link-popover-${hustleTitle.replace(/\W/g, '-')}`} className="sr-only">Hustle Link</Label>
+            <Input id={`hustle-link-popover-${hustleTitle.replace(/\W/g, '-')}`} defaultValue={fullHustleUrl} readOnly className="h-8 text-xs"/>
         </div>
       </PopoverContent>
     </Popover>
   );
 }
-// Using MessageCircle for WhatsApp
-const MessageCircle = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={cn("lucide lucide-message-circle", className)}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
-  </svg>
-);
-
