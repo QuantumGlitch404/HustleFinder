@@ -11,7 +11,6 @@
 import { ai } from '@/ai/genkit';
 import { allHustles } from '@/lib/hustle-data';
 import { z } from 'genkit';
-import { geminiPro } from '@genkit-ai/googleai';
 
 // Prepare a summarized list of hustles for the AI prompt
 // This is crucial to avoid exceeding token limits and to focus the AI.
@@ -38,7 +37,7 @@ export type SkillMatcherOutput = z.infer<typeof SkillMatcherOutputSchema>;
 
 const skillMatcherPrompt = ai.definePrompt({
   name: 'skillMatcherPrompt',
-  model: geminiPro,
+  model: 'gemini-pro',
   input: { schema: SkillMatcherInputSchema },
   output: { schema: SkillMatcherOutputSchema },
   prompt: `You are an expert career counselor specializing in side hustles. Your task is to match a user's skills with the most relevant side hustles from the provided list.
@@ -52,7 +51,6 @@ Here is the list of available side hustles with their titles, categories, and re
 Based on the user's skills, identify the top 10 most relevant hustles from the list. For each recommendation, provide a brief, one-sentence reason explaining why it's a good match.
 Return the result as a list of objects, each containing the 'id' and a 'reason'. Do not recommend hustles that are not in the provided list. Focus on matching the user's skills to the 'skills' field of the hustles.
 `,
-  // Pass the hustle summary as part of the prompt context, not as an input field
   context: {
     hustleSummary: hustleSummary
   }
@@ -67,8 +65,6 @@ const matchSkillsToHustlesFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await skillMatcherPrompt(input);
-    // The prompt now directly returns the desired output format, so no extra processing is needed.
-    // Ensure output is not null before returning.
     return output || { recommendedHustleIds: [] };
   }
 );
