@@ -15,6 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export const metadata = {
   title: 'Explore Side Hustles | Hustle Finder',
@@ -116,13 +117,15 @@ export default function HustlesPage({ searchParams }: HustlesPageProps) {
                   Show Filters & Sort
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] sm:w-[340px] p-0">
-                <SheetHeader className="p-4 border-b">
+              <SheetContent side="left" className="w-[300px] sm:w-[340px] p-0 flex flex-col">
+                <SheetHeader className="p-4 border-b flex-shrink-0">
                    <SheetTitle className="text-lg">Filter & Sort</SheetTitle>
                 </SheetHeader>
-                <div className="p-4 overflow-y-auto">
+                <ScrollArea className="flex-grow">
+                  <div className="p-4">
                     <HustleFilters searchParams={searchParams} />
-                </div>
+                  </div>
+                </ScrollArea>
               </SheetContent>
             </Sheet>
           </div>
