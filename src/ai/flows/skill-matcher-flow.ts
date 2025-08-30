@@ -38,7 +38,7 @@ export type SkillMatcherOutput = z.infer<typeof SkillMatcherOutputSchema>;
 
 const skillMatcherPrompt = ai.definePrompt({
   name: 'skillMatcherPrompt',
-  model: 'gemini-pro',
+  model: geminiPro,
   input: { schema: SkillMatcherInputSchema },
   output: { schema: SkillMatcherOutputSchema },
   prompt: `You are an expert career counselor specializing in side hustles. Your task is to match a user's skills with the most relevant side hustles from the provided list.
