@@ -10,7 +10,7 @@
 import { ai } from '@/ai/genkit';
 import { allHustles } from '@/lib/hustle-data';
 import { z } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { geminiPro } from '@genkit-ai/googleai';
 
 // Prepare a summarized list of hustles for the AI prompt
 // This is crucial to avoid exceeding token limits and to focus the AI.
@@ -37,7 +37,7 @@ export type SkillMatcherOutput = z.infer<typeof SkillMatcherOutputSchema>;
 
 const skillMatcherPrompt = ai.definePrompt({
   name: 'skillMatcherPrompt',
-  model: 'gemini-1.5-flash',
+  model: geminiPro,
   input: { schema: SkillMatcherInputSchema },
   output: { schema: SkillMatcherOutputSchema },
   prompt: `You are an expert career counselor specializing in side hustles. Your task is to match a user's skills with the most relevant side hustles from the provided list.
