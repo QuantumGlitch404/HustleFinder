@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon, LogIn } from 'lucide-react';
+import { Info, Menu as MenuIcon, FileText, Shield, Bookmark as BookmarkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -13,16 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from './ThemeToggle';
-import { useAuth } from '@/context/AuthContext';
-import UserNav from './UserNav';
-import AuthDialog from '../auth/AuthDialog';
-import { useState } from 'react';
-import { Skeleton } from '../ui/skeleton';
 
 const Header = () => {
-  const { user, loading } = useAuth();
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
-
   return (
     <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -70,19 +62,6 @@ const Header = () => {
             </Button>
 
             <ThemeToggle />
-
-            {loading ? (
-              <Skeleton className="h-9 w-9 rounded-full bg-primary/80" />
-            ) : user ? (
-              <UserNav />
-            ) : (
-              <AuthDialog open={isAuthDialogOpen} onOpenChange={setIsAuthDialogOpen}>
-                <Button onClick={() => setIsAuthDialogOpen(true)} variant="ghost" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground px-2 py-1 sm:px-3 h-auto text-xs sm:text-sm">
-                  <LogIn className="h-4 w-4 mr-1" />
-                  Login
-                </Button>
-              </AuthDialog>
-            )}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -9,14 +9,10 @@ import { BookmarkX, Search, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
-import { useAuth } from '@/context/AuthContext';
 
 export default function BookmarksPage() {
   const { getBookmarkedHustles, loading } = useBookmarks();
-  const { user, loading: authLoading } = useAuth();
   const bookmarkedHustles = getBookmarkedHustles(allHustles);
-
-  const isLoading = loading || authLoading;
 
   return (
     <div className="container mx-auto py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
@@ -24,7 +20,7 @@ export default function BookmarksPage() {
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary">Your Saved Hustles</h1>
           <p className="mt-3 sm:mt-4 text-md sm:text-lg text-muted-foreground">
-            {user ? "Revisit the opportunities you've bookmarked." : "Log in to see your saved hustles synced across devices."}
+            Revisit the opportunities you've bookmarked.
           </p>
         </div>
       </AnimatedDiv>
@@ -48,7 +44,7 @@ export default function BookmarksPage() {
         </div>
       </div>
 
-      {isLoading ? (
+      {loading ? (
         <div className="flex justify-center items-center py-16">
           <Loader2 className="h-12 w-12 animate-spin text-primary" />
         </div>

@@ -4,9 +4,6 @@
 import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookmarks } from '@/context/BookmarkContext';
-import { useAuth } from '@/context/AuthContext';
-import AuthDialog from '../auth/AuthDialog';
-import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -19,28 +16,21 @@ interface BookmarkButtonProps {
 }
 
 export default function BookmarkButton({ hustleId, className, size = "icon", variant = "ghost", isIconOnly = false }: BookmarkButtonProps) {
-  const { user } = useAuth();
   const { addBookmark, removeBookmark, isBookmarked, loading } = useBookmarks();
   const { toast } = useToast();
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
   
   const bookmarked = isBookmarked(hustleId);
 
-  const toggleBookmark = async (e: React.MouseEvent) => {
+  const toggleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
-    if (!user) {
-      setIsAuthDialogOpen(true);
-      return;
-    }
     
     try {
       if (bookmarked) {
-        await removeBookmark(hustleId);
+        removeBookmark(hustleId);
         toast({ title: "Removed from Saved", description: "Hustle removed from your saved list." });
       } else {
-        await addBookmark(hustleId);
+        addBookmark(hustleId);
         toast({ title: "Hustle Saved!", description: "You can find it on your 'Saved' page.", variant: "default" });
       }
     } catch (error) {
@@ -48,23 +38,6 @@ export default function BookmarkButton({ hustleId, className, size = "icon", var
       toast({ title: "Error", description: "Could not update your saved hustles. Please try again.", variant: "destructive" });
     }
   };
-
-  if (!user) {
-    return (
-      <AuthDialog open={isAuthDialogOpen} onOpenChange={setIsAuthDialogOpen}>
-        <Button
-          variant={variant}
-          size={size}
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsAuthDialogOpen(true); }}
-          className={cn("p-2", "text-primary/70 hover:text-primary", className)}
-          aria-label='Save hustle'
-        >
-          <Heart className="h-5 w-5" />
-          {!isIconOnly && <span className="ml-2">Save</span>}
-        </Button>
-      </AuthDialog>
-    );
-  }
 
   return (
     <Button
