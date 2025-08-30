@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from './ThemeToggle';
+import UserNav from '@/components/auth/UserNav';
 
 const Header = () => {
   return (
@@ -63,30 +64,33 @@ const Header = () => {
 
             <ThemeToggle />
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground h-8 w-8 sm:h-9 sm:w-9">
-                  <MenuIcon className="h-5 w-5" />
-                  <span className="sr-only">More options</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end">
-                <DropdownMenuLabel>More</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/terms" className="flex items-center">
-                    <FileText className="mr-2 h-4 w-4" />
-                    <span>Terms & Conditions</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/privacy" className="flex items-center">
-                    <Shield className="mr-2 h-4 w-4" />
-                    <span>Privacy Policy</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="flex items-center gap-x-2">
+                <UserNav />
+                <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground h-8 w-8 sm:h-9 sm:w-9">
+                    <MenuIcon className="h-5 w-5" />
+                    <span className="sr-only">More options</span>
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end">
+                    <DropdownMenuLabel>More</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                    <Link href="/terms" className="flex items-center">
+                        <FileText className="mr-2 h-4 w-4" />
+                        <span>Terms & Conditions</span>
+                    </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                    <Link href="/privacy" className="flex items-center">
+                        <Shield className="mr-2 h-4 w-4" />
+                        <span>Privacy Policy</span>
+                    </Link>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+                </DropdownMenu>
+            </div>
           </nav>
         </div>
       </div>
