@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -129,7 +130,11 @@ const SelectItem = React.forwardRef<
       </SelectPrimitive.ItemIndicator>
     </span>
 
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+    <SelectPrimitive.ItemText>
+        <div className="flex items-center gap-2">
+            {children}
+        </div>
+    </SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ))
 SelectItem.displayName = SelectPrimitive.Item.displayName
