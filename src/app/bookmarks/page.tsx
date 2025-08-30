@@ -5,19 +5,18 @@ import React from 'react';
 import { useBookmarks } from '@/context/BookmarkContext';
 import { allHustles } from '@/lib/hustle-data';
 import HustleCard from '@/components/hustles/HustleCard';
-import { BookmarkX, Search } from 'lucide-react';
+import { BookmarkX, Search, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
+import { useAuth } from '@/context/AuthContext';
 
 export default function BookmarksPage() {
-  const { getBookmarkedHustles } = useBookmarks();
-  const [bookmarkedHustles, setBookmarkedHustles] = React.useState(() => getBookmarkedHustles(allHustles));
+  const { getBookmarkedHustles, loading } = useBookmarks();
+  const { user, loading: authLoading } = useAuth();
+  const bookmarkedHustles = getBookmarkedHustles(allHustles);
 
-  React.useEffect(() => {
-    setBookmarkedHustles(getBookmarkedHustles(allHustles));
-  }, [getBookmarkedHustles]);
-
+  const isLoading = loading || authLoading;
 
   return (
     <div className="container mx-auto py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
@@ -25,7 +24,7 @@ export default function BookmarksPage() {
         <div className="text-center mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary">Your Saved Hustles</h1>
           <p className="mt-3 sm:mt-4 text-md sm:text-lg text-muted-foreground">
-            Revisit the opportunities you've bookmarked.
+            {user ? "Revisit the opportunities you've bookmarked." : "Log in to see your saved hustles synced across devices."}
           </p>
         </div>
       </AnimatedDiv>
@@ -49,7 +48,11 @@ export default function BookmarksPage() {
         </div>
       </div>
 
-      {bookmarkedHustles.length > 0 ? (
+      {isLoading ? (
+        <div className="flex justify-center items-center py-16">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      ) : bookmarkedHustles.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {bookmarkedHustles.map((hustle, index) => (
             <AnimatedDiv 
