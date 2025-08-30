@@ -37,7 +37,7 @@ export type SkillMatcherOutput = z.infer<typeof SkillMatcherOutputSchema>;
 
 const skillMatcherPrompt = ai.definePrompt({
   name: 'skillMatcherPrompt',
-  model: 'gemini-1.5-flash-latest',
+  model: 'gemini-1.5-flash',
   input: { schema: SkillMatcherInputSchema },
   output: { schema: SkillMatcherOutputSchema },
   prompt: `You are an expert career counselor specializing in side hustles. Your task is to match a user's skills with the most relevant side hustles from the provided list.
@@ -49,7 +49,7 @@ Here is the list of available side hustles with their titles, categories, and re
 {{{json hustleSummary}}}
 
 Based on the user's skills, identify the top 10 most relevant hustles from the list. For each recommendation, provide a brief, one-sentence reason explaining why it's a good match.
-Return the result as a list of objects, each containing the hustle 'id' and a 'reason'. Do not recommend hustles that are not in the provided list. Focus on matching the user's skills to the 'skills' field of the hustles.
+Return the result as a list of objects, each containing the 'id' and a 'reason'. Do not recommend hustles that are not in the provided list. Focus on matching the user's skills to the 'skills' field of the hustles.
 `,
   // Pass the hustle summary as part of the prompt context, not as an input field
   context: {
