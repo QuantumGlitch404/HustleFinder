@@ -554,6 +554,199 @@ const remoteSampleDescriptionsBatch4 = [
   'Check online forum signatures for broken links or non-compliant content as a moderation task.'
 ];
 
+const remoteCategoriesBatch5 = [
+  { name: 'Micro-Task & Crowdsourcing', imageHint: 'task online crowd' },
+  { name: 'Entry-Level Digital Services', imageHint: 'digital service entry' },
+  { name: 'Online Sales & Promotion', imageHint: 'sales promotion online' },
+  { name: 'Localized Content Services', imageHint: 'local content language' },
+  { name: 'Virtual Admin & Support', imageHint: 'admin support virtual' },
+  { name: 'Beginner Creative Services', imageHint: 'creative beginner simple' },
+  { name: 'Data Collection & Entry', imageHint: 'data collection entry' },
+  { name: 'Social Media Support', imageHint: 'social media support' },
+];
+
+const remoteSampleTitlesBatch5 = [
+  // Micro-Task & Crowdsourcing (15)
+  'Image Annotation & Tagging for AI', 'Online Survey Taker for Cash', 'Audio Transcription (Short Clips)',
+  'Micro-Tasker on Clickworker/Appen', 'Receipt & Invoice Data Entry', 'Product Categorization for E-commerce',
+  'Website Usability Testing (Short Tasks)', 'Captcha Solving Services', 'Content Moderation (Comments & Posts)',
+  'Search Engine Evaluation (Entry-Level)', 'Sentiment Analysis of Social Media Posts', 'Data Validation & Comparison',
+  'Video Content Tagging', 'Online Poll & Voting Participant', 'Mystery Shopper (Online Stores)',
+  // Entry-Level Digital Services (15)
+  'Simple Logo Design (Canva-based)', 'Basic Photo Retouching (Blemish Removal)', 'File Format Conversion (e.g., PDF to Doc)',
+  'Creating Fillable PDF Forms', 'PowerPoint Presentation Design (Basic)', 'WordPress Content Uploading',
+  'Removing Backgrounds from Images', 'Watermarking Photos or Videos', 'Data Entry into Spreadsheets',
+  'Creating Simple Social Media Graphics', 'Proofreading Short Texts (e.g., emails, posts)', 'Website Broken Link Checker',
+  'Image Resizing & Cropping', 'QR Code Generation for Businesses', 'Basic Video Editing (Trimming & Merging)',
+  // Online Sales & Promotion (15)
+  'Social Media Account Setup for Small Businesses', 'Facebook Marketplace Listing Assistant', 'Affiliate Product Research',
+  'Writing Product Descriptions for E-commerce', 'Classified Ad Posting Services', 'Joining & Engaging in Affiliate Programs',
+  'Finding Discount Codes for Shoppers', 'Creating Simple Product Mockups', 'E-commerce Customer Service (FAQ-based)',
+  'Assisting with Dropshipping Product Sourcing', 'Social Media Sharing & Promotion Services', 'Online Review Management Assistant',
+  'Influencer Research (Micro-influencers)', 'Creating Pinterest Boards for Products', 'Promoting Local Businesses on Social Media',
+  // Localized Content Services (15)
+  'Translation of Simple Documents (Local Language)', 'Voice-over for Local Language Videos', 'Local Dialect Transcription',
+  'Creating Subtitles in a Local Language', 'Cultural Sensitivity Reader for Content', 'Local SEO Keyword Research (Basic)',
+  'Writing Localized Blog Content', 'Local News Summarization & Reporting', 'Adapting Marketing Copy for Local Culture',
+  'Recording Local Language Phrases for Apps', 'Proofreading Localized Website Content', 'Local Community Forum Moderator',
+  'Gathering Local Business Information for Directories', 'Creating Localized Social Media Content', 'Voice Acting for Local Animations',
+  // Virtual Admin & Support (15)
+  'Email Management & Filtering', 'Calendar & Appointment Scheduling Assistant', 'Online Research for Various Topics',
+  'Travel Itinerary Planning (Basic)', 'Managing Online Classified Ads', 'Virtual Receptionist (Chat/Email only)',
+  'Customer Support Ticket Management (Basic)', 'Organizing Cloud Storage (Google Drive/Dropbox)', 'Creating & Managing Online Forms',
+  'Event Registration & Attendee Lists', 'Taking Minutes from Virtual Meetings', 'Database Cleanup & Maintenance',
+  'Preparing Simple Reports from Data', 'Online Subscription Management', 'Virtual Errand Runner (Online Tasks)',
+  // Beginner Creative Services (15)
+  'Creating Quote Graphics for Social Media', 'Making Simple Animated GIFs', 'Designing Printable Checklists & Planners',
+  'Playlist Curation for Cafes/Stores', 'Video Thumbnail Creation (Basic)', 'Photo Collage Making Services',
+  'Customizing Canva Templates', 'Digital Sticker Creation for Apps', 'Basic Infographic Design',
+  'Coloring Book Page Design', 'Creating Social Media Story Templates', 'Simple Podcast Cover Art Design',
+  'Designing Basic YouTube Channel Art', 'Writing Short Poems or Greetings', 'Creating Custom Invitation Cards (Digital)',
+  // Data Collection & Entry (15)
+  'Online Form Data Entry', 'Collecting Business Contact Information', 'Web Scraping (Manual Copy-Paste)',
+  'Product Information Collection', 'Real Estate Listing Data Entry', 'Academic Research Data Entry',
+  'Compiling Lists from Websites', 'Entering Data from Scanned Documents', 'Customer Database Entry & Updates',
+  'Tracking Prices from E-commerce Sites', 'Gathering Statistics from Public Reports', 'Medical Data Entry (Non-sensitive)',
+  'Catalog Data Entry', 'Logging Survey Responses', 'Building Simple Databases from Scratch',
+  // Social Media Support (15)
+  'Social Media Comment & Message Responder', 'Scheduling Posts on Facebook/Instagram', 'Finding & Curating Content for Social Media',
+  'Creating & Managing Facebook Groups', 'Instagram Follower Engagement', 'Hashtag Research for Posts',
+  'Monitoring Brand Mentions', 'Setting up Social Media Profiles', 'Running Simple Social Media Polls',
+  'Repurposing Blog Content for Social Media', 'Pinterest Pin Creation & Scheduling', 'LinkedIn Company Page Updates',
+  'Finding User-Generated Content to Share', 'Social Media Contest & Giveaway Support', 'Analyzing Competitor Social Media Pages',
+];
+
+const remoteSampleDescriptionsBatch5 = [
+  // Micro-Task & Crowdsourcing (15)
+  'Draw boxes around objects in images or apply labels to help train artificial intelligence models. Requires attention to detail.',
+  'Participate in online surveys from market research companies and get paid for your opinions on various products and services.',
+  'Listen to short audio files and type out what is being said. This is often used for training voice recognition software.',
+  'Join platforms like Clickworker or Appen to complete small, varied tasks like data validation, web research, or content rating.',
+  'Enter data from scanned receipts and invoices into digital spreadsheets or software. Speed and accuracy are key.',
+  'Help e-commerce sites by assigning products to the correct categories and subcategories based on their attributes.',
+  'Test websites or mobile apps for a short period and provide feedback on their functionality and user experience.',
+  'Solve CAPTCHA images for services that need to bypass automated systems. This is a simple, task-based gig.',
+  'Review user-submitted comments, posts, or images to ensure they adhere to a platform\'s community guidelines.',
+  'Evaluate the quality and relevance of search engine results for specific queries to help improve search algorithms.',
+  'Read social media posts or comments and categorize their tone (positive, negative, neutral) for market research.',
+  'Compare two sets of data to find inconsistencies or validate that information is accurate and matches across sources.',
+  'Watch short video clips and apply descriptive tags or labels based on the content shown in the video.',
+  'Participate in online polls and voting campaigns for brands or research companies. Simple and quick tasks.',
+  'Act as a mystery shopper for online stores, evaluating the user experience, checkout process, and customer service.',
+  // Entry-Level Digital Services (15)
+  'Use free tools like Canva to create simple and effective logos for small local businesses, blogs, or social media pages.',
+  'Provide basic photo editing services, such as removing pimples, spots, or unwanted small objects from photos.',
+  'Convert files from one format to another, such as PDF to Microsoft Word, JPG to PNG, or other common conversions.',
+  'Turn standard PDF documents into interactive, fillable forms that users can complete on their computers.',
+  'Design clean and professional-looking presentations in PowerPoint or Google Slides using provided content.',
+  'Upload articles, images, and other content to WordPress websites for clients, requiring basic CMS knowledge.',
+  'Use online tools or simple software to remove the background from product photos or portraits, making them clean for other uses.',
+  'Add a watermark (logo or text) to batches of photos or videos to protect the owner\'s copyright.',
+  'Accurately enter information from various sources into Excel spreadsheets or Google Sheets.',
+  'Create simple yet visually appealing graphics for social media posts using templates on platforms like Canva.',
+  'Review short pieces of text like emails, social media posts, or product descriptions for spelling and grammar errors.',
+  'Scan websites to find and report broken links, which helps businesses improve their SEO and user experience.',
+  'Crop and resize images to specific dimensions required for websites, social media profiles, or marketing materials.',
+  'Generate QR codes that link to websites, social media profiles, or menus for local businesses.',
+  'Perform basic video editing tasks like cutting out unwanted parts of a video or joining multiple clips together.',
+  // Online Sales & Promotion (15)
+  'Help small local businesses create and set up their official pages on social media platforms like Facebook and Instagram.',
+  'Assist people in selling their items on Facebook Marketplace by creating listings with clear descriptions and photos.',
+  'Research and identify suitable affiliate programs or products for bloggers and content creators to promote.',
+  'Write clear, concise, and persuasive product descriptions for online stores to help attract customers and increase sales.',
+  'Post advertisements for businesses or individuals on various online classified ad websites.',
+  'Sign up for various affiliate programs and promote their products through social media or a simple blog.',
+  'Find and compile lists of active discount codes and coupons for various online stores to help shoppers save money.',
+  'Create simple visual mockups of products like t-shirts, mugs, or digital books to help sellers showcase their items.',
+  'Provide customer support for e-commerce stores by answering frequently asked questions via email or chat.',
+  'Help dropshippers find potential products to sell by researching trending items on platforms like AliExpress.',
+  'Share a business\'s content, links, or promotions across various social media groups or platforms to increase visibility.',
+  'Monitor and respond to customer reviews on platforms like Google Maps, Yelp, or Trustpilot for local businesses.',
+  'Find and create lists of micro-influencers (1k-10k followers) in specific niches for brands to collaborate with.',
+  'Create and manage visually appealing Pinterest boards with relevant product pins to drive traffic to e-commerce sites.',
+  'Help promote local businesses within your community by sharing their offers and updates on local Facebook groups or forums.',
+  // Localized Content Services (15)
+  'Translate simple texts, such as emails, product descriptions, or short articles, from English to your local language.',
+  'Record voice-overs in your local language for explainer videos, advertisements, or e-learning content.',
+  'Transcribe audio or video recordings that are in a specific local dialect or accent.',
+  'Create accurate and well-timed subtitles for videos in your local language, making them accessible to a wider audience.',
+  'Review content to ensure it is culturally appropriate and sensitive for your local region before it is published.',
+  'Research and identify relevant keywords in your local language for businesses wanting to improve their local search rankings.',
+  'Write blog posts or articles that are tailored to the interests and culture of a specific local audience.',
+  'Monitor local news sources and provide summaries or reports in English or another language.',
+  'Adapt marketing slogans and advertising copy to be more effective and culturally resonant in your local market.',
+  'Record clear audio of specific phrases or words in your local language for use in language learning apps or translation tools.',
+  'Check the translated content of a website for grammatical errors, typos, and awkward phrasing in your local language.',
+  'Moderate an online community or forum for a specific local region, ensuring discussions are relevant and respectful.',
+  'Collect information about local businesses (name, address, phone number, hours) to be added to online directories.',
+  'Create social media content (posts, stories) that references local events, holidays, or trends.',
+  'Provide voice acting for characters in local-language animations, cartoons, or short films.',
+  // Virtual Admin & Support (15)
+  'Help clients manage their email inbox by sorting, filtering, and responding to basic inquiries.',
+  'Manage a client\'s calendar by scheduling appointments, setting reminders, and organizing their daily agenda.',
+  'Conduct research on the internet for various topics and compile the findings into a simple, organized document.',
+  'Help plan travel by researching flights, accommodations, and activities based on a client\'s budget and preferences.',
+  'Post and manage listings for clients on online classified ad websites like Craigslist or local equivalents.',
+  'Act as a virtual receptionist by handling initial customer inquiries through live chat or email, no phone calls required.',
+  'Manage and respond to basic customer support tickets using a predefined set of answers or scripts.',
+  'Help individuals or businesses organize their digital files and folders in cloud storage services like Google Drive.',
+  'Create and manage online forms and surveys for clients to collect data or feedback.',
+  'Assist with event registration by managing attendee lists, sending confirmations, and answering basic questions.',
+  'Attend virtual meetings and transcribe the key discussion points, decisions, and action items.',
+  'Help clean up and organize messy databases by removing duplicate entries and correcting errors.',
+  'Compile data from various sources into simple, easy-to-read reports or summaries.',
+  'Keep track of a client\'s online subscriptions and services, helping them cancel unwanted ones to save money.',
+  'Perform various online tasks for clients, such as placing online orders, finding information, or booking services.',
+  // Beginner Creative Services (15)
+  'Use tools like Canva to create inspiring or motivational quote graphics for Instagram, Facebook, or Pinterest.',
+  'Create short, simple animated GIFs from video clips or a series of images for use on social media or websites.',
+  'Design simple, printable documents like daily checklists, weekly planners, or budget trackers for people to download.',
+  'Curate customized music playlists on platforms like Spotify for local cafes, small shops, or events.',
+  'Design basic but eye-catching video thumbnails for YouTubers to help increase their click-through rates.',
+  'Create beautiful digital photo collages for special occasions like birthdays, anniversaries, or holidays.',
+  'Take existing Canva templates and customize them with a client\'s branding, colors, and content.',
+  'Design unique digital stickers that can be used in messaging apps like WhatsApp or Telegram.',
+  'Create simple infographics to visualize data or explain a process, using tools like Canva or Piktochart.',
+  'Design and create custom coloring book pages for children or adults, which can be sold as digital downloads.',
+  'Create a set of branded and reusable templates for Instagram or Facebook Stories for businesses to use.',
+  'Design a simple and clean cover art for new podcasters or musicians on a budget.',
+  'Create basic but professional-looking channel art (banners) for YouTube channels.',
+  'Write short, custom poems, greetings, or messages for special occasions like birthdays or holidays.',
+  'Design digital invitation cards for events like weddings, parties, or corporate meetings.',
+  // Data Collection & Entry (15)
+  'Accurately enter data from paper forms or digital forms into a spreadsheet or database.',
+  'Browse websites to collect contact information (name, email, phone number) for businesses for marketing lists.',
+  'Manually copy and paste information from various websites into a single organized document or spreadsheet.',
+  'Gather specific information about products from e-commerce websites, such as price, features, and reviews.',
+  'Enter details of real estate listings from various sources into a centralized database for agents or agencies.',
+  'Assist academic researchers by entering data from surveys, experiments, or historical documents into a database.',
+  'Compile lists of specific items, such as top 10 articles on a topic or a list of businesses in a certain industry.',
+  'Type out data from scanned documents, images, or PDFs into editable digital formats like Word or Excel.',
+  'Enter new customer information into a database or CRM system and update existing records as needed.',
+  'Monitor and record the prices of specific products from different e-commerce websites for competitor analysis.',
+  'Gather specific statistics and data points from public reports or websites for analysis or articles.',
+  'Enter non-sensitive data from medical or health records into a secure digital system, requiring high accuracy.',
+  'Enter product information, including SKUs, descriptions, and prices, into an e-commerce store\'s catalog.',
+  'Manually log responses from paper-based or email surveys into a spreadsheet for analysis.',
+  'Create simple databases or spreadsheets from scratch to help clients organize their information effectively.',
+  // Social Media Support (15)
+  'Respond to basic comments and direct messages on a business\'s social media accounts using a friendly tone.',
+  'Use scheduling tools like Buffer or Hootsuite to schedule pre-written social media posts to go live at specific times.',
+  'Find and curate interesting articles, images, or videos relevant to a brand\'s audience to be shared on their social media.',
+  'Help create and manage a Facebook group for a brand or community, including approving members and posting content.',
+  'Increase engagement on a client\'s Instagram account by liking and commenting on posts from relevant accounts.',
+  'Research and identify relevant and trending hashtags for Instagram and X posts to increase their reach.',
+  'Use social media monitoring tools to find and report mentions of a brand or specific keywords.',
+  'Help individuals or small businesses set up their social media profiles correctly, including profile pictures and bios.',
+  'Run simple polls and Q&A sessions on social media platforms like Instagram Stories or X to engage followers.',
+  'Take existing blog posts or videos and turn them into smaller, bite-sized content pieces for social media.',
+  'Create visually appealing pins using Canva and schedule them to be posted on relevant Pinterest boards.',
+  'Help keep a business\'s LinkedIn company page active by posting updates, news, and articles.',
+  'Find and collect user-generated content (photos, videos) that a brand can share on their own social media pages.',
+  'Assist in running simple social media contests or giveaways by tracking entries and communicating with participants.',
+  'Monitor the social media pages of competitors to see what kind of content they are posting and how it performs.',
+];
+
 
 const reviewerNamesBank = [
   "Priya Sharma", "Rajesh Kumar", "Aisha Begum", "Vikram Singh", "Meera Devi", "Amit Patel", "Sneha Gupta", "Rohan Mehta",
@@ -821,9 +1014,10 @@ const remoteHustlesBatch1 = generateHustles(120, generalHustles.length, remoteCa
 const remoteHustlesBatch2 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length, remoteCategoriesBatch2, remoteSampleTitlesBatch2, remoteSampleDescriptionsBatch2, true);
 const remoteHustlesBatch3 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length, remoteCategoriesBatch3, remoteSampleTitlesBatch3, remoteSampleDescriptionsBatch3, true);
 const remoteHustlesBatch4 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length + remoteHustlesBatch3.length, remoteCategoriesBatch4, remoteSampleTitlesBatch4, remoteSampleDescriptionsBatch4, true);
+const remoteHustlesBatch5 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length + remoteHustlesBatch3.length + remoteHustlesBatch4.length, remoteCategoriesBatch5, remoteSampleTitlesBatch5, remoteSampleDescriptionsBatch5, true);
 
 
-export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3, ...remoteHustlesBatch4];
+export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3, ...remoteHustlesBatch4, ...remoteHustlesBatch5];
 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
