@@ -1,13 +1,20 @@
 
 import { allHustles, HUSTLES_PER_PAGE } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
-import { Search } from 'lucide-react';
+import { Filter, Search } from 'lucide-react';
 import AnimatedDiv from '@/components/animations/AnimatedDiv';
 import HustleCard from '@/components/hustles/HustleCard';
 import Pagination from '@/components/hustles/Pagination';
 import HustleFilters from '@/components/hustles/HustleFilters';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export const metadata = {
   title: 'Explore Side Hustles | Hustle Finder',
@@ -94,11 +101,32 @@ export default function HustlesPage({ searchParams }: HustlesPageProps) {
       </AnimatedDiv>
 
       <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-        <aside className="lg:col-span-1 lg:sticky lg:top-24 self-start mb-8 lg:mb-0">
+        {/* Desktop Sidebar Filters - hidden on small screens */}
+        <aside className="hidden lg:block lg:col-span-1 lg:sticky lg:top-24 self-start mb-8 lg:mb-0">
           <HustleFilters searchParams={searchParams} />
         </aside>
 
         <main className="lg:col-span-3">
+          {/* Mobile Filters - A button that triggers a slide-out sheet */}
+          <div className="lg:hidden mb-6">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" className="w-full">
+                  <Filter className="mr-2 h-4 w-4" />
+                  Show Filters & Sort
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[340px] p-0">
+                <SheetHeader className="p-4 border-b">
+                   <SheetTitle className="text-lg">Filter & Sort</SheetTitle>
+                </SheetHeader>
+                <div className="p-4 overflow-y-auto">
+                    <HustleFilters searchParams={searchParams} />
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+
           {currentHustles.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
