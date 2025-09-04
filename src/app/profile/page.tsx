@@ -74,7 +74,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="container mx-auto py-8 max-w-2xl h-full flex flex-col justify-center">
+<div className="container mx-auto py-8 max-w-2xl h-full flex flex-col justify-center">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Your Profile</CardTitle>
