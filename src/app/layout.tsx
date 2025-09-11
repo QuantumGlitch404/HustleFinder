@@ -7,7 +7,6 @@ import Footer from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { AuthProvider } from '@/context/AuthContext';
 import { BookmarkProvider } from '@/context/BookmarkContext';
 import AdBlockDetector from '@/components/layout/AdBlockDetector';
 
@@ -44,19 +43,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>
-            <BookmarkProvider>
-              <AdBlockDetector>
-                <Header />
-                <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-                  {children}
-                </main>
-                <Footer />
-                <Toaster />
-                <ScrollToTopButton />
-              </AdBlockDetector>
-            </BookmarkProvider>
-          </AuthProvider>
+          <BookmarkProvider>
+            <AdBlockDetector>
+              <Header />
+              <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+                {children}
+              </main>
+              <Footer />
+              <Toaster />
+              <ScrollToTopButton />
+            </AdBlockDetector>
+          </BookmarkProvider>
         </ThemeProvider>
         {/* Adsterra Social Bar Ad Code */}
         <script type='text/javascript' src='//jackalclenchedbedside.com/94/0f/ff/940fff7131c886df3d66c9f960bf9916.js'></script>

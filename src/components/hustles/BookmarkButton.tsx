@@ -1,14 +1,9 @@
-
 "use client";
 
 import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookmarks } from '@/context/BookmarkContext';
-import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
-import { useToast } from '@/hooks/use-toast';
-import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import AuthDialog from '@/components/auth/AuthDialog';
 
 interface BookmarkButtonProps {
   hustleId: string;
@@ -20,36 +15,20 @@ interface BookmarkButtonProps {
 
 export default function BookmarkButton({ hustleId, className, size = "icon", variant = "ghost", isIconOnly = false }: BookmarkButtonProps) {
   const { addBookmark, removeBookmark, isBookmarked, loading } = useBookmarks();
-  const { user } = useAuth();
-  const { toast } = useToast();
-  
   const bookmarked = isBookmarked(hustleId);
 
   const toggleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
-    if (!user) {
-      // The button will be wrapped in a DialogTrigger, so we don't need to do anything here.
-      // The dialog will open automatically.
-      return;
-    }
-    
-    try {
-      if (bookmarked) {
-        removeBookmark(hustleId);
-        // Toast is handled in the context now for cloud operations
-      } else {
-        addBookmark(hustleId);
-        // Toast is handled in the context now for cloud operations
-      }
-    } catch (error) {
-      console.error("Bookmark toggle error:", error);
-      toast({ title: "Error", description: "Could not update your saved hustles. Please try again.", variant: "destructive" });
+    if (bookmarked) {
+      removeBookmark(hustleId);
+    } else {
+      addBookmark(hustleId);
     }
   };
 
-  const button = (
+  return (
     <Button
       variant={variant}
       size={size}
@@ -69,19 +48,4 @@ export default function BookmarkButton({ hustleId, className, size = "icon", var
       {!isIconOnly && <span className="ml-2">{loading ? "Saving..." : (bookmarked ? 'Saved' : 'Save')}</span>}
     </Button>
   );
-
-  // If user is not logged in, wrap the button in a dialog trigger
-  if (!user) {
-    return (
-      <Dialog>
-        <DialogTrigger asChild onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
-          {button}
-        </DialogTrigger>
-        <AuthDialog />
-      </Dialog>
-    );
-  }
-
-  // Otherwise, return the button as is
-  return button;
 }
