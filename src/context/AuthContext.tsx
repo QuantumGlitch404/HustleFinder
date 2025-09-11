@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
@@ -54,7 +53,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (docSnap.exists()) {
           setUserProfile(docSnap.data() as UserProfile);
         } else {
-          // Create a new profile if it doesn't exist
+          // Create a new profile if it doesn't exist (e.g., for Google Sign-In)
           const newUserProfile: UserProfile = {
             uid: user.uid,
             email: user.email,
