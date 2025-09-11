@@ -17,8 +17,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAuth } from '@/context/AuthContext';
-import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import AuthDialog from './AuthDialog';
 import { User, LogOut, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -35,18 +33,15 @@ export default function UserNav() {
 
   if (!user) {
     return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="ghost" size="icon" className="relative h-8 w-8 rounded-full">
-            <Avatar className="h-8 w-8">
-              <AvatarFallback>
-                <User className="h-5 w-5" />
-              </AvatarFallback>
-            </Avatar>
-          </Button>
-        </DialogTrigger>
-        <AuthDialog />
-      </Dialog>
+        <Button variant="ghost" size="icon" asChild className="relative h-8 w-8 rounded-full">
+            <Link href="/login">
+                <Avatar className="h-8 w-8">
+                    <AvatarFallback>
+                        <User className="h-5 w-5" />
+                    </AvatarFallback>
+                </Avatar>
+            </Link>
+        </Button>
     );
   }
 
