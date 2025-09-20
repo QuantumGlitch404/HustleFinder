@@ -3,9 +3,10 @@
 import type { Hustle } from '@/types/hustle';
 import React, { createContext, useContext, useState, useEffect, type ReactNode, useCallback } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { useAuth } from './AuthContext';
-import { db } from '@/lib/firebase';
+import { useAuth } from './AuthContext'; // We'll get user from here, but carefully
+import { db, auth } from '@/lib/firebase';
 import { doc, getDoc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { onAuthStateChanged, type User } from 'firebase/auth';
 
 interface BookmarkContextType {
   bookmarkedIds: string[];
@@ -14,6 +15,7 @@ interface BookmarkContextType {
   isBookmarked: (id: string) => boolean;
   getBookmarkedHustles: (allHustles: Hustle[]) => Hustle[];
   loading: boolean;
+  isReady: boolean; // New state to signal when initial load is complete
 }
 
 const BookmarkContext = createContext<BookmarkContextType | undefined>(undefined);
@@ -22,30 +24,53 @@ const LOCAL_STORAGE_KEY = 'bookmarkedHustleIds_guest';
 
 export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
-  const { user, loading: authLoading } = useAuth();
+  // We'll manage our own user state here to break circular dependency
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isReady, setIsReady] = useState(false); // New ready state
+
+  useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+          setCurrentUser(user);
+          setAuthChecked(true);
+      });
+      return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const initializeBookmarks = async () => {
+      if (!authChecked) return; // Wait until Firebase auth state is checked
+      
       setLoading(true);
 
-      // Wait until Firebase auth state is resolved
-      if (authLoading) return;
-
-      if (user) {
+      if (currentUser) {
         // User is logged in, fetch from Firestore
-        const userBookmarksRef = doc(db, 'bookmarks', user.uid);
+        const userBookmarksRef = doc(db, 'bookmarks', currentUser.uid);
         try {
           const docSnap = await getDoc(userBookmarksRef);
           if (docSnap.exists()) {
             setBookmarkedIds(docSnap.data().hustleIds || []);
           } else {
-            setBookmarkedIds([]); // No bookmarks document yet
+            // If user has local bookmarks, merge them to firestore
+            const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if(storedIds) {
+                const localBookmarks = JSON.parse(storedIds);
+                if (localBookmarks.length > 0) {
+                  await setDoc(userBookmarksRef, { hustleIds: localBookmarks });
+                  setBookmarkedIds(localBookmarks);
+                  localStorage.removeItem(LOCAL_STORAGE_KEY); // Clear local after merging
+                } else {
+                  setBookmarkedIds([]);
+                }
+            } else {
+               setBookmarkedIds([]); // No bookmarks document yet
+            }
           }
         } catch (error) {
           console.error("Error fetching Firestore bookmarks:", error);
-          setBookmarkedIds([]); // Fallback to empty on error
           toast({
             title: "Could not load bookmarks",
             description: "There was an issue fetching your saved hustles.",
@@ -56,58 +81,51 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
         // User is a guest, fetch from localStorage
         try {
           const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
-          if (storedIds) {
-            setBookmarkedIds(JSON.parse(storedIds));
-          } else {
-            setBookmarkedIds([]);
-          }
+          setBookmarkedIds(storedIds ? JSON.parse(storedIds) : []);
         } catch (error) {
           console.error("Failed to parse bookmarks from localStorage", error);
           setBookmarkedIds([]);
         }
       }
       setLoading(false);
+      setIsReady(true); // Signal that the initial load is complete
     };
 
     initializeBookmarks();
-  }, [user, authLoading, toast]);
+  }, [currentUser, authChecked, toast]);
 
 
   const addBookmark = useCallback(async (id: string) => {
-    if (user) {
+    if (bookmarkedIds.includes(id)) return;
+
+    const newIds = [...bookmarkedIds, id];
+    setBookmarkedIds(newIds);
+
+    if (currentUser) {
       // Logged-in user
-      const userBookmarksRef = doc(db, 'bookmarks', user.uid);
+      const userBookmarksRef = doc(db, 'bookmarks', currentUser.uid);
       try {
-          await updateDoc(userBookmarksRef, {
-            hustleIds: arrayUnion(id)
-          });
+          // Use setDoc with merge to create if not exists, or update if it does.
+          await setDoc(userBookmarksRef, { hustleIds: arrayUnion(id) }, { merge: true });
           toast({ title: "Hustle Saved!", description: "It's saved to your account." });
-        } catch (err: any) {
-          // If the document doesn't exist, create it
-          if (err.code === 'not-found') {
-            await setDoc(userBookmarksRef, { hustleIds: [id] });
-            toast({ title: "Hustle Saved!", description: "Your saved list has been created." });
-          } else {
-             console.error("Firebase Error adding bookmark:", err);
-             toast({ title: "Save Failed", description: "Could not save hustle to your account.", variant: 'destructive'});
-             return; // Exit if firebase fails
-          }
+      } catch (err: any) {
+         console.error("Firebase Error adding bookmark:", err);
+         toast({ title: "Save Failed", description: "Could not save hustle to your account.", variant: 'destructive'});
+         setBookmarkedIds(prev => prev.filter(bookmarkId => bookmarkId !== id)); // Revert on failure
       }
-      setBookmarkedIds(prev => [...new Set([...prev, id])]);
     } else {
       // Guest user
-      setBookmarkedIds((prevIds) => {
-        const newIds = [...new Set([...prevIds, id])];
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
-        toast({ title: "Hustle Saved!", description: "Log in to save your hustles across devices." });
-        return newIds;
-      });
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
+      toast({ title: "Hustle Saved!", description: "Log in to save your hustles across devices." });
     }
-  }, [user, toast]);
+  }, [currentUser, bookmarkedIds, toast]);
 
   const removeBookmark = useCallback(async (id: string) => {
-     if (user) {
-        const userBookmarksRef = doc(db, 'bookmarks', user.uid);
+     const newIds = bookmarkedIds.filter((bookmarkId) => bookmarkId !== id);
+     setBookmarkedIds(newIds);
+     
+     if (currentUser) {
+        const userBookmarksRef = doc(db, 'bookmarks', currentUser.uid);
         try {
             await updateDoc(userBookmarksRef, {
                 hustleIds: arrayRemove(id)
@@ -116,18 +134,13 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
         } catch(err) {
             console.error("Firebase Error removing bookmark:", err);
             toast({ title: "Remove Failed", description: "Could not remove hustle from your account.", variant: 'destructive'});
-            return; // Exit if firebase fails
+            setBookmarkedIds(prev => [...prev, id]); // Revert on failure
         }
-        setBookmarkedIds(prev => prev.filter(bookmarkId => bookmarkId !== id));
     } else {
-        setBookmarkedIds((prevIds) => {
-          const newIds = prevIds.filter((bookmarkId) => bookmarkId !== id);
-          localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
-          toast({ title: "Removed from Saved", description: "Hustle removed from your guest list." });
-          return newIds;
-        });
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
+        toast({ title: "Removed from Saved", description: "Hustle removed from your guest list." });
     }
-  }, [user, toast]);
+  }, [currentUser, bookmarkedIds, toast]);
 
   const isBookmarked = useCallback((id: string) => {
     return bookmarkedIds.includes(id);
@@ -138,7 +151,7 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
   }, [bookmarkedIds]);
 
   return (
-    <BookmarkContext.Provider value={{ bookmarkedIds, addBookmark, removeBookmark, isBookmarked, getBookmarkedHustles, loading }}>
+    <BookmarkContext.Provider value={{ bookmarkedIds, addBookmark, removeBookmark, isBookmarked, getBookmarkedHustles, loading, isReady }}>
       {children}
     </BookmarkContext.Provider>
   );
@@ -147,7 +160,17 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
 export const useBookmarks = () => {
   const context = useContext(BookmarkContext);
   if (context === undefined) {
-    throw new Error('useBookmarks must be used within a BookmarkProvider');
+    // This can happen on initial render before the provider is ready.
+    // Return a default, non-functional value.
+    return {
+        bookmarkedIds: [],
+        addBookmark: () => {},
+        removeBookmark: () => {},
+        isBookmarked: () => false,
+        getBookmarkedHustles: () => [],
+        loading: true,
+        isReady: false,
+    };
   }
   return context;
 };

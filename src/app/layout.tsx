@@ -8,7 +8,6 @@ import { Toaster } from '@/components/ui/toaster';
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { AuthProvider } from '@/context/AuthContext';
-import { BookmarkProvider } from '@/context/BookmarkContext';
 import AdBlockDetector from '@/components/layout/AdBlockDetector';
 
 const geistSans = Geist({
@@ -45,7 +44,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <BookmarkProvider>
               <AdBlockDetector>
                 <Header />
                 <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -55,7 +53,6 @@ export default function RootLayout({
                 <Toaster />
                 <ScrollToTopButton />
               </AdBlockDetector>
-            </BookmarkProvider>
           </AuthProvider>
         </ThemeProvider>
         {/* Adsterra Social Bar Ad Code */}
