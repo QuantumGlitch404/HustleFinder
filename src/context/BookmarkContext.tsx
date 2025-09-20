@@ -22,87 +22,84 @@ const LOCAL_STORAGE_KEY = 'bookmarkedHustleIds_guest';
 
 export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const syncBookmarks = useCallback(async (localIds: string[], userId: string) => {
-    const userBookmarksRef = doc(db, 'bookmarks', userId);
-    const docSnap = await getDoc(userBookmarksRef);
-    let remoteIds: string[] = [];
-
-    if (docSnap.exists()) {
-      remoteIds = docSnap.data().hustleIds || [];
-    }
-
-    const mergedIds = [...new Set([...localIds, ...remoteIds])];
-
-    if (mergedIds.length > 0) {
-        await setDoc(userBookmarksRef, { hustleIds: mergedIds }, { merge: true });
-    }
-    
-    setBookmarkedIds(mergedIds);
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-  }, []);
 
   useEffect(() => {
     const initializeBookmarks = async () => {
       setLoading(true);
+
+      // Wait until Firebase auth state is resolved
+      if (authLoading) return;
+
       if (user) {
-        // User is logged in
-        const localGuestIds = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
-        if (localGuestIds.length > 0) {
-          await syncBookmarks(localGuestIds, user.uid);
-        } else {
-          const userBookmarksRef = doc(db, 'bookmarks', user.uid);
+        // User is logged in, fetch from Firestore
+        const userBookmarksRef = doc(db, 'bookmarks', user.uid);
+        try {
           const docSnap = await getDoc(userBookmarksRef);
           if (docSnap.exists()) {
             setBookmarkedIds(docSnap.data().hustleIds || []);
           } else {
-            setBookmarkedIds([]);
+            setBookmarkedIds([]); // No bookmarks document yet
           }
+        } catch (error) {
+          console.error("Error fetching Firestore bookmarks:", error);
+          setBookmarkedIds([]); // Fallback to empty on error
+          toast({
+            title: "Could not load bookmarks",
+            description: "There was an issue fetching your saved hustles.",
+            variant: "destructive"
+          });
         }
       } else {
-        // User is a guest
+        // User is a guest, fetch from localStorage
         try {
           const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
           if (storedIds) {
             setBookmarkedIds(JSON.parse(storedIds));
           } else {
-             setBookmarkedIds([]);
+            setBookmarkedIds([]);
           }
         } catch (error) {
           console.error("Failed to parse bookmarks from localStorage", error);
+          setBookmarkedIds([]);
         }
       }
       setLoading(false);
     };
 
     initializeBookmarks();
-  }, [user, syncBookmarks]);
+  }, [user, authLoading, toast]);
+
 
   const addBookmark = useCallback(async (id: string) => {
     if (user) {
       // Logged-in user
       const userBookmarksRef = doc(db, 'bookmarks', user.uid);
-      await updateDoc(userBookmarksRef, {
-        hustleIds: arrayUnion(id)
-      }).catch(async (err) => {
-        if (err.code === 'not-found') {
-          await setDoc(userBookmarksRef, { hustleIds: [id] });
-        } else {
-          throw err;
-        }
-      });
+      try {
+          await updateDoc(userBookmarksRef, {
+            hustleIds: arrayUnion(id)
+          });
+          toast({ title: "Hustle Saved!", description: "It's saved to your account." });
+        } catch (err: any) {
+          // If the document doesn't exist, create it
+          if (err.code === 'not-found') {
+            await setDoc(userBookmarksRef, { hustleIds: [id] });
+            toast({ title: "Hustle Saved!", description: "Your saved list has been created." });
+          } else {
+             console.error("Firebase Error adding bookmark:", err);
+             toast({ title: "Save Failed", description: "Could not save hustle to your account.", variant: 'destructive'});
+             return; // Exit if firebase fails
+          }
+      }
       setBookmarkedIds(prev => [...new Set([...prev, id])]);
-      toast({ title: "Hustle Saved!", description: "It's saved to your account." });
-
     } else {
       // Guest user
       setBookmarkedIds((prevIds) => {
         const newIds = [...new Set([...prevIds, id])];
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
-        toast({ title: "Hustle Saved!", description: "Log in to sync your saved hustles across devices." });
+        toast({ title: "Hustle Saved!", description: "Log in to save your hustles across devices." });
         return newIds;
       });
     }
@@ -111,16 +108,22 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
   const removeBookmark = useCallback(async (id: string) => {
      if (user) {
         const userBookmarksRef = doc(db, 'bookmarks', user.uid);
-        await updateDoc(userBookmarksRef, {
-            hustleIds: arrayRemove(id)
-        });
+        try {
+            await updateDoc(userBookmarksRef, {
+                hustleIds: arrayRemove(id)
+            });
+            toast({ title: "Removed from Saved", description: "Hustle removed from your account." });
+        } catch(err) {
+            console.error("Firebase Error removing bookmark:", err);
+            toast({ title: "Remove Failed", description: "Could not remove hustle from your account.", variant: 'destructive'});
+            return; // Exit if firebase fails
+        }
         setBookmarkedIds(prev => prev.filter(bookmarkId => bookmarkId !== id));
-        toast({ title: "Removed from Saved", description: "Hustle removed from your saved list." });
     } else {
         setBookmarkedIds((prevIds) => {
           const newIds = prevIds.filter((bookmarkId) => bookmarkId !== id);
           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
-          toast({ title: "Removed from Saved", description: "Hustle removed from your saved list." });
+          toast({ title: "Removed from Saved", description: "Hustle removed from your guest list." });
           return newIds;
         });
     }

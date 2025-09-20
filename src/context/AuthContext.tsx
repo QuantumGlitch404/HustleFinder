@@ -33,19 +33,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (user) {
         setUser(user);
         const userRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userRef);
-        if (docSnap.exists()) {
-          setUserProfile(docSnap.data() as UserProfile);
-        } else {
-          // Create user profile if it doesn't exist
-          const newUserProfile: UserProfile = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-          };
-          await setDoc(userRef, newUserProfile);
-          setUserProfile(newUserProfile);
+        try {
+            const docSnap = await getDoc(userRef);
+            if (docSnap.exists()) {
+              setUserProfile(docSnap.data() as UserProfile);
+            } else {
+              // Create user profile if it doesn't exist
+              const newUserProfile: UserProfile = {
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL,
+              };
+              await setDoc(userRef, newUserProfile);
+              setUserProfile(newUserProfile);
+            }
+        } catch (error) {
+            console.error("Error fetching or creating user profile:", error);
+            // Handle error appropriately, maybe sign the user out or show a message
+            setUser(null);
+            setUserProfile(null);
         }
       } else {
         setUser(null);
