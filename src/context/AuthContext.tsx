@@ -6,11 +6,11 @@ import { onAuthStateChanged, type User } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { Loader2 } from 'lucide-react';
-import { useBookmarks, BookmarkProvider } from './BookmarkContext'; // Import useBookmarks and BookmarkProvider
+import { BookmarkProvider } from './BookmarkContext'; 
 
 interface AuthContextType {
   user: User | null;
-  loading: boolean; // This will represent the combined auth and initial bookmark loading
+  loading: boolean;
   userProfile: UserProfile | null;
 }
 
@@ -25,18 +25,14 @@ export interface UserProfile {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Renaming the inner provider to avoid confusion
-const AuthStateProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [authLoading, setAuthLoading] = useState(true);
-  
-  // Get the loading state from the BookmarkContext
-  const { loading: bookmarksLoading, isReady: bookmarksReady } = useBookmarks();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setAuthLoading(true); // Start loading on any auth state change
+      setLoading(true);
       if (user) {
         setUser(user);
         const userRef = doc(db, "users", user.uid);
@@ -45,7 +41,6 @@ const AuthStateProvider = ({ children }: { children: ReactNode }) => {
             if (docSnap.exists()) {
               setUserProfile(docSnap.data() as UserProfile);
             } else {
-              // Create user profile if it doesn't exist
               const newUserProfile: UserProfile = {
                 uid: user.uid,
                 email: user.email,
@@ -64,16 +59,13 @@ const AuthStateProvider = ({ children }: { children: ReactNode }) => {
         setUser(null);
         setUserProfile(null);
       }
-      setAuthLoading(false);
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
-  // The overall loading is true if either auth or bookmarks are not ready
-  const isLoading = authLoading || !bookmarksReady;
-
-  if (isLoading) {
+  if (loading) {
      return (
       <div className="fixed inset-0 bg-background z-[99999] flex flex-col items-center justify-center text-center p-6">
         <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
@@ -83,23 +75,13 @@ const AuthStateProvider = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading: isLoading, userProfile }}>
-      {children}
+    <AuthContext.Provider value={{ user, loading, userProfile }}>
+      <BookmarkProvider>
+        {children}
+      </BookmarkProvider>
     </AuthContext.Provider>
   );
 };
-
-
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  return (
-    // Wrap AuthStateProvider with BookmarkProvider so it can access its context
-    <BookmarkProvider>
-        <AuthStateProvider>
-            {children}
-        </AuthStateProvider>
-    </BookmarkProvider>
-  )
-}
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -108,9 +90,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
-// We need to move BookmarkProvider out of layout.tsx and wrap our AuthStateProvider
-// so we'll redefine the layout here.
-export function RootLayoutWrapper({children}: {children: ReactNode}) {
-  return <AuthProvider>{children}</AuthProvider>
-}
