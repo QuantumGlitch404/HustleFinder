@@ -50,15 +50,8 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
           if (docSnap.exists()) {
             setBookmarkedIds(docSnap.data().hustleIds || []);
           } else {
-            const localIdsRaw = localStorage.getItem(LOCAL_STORAGE_KEY);
-            const localIds = localIdsRaw ? JSON.parse(localIdsRaw) : [];
-            if (localIds.length > 0) {
-              await setDoc(userBookmarksRef, { hustleIds: localIds });
-              setBookmarkedIds(localIds);
-              localStorage.removeItem(LOCAL_STORAGE_KEY);
-            } else {
-              setBookmarkedIds([]);
-            }
+            // No existing bookmarks in firestore, start fresh for this user
+            setBookmarkedIds([]);
           }
         } catch (error) {
           console.error("Error fetching Firestore bookmarks:", error);
@@ -69,6 +62,7 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
           });
         }
       } else {
+        // User is logged out, use local storage
         try {
           const storedIds = localStorage.getItem(LOCAL_STORAGE_KEY);
           setBookmarkedIds(storedIds ? JSON.parse(storedIds) : []);
@@ -93,11 +87,13 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
     if (currentUser) {
       const userBookmarksRef = doc(db, 'bookmarks', currentUser.uid);
       try {
+          // Using set with merge is safer for initialization
           await setDoc(userBookmarksRef, { hustleIds: arrayUnion(id) }, { merge: true });
           toast({ title: "Hustle Saved!", description: "It's saved to your account." });
       } catch (err: any) {
          console.error("Firebase Error adding bookmark:", err);
          toast({ title: "Save Failed", description: "Could not save hustle to your account.", variant: 'destructive'});
+         // Revert state on failure
          setBookmarkedIds(prev => prev.filter(bookmarkId => bookmarkId !== id));
       }
     } else {
@@ -120,6 +116,7 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
         } catch(err) {
             console.error("Firebase Error removing bookmark:", err);
             toast({ title: "Remove Failed", description: "Could not remove hustle from your account.", variant: 'destructive'});
+            // Revert state on failure
             setBookmarkedIds(prev => [...prev, id]);
         }
     } else {
@@ -150,4 +147,3 @@ export const useBookmarks = () => {
   }
   return context;
 };
-

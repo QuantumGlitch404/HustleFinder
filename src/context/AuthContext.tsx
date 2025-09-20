@@ -4,7 +4,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { Loader2 } from 'lucide-react';
 import { BookmarkProvider } from './BookmarkContext'; 
 
@@ -41,18 +41,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             if (docSnap.exists()) {
               setUserProfile(docSnap.data() as UserProfile);
             } else {
-              const newUserProfile: UserProfile = {
-                uid: user.uid,
-                email: user.email,
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-              };
-              await setDoc(userRef, newUserProfile);
-              setUserProfile(newUserProfile);
+              // If profile doesn't exist, it will be created on login/signup page
+              setUserProfile(null);
             }
         } catch (error) {
-            console.error("Error fetching or creating user profile:", error);
-            setUser(null);
+            console.error("Error fetching user profile:", error);
+            // Don't nullify user, just profile data.
             setUserProfile(null);
         }
       } else {
