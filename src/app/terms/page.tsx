@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Info, Shield, Users, XCircle, Gavel, RefreshCcw, AlertTriangle, Globe, Server, MessageCircle, BookOpen, ExternalLink, UserCog } from "lucide-react";
+import { FileText, Info, Shield, Users, XCircle, Gavel, RefreshCcw, AlertTriangle, Globe, Server, MessageCircle, BookOpen, ExternalLink, UserCog, Contact, Scale, Handshake, FileTerminal } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,19 +15,19 @@ export default function TermsPage() {
       title: "1. Introduction & Acceptance of Terms",
       icon: Info,
       content: [
-        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). These Terms and Conditions (\"Terms\") govern your access to and use of our website located at [Your Website URL] (the \"Service\"), including any content, functionality, and services offered on or through the Service.",
+        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). These Terms and Conditions (\"Terms\") govern your access to and use of our website located at https://hustlefinder.com (the \"Service\"), including any content, functionality, and services offered on or through the Service.",
         "Please read the Terms carefully before you start to use the Service. By using the Service, you accept and agree to be bound and abide by these Terms and our Privacy Policy, incorporated herein by reference. If you do not want to agree to these Terms or the Privacy Policy, you must not access or use the Service.",
-        "Our Service aims to provide information and resources related to side hustles and entrepreneurial opportunities. We do not guarantee employment, income, or success in any venture found through our platform."
+        "Our Service aims to provide information and resources related to side hustles and entrepreneurial opportunities. We do not guarantee employment, income, or success in any venture found through our platform. The Service is monetized through third-party advertisements, which helps keep it free for all users."
       ]
     },
     {
       id: "service-access-use",
-      title: "2. Accessing the Service and Account Security",
+      title: "2. Accessing the Service and User Accounts",
       icon: Globe,
       content: [
-        "We reserve the right to withdraw or amend this Service, and any service or material we provide on the Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Service is unavailable at any time or for any period.",
-        "You are responsible for making all arrangements necessary for you to have access to the Service and ensuring that all persons who access the Service through your internet connection are aware of these Terms and comply with them.",
-        "To access certain features, you might be asked to provide certain details or other information. It is a condition of your use of the Service that all the information you provide is correct, current, and complete."
+        "We work hard to keep Hustle Finder available, but we can’t promise uninterrupted access. We reserve the right to withdraw or amend this Service, and any material we provide, in our sole discretion without notice.",
+        "Currently, Hustle Finder does not require user registration or accounts. Features like saving hustles are stored locally in your browser's storage, which means they may be lost if you clear your cache or use a different device.",
+        "You are responsible for making all arrangements necessary for you to have access to the Service. You also must ensure that all persons who access the Service through your internet connection are aware of these Terms and comply with them."
       ]
     },
     {
@@ -35,8 +35,8 @@ export default function TermsPage() {
       title: "3. Intellectual Property Rights",
       icon: Shield,
       content: [
-        "The Service and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Hustle Finder, its licensors, or other providers of such material and are protected by [Your Country/Jurisdiction] and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.",
-        "These Terms permit you to use the Service for your personal, non-commercial use only. You must not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Service, except as generally permitted through the Service's functionality."
+        "The Service and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Hustle Finder, its licensors, or other providers of such material and are protected by India and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.",
+        "These Terms permit you to use the Service for your personal, non-commercial use only. You must not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Service, except for features that explicitly allow it (e.g., sharing a hustle link)."
       ]
     },
      {
@@ -48,21 +48,21 @@ export default function TermsPage() {
       ],
       points: [
         "In any way that violates any applicable federal, state, local, or international law or regulation.",
-        "For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content, asking for personally identifiable information, or otherwise.",
-        "To transmit, or procure the sending of, any advertising or promotional material without our prior written consent, including any \"junk mail,\" \"chain letter,\" \"spam,\" or any other similar solicitation.",
-        "To impersonate or attempt to impersonate Hustle Finder, a Hustle Finder employee, another user, or any other person or entity.",
-        "To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Service, or which, as determined by us, may harm Hustle Finder or users of the Service or expose them to liability.",
-        "Additionally, you agree not to introduce any viruses, trojan horses, worms, logic bombs, or other material that is malicious or technologically harmful or attack the Service via a denial-of-service attack or a distributed denial-of-service attack."
+        "To exploit, harm, or attempt to exploit or harm minors in any way.",
+        "To transmit any advertising or promotional material without our prior written consent, including any \"junk mail,\" \"chain letter,\" or \"spam.\"",
+        "To impersonate Hustle Finder, a Hustle Finder employee, another user, or any other person or entity.",
+        "To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Service, or which, as determined by us, may harm Hustle Finder or users of the Service.",
+        "Additionally, you agree not to introduce any viruses, trojan horses, or other malicious material, or to attack the Service via a denial-of-service attack or a distributed denial-of-service attack."
       ]
     },
     {
       id: "ai-tool-usage",
-      title: "5. AI-Powered Description Tool",
+      title: "5. AI-Powered Tools",
       icon: UserCog,
       content: [
-        "Our AI Description Enhancer tool is provided for assistance in rephrasing text. You are solely responsible for the text you input and the use of the output generated.",
-        "The AI tool processes information through third-party providers. While we aim for accuracy and helpfulness, we do not guarantee the output's suitability, accuracy, or freedom from errors. You should review any AI-generated content before use.",
-        "You agree not to submit any content that is illegal, harmful, offensive, infringes on intellectual property rights, or violates any third-party rights."
+        "Our AI Description Enhancer tool, when available, is provided for assistance in rephrasing text. You are solely responsible for the text you input and the use of the output generated.",
+        "The AI tool processes information through third-party providers. While we aim for accuracy, we do not guarantee the output's suitability, accuracy, or freedom from errors. You should review any AI-generated content before use.",
+        "You agree not to submit any content that is illegal, harmful, offensive, or infringes on any third-party rights."
       ]
     },
     {
@@ -70,8 +70,8 @@ export default function TermsPage() {
       title: "6. Disclaimer of Warranties",
       icon: AlertTriangle,
       content: [
-        "You understand that we cannot and do not guarantee or warrant that files available for downloading from the internet or the Service will be free of viruses or other destructive code. You are responsible for implementing sufficient procedures and checkpoints to satisfy your particular requirements for anti-virus protection and accuracy of data input and output, and for maintaining a means external to our site for any reconstruction of any lost data.",
-        "YOUR USE OF THE SERVICE, ITS CONTENT, AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICE IS AT YOUR OWN RISK. THE SERVICE, ITS CONTENT, AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICE ARE PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. NEITHER HUSTLE FINDER NOR ANY PERSON ASSOCIATED WITH HUSTLE FINDER MAKES ANY WARRANTY OR REPRESENTATION WITH RESPECT TO THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY, ACCURACY, OR AVAILABILITY OF THE SERVICE."
+        "We do our best to keep the Service safe, but we cannot guarantee that files available for downloading will be free of viruses or other destructive code. You are responsible for implementing your own anti-virus protection.",
+        "YOUR USE OF THE SERVICE, ITS CONTENT, AND ANY HUSTLE IDEAS OBTAINED THROUGH IT IS AT YOUR OWN RISK. THE SERVICE IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. NEITHER HUSTLE FINDER NOR ANY PERSON ASSOCIATED WITH US MAKES ANY WARRANTY OR REPRESENTATION WITH RESPECT TO THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY, ACCURACY, OR AVAILABILITY OF THE SERVICE."
       ]
     },
     {
@@ -79,7 +79,7 @@ export default function TermsPage() {
       title: "7. Limitation on Liability",
       icon: Gavel,
       content: [
-        "TO THE FULLEST EXTENT PROVIDED BY LAW, IN NO EVENT WILL HUSTLE FINDER, ITS AFFILIATES, OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES, AGENTS, OFFICERS, OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE SERVICE, ANY WEBSITES LINKED TO IT, ANY CONTENT ON THE SERVICE OR SUCH OTHER WEBSITES, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, PERSONAL INJURY, PAIN AND SUFFERING, EMOTIONAL DISTRESS, LOSS OF REVENUE, LOSS OF PROFITS, LOSS OF BUSINESS OR ANTICIPATED SAVINGS, LOSS OF USE, LOSS OF GOODWILL, LOSS OF DATA, AND WHETHER CAUSED BY TORT (INCLUDING NEGLIGENCE), BREACH OF CONTRACT, OR OTHERWISE, EVEN IF FORESEEABLE."
+        "TO THE FULLEST EXTENT PROVIDED BY LAW, IN NO EVENT WILL HUSTLE FINDER, ITS AFFILIATES, OR THEIR LICENSORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE SERVICE, ANY WEBSITES LINKED TO IT, OR ANY CONTENT ON THE SERVICE, INCLUDING ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES."
       ]
     },
     {
@@ -87,8 +87,55 @@ export default function TermsPage() {
       title: "8. Changes to the Terms",
       icon: RefreshCcw,
       content: [
-        "We may revise and update these Terms from time to time in our sole discretion. All changes are effective immediately when we post them and apply to all access to and use of the Service thereafter.",
-        "Your continued use of the Service following the posting of revised Terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you."
+        "We may revise and update these Terms from time to time. All changes are effective immediately when we post them. Your continued use of the Service following the posting of revised Terms means that you accept and agree to the changes. We encourage you to check this page frequently to stay aware of any updates."
+      ]
+    },
+    {
+      id: "governing-law",
+      title: "9. Governing Law",
+      icon: Server,
+      content: [
+        "All matters relating to the Service and these Terms shall be governed by and construed in accordance with the internal laws of India without giving effect to any choice or conflict of law provision or rule."
+      ]
+    },
+    {
+      id: "termination",
+      title: "10. Termination",
+      icon: XCircle,
+      content: [
+        "We may terminate or suspend your access to all or part of the Service, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms. All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability."
+      ]
+    },
+    {
+      id: "indemnification",
+      title: "11. Indemnification",
+      icon: Scale,
+      content: [
+        "You agree to defend, indemnify, and hold harmless Hustle Finder and its affiliates, licensors, and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Service."
+      ]
+    },
+    {
+      id: "severability",
+      title: "12. Severability",
+      icon: FileTerminal,
+      content: [
+        "If any provision of these Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal, or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of the Terms will continue in full force and effect."
+      ]
+    },
+    {
+      id: "entire-agreement",
+      title: "13. Entire Agreement",
+      icon: Handshake,
+      content: [
+        "These Terms and our Privacy Policy constitute the sole and entire agreement between you and Hustle Finder regarding the Service and supersede all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, regarding the Service."
+      ]
+    },
+    {
+      id: "contact",
+      title: "14. Contact Information",
+      icon: Contact,
+      content: [
+        "If you have any questions about these Terms, please contact us at contact@hustlefinder.com (or via our designated contact form, when available)."
       ]
     }
   ];
@@ -126,17 +173,6 @@ export default function TermsPage() {
             </CardContent>
           </Card>
         ))}
-         <Card className="shadow-lg rounded-xl overflow-hidden">
-            <CardHeader className="bg-secondary/30 p-4 sm:p-6">
-              <CardTitle className="flex items-center text-xl sm:text-2xl text-primary">
-                <Server className="h-6 w-6 sm:h-7 sm:w-7 mr-3 flex-shrink-0" />
-                Governing Law
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-4 sm:p-6 text-sm sm:text-base text-muted-foreground">
-              <p className="leading-relaxed">All matters relating to the Service and these Terms and any dispute or claim arising therefrom or related thereto shall be governed by and construed in accordance with the internal laws of [Your Country/Jurisdiction] without giving effect to any choice or conflict of law provision or rule.</p>
-            </CardContent>
-          </Card>
       </div>
     </div>
   );
