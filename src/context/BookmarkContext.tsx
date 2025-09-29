@@ -39,12 +39,15 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const addBookmark = useCallback((id: string) => {
-    if (bookmarkedIds.includes(id)) return;
-
     setBookmarkedIds(prevIds => {
+      if (prevIds.includes(id)) {
+        return prevIds;
+      }
+      
       const newIds = [...prevIds, id];
       try {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
+        // Move toast call here to ensure it runs as a side effect
         toast({ title: "Hustle Saved!" });
       } catch (error) {
         console.error("Failed to save bookmark to localStorage", error);
@@ -53,13 +56,18 @@ export const BookmarkProvider = ({ children }: { children: ReactNode }) => {
       }
       return newIds;
     });
-  }, [bookmarkedIds, toast]);
+  }, [toast]);
 
   const removeBookmark = useCallback((id: string) => {
     setBookmarkedIds(prevIds => {
+      if (!prevIds.includes(id)) {
+          return prevIds;
+      }
+      
       const newIds = prevIds.filter((bookmarkId) => bookmarkId !== id);
       try {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newIds));
+        // Move toast call here to ensure it runs as a side effect
         toast({ title: "Removed from Saved" });
       } catch (error) {
         console.error("Failed to remove bookmark from localStorage", error);
