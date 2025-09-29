@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen, Search as SearchIconLucide } from "lucide-react";
+import { ArrowRight, CheckCircle, Rocket, ListChecks, ShieldCheck, TrendingUp, Users, HelpCircle, Lightbulb, Info, BookOpen, Search as SearchIconLucide, AlertTriangle } from "lucide-react";
 import { allHustles } from '@/lib/hustle-data';
 import type { Hustle } from '@/types/hustle';
 import AnimatedDiv from "@/components/animations/AnimatedDiv";
@@ -239,6 +239,22 @@ export default function HomePage() {
             </AnimatedDiv>
           ))}
         </Accordion>
+      </AnimatedDiv>
+
+      {/* Local Storage Note Section */}
+      <AnimatedDiv animationClasses="fade-in slide-in-from-bottom-8" durationClass="duration-500" delayClass="delay-200" className="container mx-auto px-4 w-full max-w-3xl" once={false}>
+        <Card className="mt-10 sm:mt-12 bg-secondary/40 border-primary/30">
+          <CardHeader>
+            <CardTitle className="flex items-center text-primary">
+              <AlertTriangle className="h-6 w-6 mr-3 text-accent" /> Important Note on Saved Hustles
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              Since the website doesn't require login or sign-up, all your saved hustles are stored locally in your device's browser. This means if you clear your browser's cache or use a different device, your saved list will be vanished.
+            </p>
+          </CardContent>
+        </Card>
       </AnimatedDiv>
 
       {/* Adsterra Banner 728x90 - Homepage Bottom */}
