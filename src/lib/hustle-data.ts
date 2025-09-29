@@ -678,7 +678,7 @@ const remoteSampleDescriptionsBatch5 = [
   'Record clear audio of specific phrases or words in your local language for use in language learning apps or translation tools.',
   'Check the translated content of a website for grammatical errors, typos, and awkward phrasing in your local language.',
   'Moderate an online community or forum for a specific local region, ensuring discussions are relevant and respectful.',
-  'Collect information about local businesses (name, address, phone number, hours) to be added to online directories.',
+  'Gather information about local businesses (name, address, phone number, hours) to be added to online directories.',
   'Create social media content (posts, stories) that references local events, holidays, or trends.',
   'Provide voice acting for characters in local-language animations, cartoons, or short films.',
   // Virtual Admin & Support (15)
