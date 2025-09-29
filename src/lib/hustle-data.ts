@@ -1137,8 +1137,7 @@ const remoteSampleDescriptionsBatch7 = [
 const remoteCategoriesBatch8 = [
   { name: 'Micro-Gig Platforms', imageHint: 'micro gig online' },
   { name: 'Simple Digital Services', imageHint: 'simple digital online' },
-  { name:
- 'Entry-Level Content Creation', imageHint: 'content creation entry' },
+  { name: 'Entry-Level Content Creation', imageHint: 'content creation entry' },
   { name: 'Online Promotion & Marketing', imageHint: 'promotion marketing online' },
   { name: 'Virtual Assistance Tasks', imageHint: 'virtual assistant tasks' },
   { name: 'Language & Transcription', imageHint: 'language transcription online' },
@@ -1929,7 +1928,18 @@ const remoteHustlesBatch7 = generateHustles(120, generalHustles.length + remoteH
 const remoteHustlesBatch8 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length + remoteHustlesBatch3.length + remoteHustlesBatch4.length + remoteHustlesBatch5.length + remoteHustlesBatch6.length + remoteHustlesBatch7.length, remoteCategoriesBatch8, remoteSampleTitlesBatch8, remoteSampleDescriptionsBatch8, true);
 const remoteHustlesBatch9 = generateHustles(120, generalHustles.length + remoteHustlesBatch1.length + remoteHustlesBatch2.length + remoteHustlesBatch3.length + remoteHustlesBatch4.length + remoteHustlesBatch5.length + remoteHustlesBatch6.length + remoteHustlesBatch7.length + remoteHustlesBatch8.length, remoteCategoriesBatch9, remoteSampleTitlesBatch9, remoteSampleDescriptionsBatch9, true);
 
-export const allHustles: Hustle[] = [...generalHustles, ...remoteHustlesBatch1, ...remoteHustlesBatch2, ...remoteHustlesBatch3, ...remoteHustlesBatch4, ...remoteHustlesBatch5, ...remoteHustlesBatch6, ...remoteHustlesBatch7, ...remoteHustlesBatch8, ...remoteHustlesBatch9];
+export const allHustles: Hustle[] = [
+    ...generalHustles, 
+    ...remoteHustlesBatch1, 
+    ...remoteHustlesBatch2, 
+    ...remoteHustlesBatch3, 
+    ...remoteHustlesBatch4,
+    ...remoteHustlesBatch5,
+    ...remoteHustlesBatch6,
+    ...remoteHustlesBatch7,
+    ...remoteHustlesBatch8,
+    ...remoteHustlesBatch9,
+];
 
 export function getHustleById(id: string): Hustle | undefined {
   return allHustles.find(hustle => hustle.id === id);
