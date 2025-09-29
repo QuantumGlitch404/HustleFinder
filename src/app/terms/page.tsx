@@ -15,7 +15,7 @@ export default function TermsPage() {
       title: "1. Introduction & Acceptance of Terms",
       icon: Info,
       content: [
-        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). These Terms and Conditions (\"Terms\") govern your access to and use of our website located at https://hustlefinder.com (the \"Service\"), including any content, functionality, and services offered on or through the Service.",
+        "Welcome to Hustle Finder (\"we,\" \"us,\" or \"our\"). These Terms and Conditions (\"Terms\") govern your access to and use of our website located at https://hustlefinder.vercel.app (the \"Service\"), including any content, functionality, and services offered on or through the Service.",
         "Please read the Terms carefully before you start to use the Service. By using the Service, you accept and agree to be bound and abide by these Terms and our Privacy Policy, incorporated herein by reference. If you do not want to agree to these Terms or the Privacy Policy, you must not access or use the Service.",
         "Our Service aims to provide information and resources related to side hustles and entrepreneurial opportunities. We do not guarantee employment, income, or success in any venture found through our platform. The Service is monetized through third-party advertisements, which helps keep it free for all users."
       ]
@@ -135,7 +135,7 @@ export default function TermsPage() {
       title: "14. Contact Information",
       icon: Contact,
       content: [
-        "If you have any questions about these Terms, please contact us at contact@hustlefinder.com (or via our designated contact form, when available)."
+        "If you have any questions about these Terms, please contact us at officialhustlefinder@gmail.com (or via our designated contact form, when available)."
       ]
     }
   ];
